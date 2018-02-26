@@ -50,7 +50,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-/**
+/*
  * Created by Administrator on 2016/4/23.
  */
 public class AqjcFragment extends Fragment implements IYhdjPresenter.View, View.OnClickListener, ITakePhotoListener {
@@ -68,7 +68,6 @@ public class AqjcFragment extends Fragment implements IYhdjPresenter.View, View.
     private EditText mYgfyEdt, mJyzgEdt, mDateZg;
     private Button mJcbDetail;
     private TextView mPhotoCount;
-
     private IYhdjPresenter mPresenter;
     private File mCache;
     private Calendar mCalendar;
