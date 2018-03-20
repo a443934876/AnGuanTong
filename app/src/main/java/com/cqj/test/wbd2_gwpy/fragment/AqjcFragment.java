@@ -32,12 +32,12 @@ import com.cqj.test.wbd2_gwpy.JcbInfo;
 import com.cqj.test.wbd2_gwpy.R;
 import com.cqj.test.wbd2_gwpy.RwInfo;
 import com.cqj.test.wbd2_gwpy.SbInfo;
+import com.cqj.test.wbd2_gwpy.activity.CameraActivity;
 import com.cqj.test.wbd2_gwpy.activity.CameraTestActivity;
 import com.cqj.test.wbd2_gwpy.activity.JcbDetailActivity;
 import com.cqj.test.wbd2_gwpy.activity.MyApplication;
 import com.cqj.test.wbd2_gwpy.adapter.MySpinnerAdapter;
 import com.cqj.test.wbd2_gwpy.myinterface.IChooseItem;
-import com.cqj.test.wbd2_gwpy.myinterface.ITakePhotoListener;
 import com.cqj.test.wbd2_gwpy.presenter.IYhdjPresenter;
 import com.cqj.test.wbd2_gwpy.presenter.compl.YhdjPresenterCompl;
 import com.cqj.test.wbd2_gwpy.util.StringUtil;
@@ -45,7 +45,6 @@ import com.cqj.test.wbd2_gwpy.view.AudioRecordUtil;
 import com.cqj.test.wbd2_gwpy.view.MyCamera;
 
 import java.io.File;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -53,7 +52,7 @@ import java.util.List;
 /*
  * Created by Administrator on 2016/4/23.
  */
-public class AqjcFragment extends Fragment implements IYhdjPresenter.View, View.OnClickListener, ITakePhotoListener {
+public class AqjcFragment extends Fragment implements IYhdjPresenter.View, View.OnClickListener {
 
 
     private final static int AUDIO = 25;
@@ -67,7 +66,7 @@ public class AqjcFragment extends Fragment implements IYhdjPresenter.View, View.
     private Spinner mJcbSp, mCsSp, mSbSp, mRwSp, mYhdjSp;
     private EditText mYgfyEdt, mJyzgEdt, mDateZg;
     private Button mJcbDetail;
-    private TextView mPhotoCount;
+    /*private TextView mPhotoCount;*/
     private IYhdjPresenter mPresenter;
     private File mCache;
     private Calendar mCalendar;
@@ -78,6 +77,7 @@ public class AqjcFragment extends Fragment implements IYhdjPresenter.View, View.
     private MyCamera mMyCamera;
     private boolean isSetPlace;
     private int mEwmSssbId;
+    private String imagePathResult;
 
     public static AqjcFragment newInstance() {
         return new AqjcFragment();
@@ -103,11 +103,11 @@ public class AqjcFragment extends Fragment implements IYhdjPresenter.View, View.
     private void initComplement() {
         myApp = (MyApplication) getActivity().getApplication();
         mCalendar = Calendar.getInstance();
-        mMyCamera = (MyCamera) mView.findViewById(R.id.my_camera);
-        mMyCamera.setTakePhotoListener(this);
+      /*  mMyCamera = (MyCamera) mView.findViewById(R.id.my_camera);*/
+      /*  mMyCamera.setTakePhotoListener(this);*/
         mQrCodeBtn = (ImageButton) mView.findViewById(R.id.ewm_btn);
         mCameraBtn = (ImageButton) mView.findViewById(R.id.xcpz_btn);
-        mPhotoCount = (TextView) mView.findViewById(R.id.photo_count);
+    /*    mPhotoCount = (TextView) mView.findViewById(R.id.photo_count);*/
         mAudioBtn = (Button) mView.findViewById(R.id.xcly_btn);
         mCallBtn = (ImageButton) mView.findViewById(R.id.bddh_btn);
         mCommitBtn = (Button) mView.findViewById(R.id.commit_btn);
@@ -334,8 +334,8 @@ public class AqjcFragment extends Fragment implements IYhdjPresenter.View, View.
     public void commitStatus(boolean isSuccess) {
         toast("提交" + (isSuccess ? "成功" : "失败,请重试"));
         if (isSuccess) {
-            mMyCamera.success();
-            mPhotoCount.setText("0");
+            /*mMyCamera.success();*/
+           /* mPhotoCount.setText("0");*/
             mYhdjSp.setSelection(0);
             mAudioBtn.setBackgroundResource(R.drawable.yjbj_xcly_btn);
             mAudioBtn.setText("");
@@ -395,7 +395,9 @@ public class AqjcFragment extends Fragment implements IYhdjPresenter.View, View.
     public void onClick(View pView) {
         int id = pView.getId();
         if (id == mCameraBtn.getId()) {
-            mMyCamera.takePhoto();
+            Intent intent = new Intent(getActivity(),CameraActivity.class);
+            startActivityForResult(intent, QRCODE_REQUEST);
+            /*mMyCamera.takePhoto();*/
         } else if (id == mAudioBtn.getId()) {
             Intent intent = new Intent(getActivity(), AudioRecordUtil.class);
             String audioPath = mCache.getAbsolutePath() + File.separator
@@ -481,7 +483,8 @@ public class AqjcFragment extends Fragment implements IYhdjPresenter.View, View.
         info.setTaskid(taskId);
         info.setSetStr(sbMark);
         info.setRecEmid(Integer.parseInt(myApp.getComInfo().getEmid()));
-        ArrayList<String> imagePaths = mMyCamera.getImageDatas();
+        // TODO: 2018/3/1  照片
+       /* ArrayList<String> imagePaths = mMyCamera.getImageDatas();
         StringBuilder stringBuilder = new StringBuilder();
         for (String imagePath : imagePaths) {
             stringBuilder.append(imagePath);
@@ -490,9 +493,10 @@ public class AqjcFragment extends Fragment implements IYhdjPresenter.View, View.
         String imagePath = "";
         if (stringBuilder.length() > 0) {
             imagePath = stringBuilder.substring(0, stringBuilder.length() - 1);
-        }
+        }*/
         String audioPath = mAudioBtn.getTag() == null ? "" : "," + StringUtil.noNull(mAudioBtn.getTag());
-        info.setImagePath(imagePath + audioPath);
+       /* info.setImagePath(imagePath + audioPath);*/
+        info.setImagePath(imagePathResult+ audioPath);
         mPresenter.upload(info);
     }
 
@@ -524,13 +528,13 @@ public class AqjcFragment extends Fragment implements IYhdjPresenter.View, View.
     @Override
     public void onPause() {
         super.onPause();
-        mMyCamera.releaseCamera();
+      /*  mMyCamera.releaseCamera();*/
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        mMyCamera.setCameraCallback();
+       /* mMyCamera.setCameraCallback();*/
     }
 
     @Override
@@ -539,6 +543,7 @@ public class AqjcFragment extends Fragment implements IYhdjPresenter.View, View.
 //        mMyCamera.setCameraCallback();
         try {
             if (resultCode == Activity.RESULT_OK) {
+                 imagePathResult = data.getStringExtra("imagePathResult");
                 if (requestCode == AUDIO) // 录音
                 {
                     // 显示多媒体View
@@ -604,8 +609,4 @@ public class AqjcFragment extends Fragment implements IYhdjPresenter.View, View.
         }
     }
 
-    @Override
-    public void getPhotoCount(int count) {
-        mPhotoCount.setText(count + "");
-    }
 }

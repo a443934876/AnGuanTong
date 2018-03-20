@@ -15,151 +15,12 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <com.cqj.test.wbd2_gwpy.view.MyCamera
+           <!-- <com.cqj.test.wbd2_gwpy.view.MyCamera
                 android:id="@+id/my_camera"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"/>-->
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:padding="8dp">
 
-                <ImageButton
-                    android:id="@+id/ewm_btn"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_marginLeft="8dp"
-                    android:background="@drawable/ewm_icon"/>
-
-                <RelativeLayout
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_marginLeft="16dp">
-
-                    <ImageButton
-                        android:id="@+id/xcpz_btn"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="@drawable/yjbj_xcpz_btn"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true"
-                        android:background="@drawable/icon_unread"
-                        android:padding="2dp"
-                        android:text="0"
-                        android:id="@+id/photo_count"
-                        android:textColor="@color/white"
-                        android:textSize="12sp"/>
-
-                </RelativeLayout>
-
-                <Button
-                    android:id="@+id/xcly_btn"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_marginLeft="16dp"
-                    android:background="@drawable/yjbj_xcly_btn"
-                    android:textSize="16sp"/>
-
-                <ImageButton
-                    android:id="@+id/bddh_btn"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_marginLeft="16dp"
-                    android:background="@android:drawable/sym_call_incoming"/>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:orientation="horizontal">
-
-                    <Button
-                        android:id="@+id/commit_btn"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/blue_button_background"
-                        android:text="记录"
-                        android:textColor="#FFFFFF"/>
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:visibility="visible">
-
-                <EditText
-                    android:id="@+id/jcb_edit"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="left|top"
-                    android:lines="7"/>
-
-                <LinearLayout
-                    android:id="@+id/jcb_ln"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:orientation="vertical"
-                    android:visibility="gone">
-
-                    <ImageView
-                        android:id="@+id/jcbdetail_pre"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:background="#00000000"
-                        android:clickable="true"
-                        android:padding="10dp"
-                        android:src="@drawable/up_icon"/>
-
-                    <TextView
-                        android:id="@+id/jcb_position"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="0"
-                        android:textSize="16sp"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="|"
-                        android:textSize="16sp"/>
-
-                    <TextView
-                        android:id="@+id/jcb_count"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="0"
-                        android:textSize="16sp"/>
-
-                    <ImageView
-                        android:id="@+id/jcbdetail_next"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:background="#00000000"
-                        android:clickable="true"
-                        android:padding="10dp"
-                        android:src="@drawable/down_icon"/>
-
-                    <Button
-                        android:id="@+id/jcb_detail_btn"
-                        android:layout_width="50dp"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="3dp"
-                        android:background="@drawable/jcb_detail"
-                        android:visibility="gone"
-                        />
-                </LinearLayout>
-            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -308,6 +169,79 @@
 
             </LinearLayout>
 
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:visibility="visible">
+
+                <EditText
+                    android:id="@+id/jcb_edit"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="left|top"
+                    android:lines="4"/>
+
+                <LinearLayout
+                    android:id="@+id/jcb_ln"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <ImageView
+                        android:id="@+id/jcbdetail_pre"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:background="#00000000"
+                        android:clickable="true"
+                        android:padding="10dp"
+                        android:src="@drawable/up_icon"/>
+
+                    <TextView
+                        android:id="@+id/jcb_position"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0"
+                        android:textSize="16sp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="|"
+                        android:textSize="16sp"/>
+
+                    <TextView
+                        android:id="@+id/jcb_count"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0"
+                        android:textSize="16sp"/>
+
+                    <ImageView
+                        android:id="@+id/jcbdetail_next"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:background="#00000000"
+                        android:clickable="true"
+                        android:padding="10dp"
+                        android:src="@drawable/down_icon"/>
+
+                    <Button
+                        android:id="@+id/jcb_detail_btn"
+                        android:layout_width="50dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="3dp"
+                        android:background="@drawable/jcb_detail"
+                        android:visibility="gone"
+                        />
+                </LinearLayout>
+            </LinearLayout>
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -320,7 +254,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="left|top"
-                android:lines="6"/>
+                android:lines="2"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -339,6 +273,75 @@
                     android:layout_height="wrap_content"/>
 
             </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="8dp">
+
+                <ImageButton
+                    android:id="@+id/ewm_btn"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="8dp"
+                    android:background="@drawable/ewm_icon"/>
+
+                <RelativeLayout
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="16dp">
+
+                    <ImageButton
+                        android:id="@+id/xcpz_btn"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/yjbj_xcpz_btn"/>
+
+                 <!--   <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:background="@drawable/icon_unread"
+                        android:padding="2dp"
+                        android:text="0"
+                        android:id="@+id/photo_count"
+                        android:textColor="@color/white"
+                        android:textSize="12sp"/>-->
+
+                </RelativeLayout>
+
+                <Button
+                    android:id="@+id/xcly_btn"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="16dp"
+                    android:background="@drawable/yjbj_xcly_btn"
+                    android:textSize="16sp"/>
+
+                <ImageButton
+                    android:id="@+id/bddh_btn"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="16dp"
+                    android:background="@android:drawable/sym_call_incoming"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/commit_btn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/blue_button_background"
+                        android:text="记录"
+                        android:textColor="#FFFFFF"/>
+                </LinearLayout>
+
+            </LinearLayout>
+
 
         </LinearLayout>
     </ScrollView>

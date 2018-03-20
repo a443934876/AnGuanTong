@@ -22,6 +22,7 @@
     <string name="getyhdetail_failed">获取隐患详情失败!</string>
     <string name="ewm_scanning">识别中...</string>
     <string name="take_photo_max_toast">最多只能拍3张照片</string>
+    <string name="photographic">拍照</string>
 
     <string-array name="yhjb">
         <item>一般</item>

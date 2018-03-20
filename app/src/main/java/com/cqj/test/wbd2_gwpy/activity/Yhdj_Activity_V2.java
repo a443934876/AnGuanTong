@@ -1,43 +1,20 @@
 package com.cqj.test.wbd2_gwpy.activity;
 
-import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.PixelFormat;
-import android.hardware.Camera;
-import android.media.ExifInterface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 import android.view.MenuItem;
-import android.view.Surface;
-import android.view.SurfaceHolder;
-import android.view.SurfaceView;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.Toast;
-
 import com.cqj.test.wbd2_gwpy.R;
 import com.cqj.test.wbd2_gwpy.adapter.ViewPagerAdapter;
 import com.cqj.test.wbd2_gwpy.fragment.AqfcFragment;
 import com.cqj.test.wbd2_gwpy.fragment.AqjcFragment;
 import com.cqj.test.wbd2_gwpy.fragment.JcfkFragment;
-import com.cqj.test.wbd2_gwpy.mode.BitmapInfo;
-import com.cqj.test.wbd2_gwpy.myinterface.IYhdjImageCallBack;
-import com.cqj.test.wbd2_gwpy.util.BitmapUtil;
-
-import net.tsz.afinal.FinalBitmap;
-
 import java.util.ArrayList;
 import java.util.List;
 
-import rx.Observable;
-import rx.Subscriber;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
-
-/**
+/*
  * Created by Administrator on 2016/3/7.
  */
 public class Yhdj_Activity_V2 extends FragmentActivity {
@@ -91,7 +68,7 @@ public class Yhdj_Activity_V2 extends FragmentActivity {
         mYhdjFragment = AqjcFragment.newInstance();
         AqfcFragment aqfcFragment = AqfcFragment.newInstance();
         JcfkFragment jcfkFragment = JcfkFragment.newInstance();
-        List<Fragment> fragments = new ArrayList<Fragment>();
+        List<Fragment> fragments = new ArrayList<>();
         fragments.add(jcfkFragment);
         fragments.add(mYhdjFragment);
         fragments.add(aqfcFragment);

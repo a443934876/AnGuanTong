@@ -24,7 +24,7 @@ public class UploadDataHelper {
 
     }
 
-    public static ArrayList<HashMap<String, Object>> uploadYhzg(YhzgCommitInfo info)throws Exception{
+    public static ArrayList<HashMap<String, Object>> uploadYhzg(YhzgCommitInfo info) throws Exception {
         String imageResult = UploadDataHelper.getUploadedImageId(info.getImgpath());
         String[] keys = new String[]{"troubleid", "finishedDate",
                 "results", "evalstr", "factCost", "imgpath"};
@@ -35,7 +35,7 @@ public class UploadDataHelper {
                 WebServiceUtil.HUIWEI_SAFE_URL, WebServiceUtil.HUIWEI_NAMESPACE);
     }
 
-    public static ArrayList<HashMap<String, Object>> uploadYhfc(YhfcCommitInfo info)throws Exception{
+    public static ArrayList<HashMap<String, Object>> uploadYhfc(YhfcCommitInfo info) throws Exception {
         String imageResult = UploadDataHelper.getUploadedImageId(info.getDightedImgPath());
         String[] keys = new String[]{"troubleId", "reviewEmids",
                 "reviewRemark", "reviewDate", "dightedImgPath"};
@@ -118,13 +118,11 @@ public class UploadDataHelper {
         String[] pathArr = pFilePaths.split(",");
         for (String path : pathArr) {
             if (!TextUtils.isEmpty(path) && !"null".equals(path)) {
-
                 Bitmap b = null;
                 try {
                     File file = new File(path);
                     String fileName = file.getName();
                     String uploadBuffer;
-
                     if (!fileName.endsWith(".mp3")) {
                         ByteArrayOutputStream baos = new ByteArrayOutputStream();
                         b = BitmapFactory.decodeFile(path);
@@ -135,19 +133,9 @@ public class UploadDataHelper {
                         byte[] fileData = Utils.getBytes(file);
                         uploadBuffer = new String(Base64.encode(fileData)); // 进行Base64编码
                     }
-
-                    //upSaveFile
-                    /// 保存文件到远程服务器
-                    /// </summary>
-                    /// <param name="FileByteArray">待转换字节数组</param>
-                    /// <param name="FileLength">字节长度</param>
-                    /// <param name="SaveToUrl">保存路径</param>
-                    /// <returns>返回是否执行成功</returns>
-                    //public bool upSaveFile(byte[] FileByteArray, int FileLength, string SaveToUrl)
-                    //UploadFile
-                    //String[] keys = {"fileBytesstr", "fileName"};
                     String methodName = "UploadFile";
                     String[] keys = {"fileBytesstr", "fileName"};
+                    // TODO: 2018/3/1  上传图片
                     Object[] values = {uploadBuffer, fileName};
                     System.out.println("fileName:" + fileName);
                     String serverPath = WebServiceUtil.putWebServiceMsg(keys, values,
@@ -161,9 +149,10 @@ public class UploadDataHelper {
                 }
             }
         }
-        if(result.length()>0){
-            return result.substring(0,result.length()-1);
+        if (result.length() > 0) {
+            return result.substring(0, result.length() - 1);
         }
         return result.toString();
     }
+
 }

@@ -10,7 +10,7 @@ android {
         targetSdkVersion 25
 
         ndk {
-            abiFilters "armeabi", "armeabi-v7a","x86","mips"
+            abiFilters "armeabi", "armeabi-v7a", "x86", "mips"
         }
     }
 
@@ -53,9 +53,7 @@ android {
 }
 
 dependencies {
-    compile 'pub.devrel:easypermissions:0.4.0'
-    compile 'com.android.support:support-v4:25.3.1'
-/*    compile(name: 'LiteAVSDK_UGC_3.3.1655', ext: 'aar')*/
+    /*    compile(name: 'LiteAVSDK_UGC_3.3.1655', ext: 'aar')*/
     compile(name: 'LiteAVSDK_UGC_3.5.2170', ext: 'aar')
 
     compile files('libs/afinal_0.5.1_bin.jar')
@@ -63,10 +61,13 @@ dependencies {
     compile files('libs/ksoap2-android-assembly-2.4-jar-with-dependencies(修改).jar')
     compile files('libs/zxing.jar')
     compile files('libs/zbardecoder.jar')
+    compile 'pub.devrel:easypermissions:0.4.0'
+    compile 'com.android.support:support-v4:25.3.1'
     compile 'de.greenrobot:greendao:2.1.0'
     compile 'io.reactivex:rxandroid:1.1.0'
     compile 'io.reactivex:rxjava:1.1.0'
     compile 'com.tbruyelle.rxpermissions:rxpermissions:0.7.0@aar'
     compile 'org.apache.httpcomponents:httpclient:4.3.5@aar'
     compile 'com.github.bumptech.glide:glide:3.7.0'
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
 }

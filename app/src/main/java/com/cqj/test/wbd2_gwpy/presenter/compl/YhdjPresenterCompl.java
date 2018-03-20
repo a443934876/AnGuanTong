@@ -2,8 +2,6 @@ package com.cqj.test.wbd2_gwpy.presenter.compl;
 
 import android.app.Activity;
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.text.TextUtils;
 
 import com.cqj.test.wbd2_gwpy.AqjcCommitInfo;
@@ -23,13 +21,8 @@ import com.cqj.test.wbd2_gwpy.dao.SqliteOperator;
 import com.cqj.test.wbd2_gwpy.presenter.IYhdjPresenter;
 import com.cqj.test.wbd2_gwpy.util.StringUtil;
 import com.cqj.test.wbd2_gwpy.util.UploadDataHelper;
-import com.cqj.test.wbd2_gwpy.util.Utils;
 import com.cqj.test.wbd2_gwpy.util.WebServiceUtil;
 
-import org.kobjects.base64.Base64;
-
-import java.io.ByteArrayOutputStream;
-import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -87,7 +80,7 @@ public class YhdjPresenterCompl implements IYhdjPresenter {
                     ArrayList<HashMap<String, Object>> data = WebServiceUtil.getWebServiceMsg(keys2, values2,
                             "getSafetyCheckTaskListFromCom", new String[]{
                                     "TaskTitle", "TaskID"},
-                            WebServiceUtil.SAFE_URL);
+                            WebServiceUtil.HUIWEI_SAFE_URL);
                     result.addAll(data);
                     subscriber.onNext(parseRwInfo(result));
                 } catch (Exception e) {
@@ -330,7 +323,7 @@ public class YhdjPresenterCompl implements IYhdjPresenter {
                             "getSafetyCheckList", new String[]{"oblititle",
                                     "odetail", "sCheckListtype", "induname",
                                     "inseName", "malName", "rAdvise"},
-                            WebServiceUtil.SAFE_URL);
+                            WebServiceUtil.SAFE_URL,WebServiceUtil.WEBSERVICE_NAMESPACE);
                     if (result == null || result.isEmpty()) {
                         result = new ArrayList<HashMap<String, Object>>();
                         HashMap<String, Object> map = new HashMap<String, Object>();
@@ -496,7 +489,7 @@ public class YhdjPresenterCompl implements IYhdjPresenter {
     }
 
     @Override
-    public void getSssb(final int pSbid,final int comid ) {
+    public void getSssb(final int pSbid, final int comid) {
         if (!MyApplication.isConnection) {
             mView.toast("此功能需联网！");
             return;
@@ -508,13 +501,13 @@ public class YhdjPresenterCompl implements IYhdjPresenter {
                     String keys2[] = {"cpid", "proclaid", "placeid", "kemid",
                             "comid"};
                     Object values2[] = {pSbid, 0, 0, 0, comid};
-                    ArrayList<HashMap<String,Object>> result = WebServiceUtil.getWebServiceMsg(keys2, values2,
+                    ArrayList<HashMap<String, Object>> result = WebServiceUtil.getWebServiceMsg(keys2, values2,
                             "getAllEquipment", new String[]{"mroomid"},
-                            WebServiceUtil.HUIWEI_URL,WebServiceUtil.HUIWEI_NAMESPACE);
-                    if(result.size()>0){
+                            WebServiceUtil.HUIWEI_URL, WebServiceUtil.HUIWEI_NAMESPACE);
+                    if (result.size() > 0) {
                         String placeId = String.valueOf(result.get(0).get("mroomid"));
                         pSubscriber.onNext(placeId);
-                    }else{
+                    } else {
                         pSubscriber.onError(new Throwable());
                     }
                 } catch (Exception pE) {
