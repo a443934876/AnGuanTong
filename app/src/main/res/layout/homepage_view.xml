@@ -6,14 +6,16 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:orientation="horizontal"
         android:padding="5dp" >
 
         <TextView
+            android:layout_weight="1"
             android:id="@+id/gwlist_arc_progress"
-            android:layout_width="120dp"
-            android:layout_height="100dp"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
             android:background="@drawable/safetyindex00"
             android:layout_margin="8dp"
             android:textSize="24sp"
@@ -21,21 +23,24 @@
             />
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
             android:orientation="vertical" >
 
             <TextView
                 android:id="@+id/gwlist_title_date"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
                 android:gravity="center"
                 android:text="2014年12月12日"
                 android:textSize="20sp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
                 android:gravity="center"
                 android:orientation="horizontal" >
 
@@ -64,12 +69,14 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
                 android:layout_margin="5dp"
                 android:gravity="center"
                 android:orientation="horizontal" >
 
                 <TextView
+                    android:gravity="center"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -77,6 +84,7 @@
                     android:textSize="13sp" />
 
                 <TextView
+                    android:gravity="center"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -86,12 +94,14 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
                 android:layout_margin="5dp"
                 android:gravity="center"
                 android:orientation="horizontal" >
 
                 <TextView
+                    android:gravity="center"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -99,6 +109,7 @@
                     android:textSize="13sp" />
 
                 <TextView
+                    android:gravity="center"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -108,13 +119,16 @@
         </LinearLayout>
     </LinearLayout>
 
-    <ScrollView
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="0dp"
+        android:layout_weight="3">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="9"
             android:layout_marginTop="10dp"
             android:orientation="vertical" >
 
@@ -132,7 +146,7 @@
                 <LinearLayout
                     android:id="@+id/hp_aqjc"
                     android:layout_width="0dp"
-                    android:layout_height="100dp"
+                    android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:onClick="hpClick" >
@@ -157,7 +171,7 @@
                 <LinearLayout
                     android:id="@+id/hp_gwxx"
                     android:layout_width="0dp"
-                    android:layout_height="100dp"
+                    android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:onClick="hpClick" >
@@ -189,7 +203,7 @@
                 <LinearLayout
                     android:id="@+id/hp_pxks"
                     android:layout_width="0dp"
-                    android:layout_height="100dp"
+                    android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:onClick="hpClick" >
@@ -214,7 +228,7 @@
                 <LinearLayout
                     android:id="@+id/hp_sbxc"
                     android:layout_width="0dp"
-                    android:layout_height="100dp"
+                    android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:onClick="hpClick" >
@@ -246,7 +260,7 @@
                 <LinearLayout
                     android:id="@+id/hp_zygl"
                     android:layout_width="0dp"
-                    android:layout_height="100dp"
+                    android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:onClick="hpClick" >
@@ -271,7 +285,7 @@
                 <LinearLayout
                     android:id="@+id/hp_yjyl"
                     android:layout_width="0dp"
-                    android:layout_height="100dp"
+                    android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:onClick="hpClick" >
@@ -303,7 +317,13 @@
                 android:id="@+id/homepage_exit"
                 android:text="退出登录"/>
         </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
 
-    </ScrollView>
+        </LinearLayout>
+
+    </LinearLayout>
 
 </LinearLayout>
