@@ -569,7 +569,8 @@ public class AqjcFragment extends Fragment implements IYhdjPresenter.View, View.
                             String type = resultArr[0];
                             if (type.equals("aqss")) {
                                 MySpinnerAdapter<SbInfo> adapter = (MySpinnerAdapter<SbInfo>) mSbSp.getAdapter();
-                                adapter.resetData();
+                                // TODO: 2018/3/21
+//                                adapter.resetData();
                                 mSbSp.setSelection(adapter.selectItemById(resultArr[1]));
                             } else if (type.equals("chsu")) {
                                 MySpinnerAdapter<CsInfo> adapter = (MySpinnerAdapter<CsInfo>) mCsSp.getAdapter();

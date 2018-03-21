@@ -1,8 +1,5 @@
 package com.cqj.test.wbd2_gwpy.adapter;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +11,9 @@ import android.widget.Toast;
 import com.cqj.test.wbd2_gwpy.R;
 import com.cqj.test.wbd2_gwpy.myinterface.IChooseItem;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MySpinnerAdapter<T extends IChooseItem> extends BaseAdapter {
 
 	private Context context;
@@ -24,7 +24,7 @@ public class MySpinnerAdapter<T extends IChooseItem> extends BaseAdapter {
 							Context context) {
 		this.context = context;
 		this.data = data;
-		copyData = data;
+        copyData = data;
 	}
 
 	@Override

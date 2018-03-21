@@ -11,6 +11,7 @@ import android.text.TextUtils;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.WindowManager;
 import android.widget.Chronometer;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -109,6 +110,7 @@ public class ClassDetailActivity extends Activity {
         // TODO Auto-generated method stub
         super.onCreate(savedInstanceState);
         setContentView(R.layout.classdetail_view);
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);//屏幕常亮
         getActionBar().setTitle("课程学习");
         getActionBar().setDisplayHomeAsUpEnabled(true);
         String currIDStr = getIntent().getStringExtra("currID");
@@ -350,9 +352,9 @@ public class ClassDetailActivity extends Activity {
                             Toast.LENGTH_LONG).show();
                     break;
                 case REQUEST_CODE:
-                    mLivePlayer.startPlay(mUrl,TXLivePlayer.PLAY_TYPE_VOD_FLV);
+                    mLivePlayer.startPlay(mUrl, TXLivePlayer.PLAY_TYPE_VOD_FLV);
                     mProgress = data.getIntExtra(VideoPlayActivity.RESULT_PROGRESS, 0);
-                    if(mProgress!=mTotal) {
+                    if (mProgress != mTotal) {
                         mLivePlayer.seek(mProgress);
                     }
                     break;
@@ -444,7 +446,7 @@ public class ClassDetailActivity extends Activity {
             } else if (event == TXLiveConstants.PLAY_EVT_PLAY_PROGRESS) {
                 //进度（秒数）
                 mProgress = param.getInt(TXLiveConstants.EVT_PLAY_PROGRESS);
-                if (mProgress != 0 && mProgress % 60 == 0) {
+                if (mProgress != 0 && mProgress % 300 == 0) {
                     mLivePlayer.pause();
                     showPreventAwaitDialog();
                 }
@@ -455,9 +457,9 @@ public class ClassDetailActivity extends Activity {
                 mTotal = duration;
 //				mTextStart.setText(String.format("%2d:%2d", mProgress /60, mProgress %60));
 //				mTextDuration.setText(String.format("%2d:%2d",duration/60,duration%60));
-            }else if(event == TXLiveConstants.PLAY_EVT_PLAY_END){
+            } else if (event == TXLiveConstants.PLAY_EVT_PLAY_END) {
                 SharedPreferenceUtil.putInt(ClassDetailActivity.this, mUrl, 0);
-                mProgress=0;
+                mProgress = 0;
             }
         }
 
@@ -469,7 +471,7 @@ public class ClassDetailActivity extends Activity {
 
     private void showPreventAwaitDialog() {
         SweetAlertDialog alertDialog = new SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE);
-        alertDialog.setContentText("学习完成请点保存按钮才能记录学习时间");
+        alertDialog.setContentText("是否继续");
         alertDialog.setTitleText("提示");
         alertDialog.setConfirmText("确定");
         alertDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
