@@ -100,7 +100,7 @@ public class MyCamera extends LinearLayout implements IYhdjImageCallBack {
 
     @Override
     public void success() {
-        mSurfaceView.setVisibility(View.VISIBLE);
+       /* mSurfaceView.setVisibility(View.VISIBLE);*/
 //        mTopImageView.setVisibility(View.GONE);
         mImageData.clear();
     }

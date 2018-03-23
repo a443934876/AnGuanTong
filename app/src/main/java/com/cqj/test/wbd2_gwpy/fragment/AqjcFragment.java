@@ -1,6 +1,5 @@
 package com.cqj.test.wbd2_gwpy.fragment;
 
-import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -57,8 +56,9 @@ public class AqjcFragment extends Fragment implements IYhdjPresenter.View, View.
 
     private final static int AUDIO = 25;
     public static final int QRCODE_REQUEST = 110;
-    private ImageButton mQrCodeBtn, mCameraBtn, mCallBtn;
-    private Button mCommitBtn, mAudioBtn;
+    private final static int CAMERA = 50;
+    private ImageButton mQrCodeBtn, mCallBtn;
+    private Button mCommitBtn, mAudioBtn, mCameraBtn;
     private LinearLayout mJcbLn;
     private EditText mJcbDetailEdit;
     private ImageView mJcbDetailPre, mJcbDetailNext;
@@ -74,10 +74,9 @@ public class AqjcFragment extends Fragment implements IYhdjPresenter.View, View.
     private ProgressDialog mProgressDialog;
     private int mObjOrganizationID;
     private View mView;
-    private MyCamera mMyCamera;
     private boolean isSetPlace;
     private int mEwmSssbId;
-    private String imagePathResult;
+
 
     public static AqjcFragment newInstance() {
         return new AqjcFragment();
@@ -106,7 +105,7 @@ public class AqjcFragment extends Fragment implements IYhdjPresenter.View, View.
       /*  mMyCamera = (MyCamera) mView.findViewById(R.id.my_camera);*/
       /*  mMyCamera.setTakePhotoListener(this);*/
         mQrCodeBtn = (ImageButton) mView.findViewById(R.id.ewm_btn);
-        mCameraBtn = (ImageButton) mView.findViewById(R.id.xcpz_btn);
+        mCameraBtn = (Button) mView.findViewById(R.id.xcpz_btn);
     /*    mPhotoCount = (TextView) mView.findViewById(R.id.photo_count);*/
         mAudioBtn = (Button) mView.findViewById(R.id.xcly_btn);
         mCallBtn = (ImageButton) mView.findViewById(R.id.bddh_btn);
@@ -334,7 +333,11 @@ public class AqjcFragment extends Fragment implements IYhdjPresenter.View, View.
     public void commitStatus(boolean isSuccess) {
         toast("提交" + (isSuccess ? "成功" : "失败,请重试"));
         if (isSuccess) {
-            /*mMyCamera.success();*/
+            MyCamera myCamera = new MyCamera(getActivity());
+            myCamera.success();
+            mCameraBtn.setBackgroundResource(R.drawable.yjbj_xcpz_btn);
+            mCameraBtn.setText("");
+            mCameraBtn.setTag(null);
            /* mPhotoCount.setText("0");*/
             mYhdjSp.setSelection(0);
             mAudioBtn.setBackgroundResource(R.drawable.yjbj_xcly_btn);
@@ -395,8 +398,8 @@ public class AqjcFragment extends Fragment implements IYhdjPresenter.View, View.
     public void onClick(View pView) {
         int id = pView.getId();
         if (id == mCameraBtn.getId()) {
-            Intent intent = new Intent(getActivity(),CameraActivity.class);
-            startActivityForResult(intent, QRCODE_REQUEST);
+            Intent intent = new Intent(getActivity(), CameraActivity.class);
+            startActivityForResult(intent, CAMERA);
             /*mMyCamera.takePhoto();*/
         } else if (id == mAudioBtn.getId()) {
             Intent intent = new Intent(getActivity(), AudioRecordUtil.class);
@@ -495,8 +498,9 @@ public class AqjcFragment extends Fragment implements IYhdjPresenter.View, View.
             imagePath = stringBuilder.substring(0, stringBuilder.length() - 1);
         }*/
         String audioPath = mAudioBtn.getTag() == null ? "" : "," + StringUtil.noNull(mAudioBtn.getTag());
+        String imagePath = mCameraBtn.getTag() == null ? "" : "," + StringUtil.noNull(mCameraBtn.getTag());
        /* info.setImagePath(imagePath + audioPath);*/
-        info.setImagePath(imagePathResult+ audioPath);
+        info.setImagePath(imagePath + audioPath);
         mPresenter.upload(info);
     }
 
@@ -542,68 +546,73 @@ public class AqjcFragment extends Fragment implements IYhdjPresenter.View, View.
         super.onActivityResult(requestCode, resultCode, data);
 //        mMyCamera.setCameraCallback();
         try {
-            if (resultCode == Activity.RESULT_OK) {
-                 imagePathResult = data.getStringExtra("imagePathResult");
-                if (requestCode == AUDIO) // 录音
-                {
-                    // 显示多媒体View
-                    String sdStatus = Environment.getExternalStorageState();
-                    if (!sdStatus.equals(Environment.MEDIA_MOUNTED)) {
-                        // 检测 sdcard 是否可用
-                        Toast.makeText(getActivity(), "SD卡不存在", Toast.LENGTH_LONG).show();
-                        return;
-                    }
-                    String strResult = data.getStringExtra("result");
-                    System.out.println("audio:" + strResult);
-                    if (strResult != null) {
-                        mAudioBtn.setBackgroundResource(R.drawable.blue_button_background);
-                        mAudioBtn.setText("重录");
-                        mAudioBtn.setTag(strResult);
-                    }
+            if (requestCode == CAMERA) {
+              String  imagePathResult = data.getStringExtra("imagePathResult");
+                if (imagePathResult != null) {
+                    mCameraBtn.setBackgroundResource(R.drawable.blue_button_background);
+                    mCameraBtn.setText("重拍");
+                    mCameraBtn.setTag(imagePathResult);
+                }
+            } else if (requestCode == AUDIO) // 录音
+            {
+                // 显示多媒体View
+                String sdStatus = Environment.getExternalStorageState();
+                if (!sdStatus.equals(Environment.MEDIA_MOUNTED)) {
+                    // 检测 sdcard 是否可用
+                    Toast.makeText(getActivity(), "SD卡不存在", Toast.LENGTH_LONG).show();
+                    return;
+                }
+                String strResult = data.getStringExtra("result");
+                System.out.println("audio:" + strResult);
+                if (strResult != null) {
+                    mAudioBtn.setBackgroundResource(R.drawable.blue_button_background);
+                    mAudioBtn.setText("重录");
+                    mAudioBtn.setTag(strResult);
+                }
 
-                } else if (requestCode == QRCODE_REQUEST) {
-                    String ewmStr = data.getStringExtra("result");
-                    String[] resultArr = ewmStr.split("-");
-                    if (resultArr.length == 2) {
-                        try {
-                            String type = resultArr[0];
-                            if (type.equals("aqss")) {
-                                MySpinnerAdapter<SbInfo> adapter = (MySpinnerAdapter<SbInfo>) mSbSp.getAdapter();
-                                // TODO: 2018/3/21
+            } else if (requestCode == QRCODE_REQUEST) {
+                String ewmStr = data.getStringExtra("result");
+                String[] resultArr = ewmStr.split("-");
+                if (resultArr.length == 2) {
+                    try {
+                        String type = resultArr[0];
+                        if (type.equals("aqss")) {
+                            MySpinnerAdapter<SbInfo> adapter = (MySpinnerAdapter<SbInfo>) mSbSp.getAdapter();
+                            // TODO: 2018/3/21
 //                                adapter.resetData();
-                                mSbSp.setSelection(adapter.selectItemById(resultArr[1]));
-                            } else if (type.equals("chsu")) {
-                                MySpinnerAdapter<CsInfo> adapter = (MySpinnerAdapter<CsInfo>) mCsSp.getAdapter();
-                                int selection = adapter.selectItemById(resultArr[1]);
-                                mCsSp.setSelection(selection == -1 ? 0 : selection);
-                                if (selection != -1) {
-                                    MySpinnerAdapter<SbInfo> sbAdapter = (MySpinnerAdapter<SbInfo>) mSbSp.getAdapter();
-                                    sbAdapter.filterSb(resultArr[1]);
-                                }
-                            } else if (type.equals("sjdw")) {
-                                try {
-                                    mObjOrganizationID = Integer.parseInt(resultArr[1]);
-                                } catch (NumberFormatException pE) {
-                                    toast(getString(R.string.ewm_failed));
-                                }
-                            } else if ("sssb".equals(type)) {
-                                try {
-                                    mEwmSssbId = Integer.parseInt(resultArr[1]);
-                                    mPresenter.getSssb(mEwmSssbId, Integer.parseInt(myApp.getComInfo().getCom_id()));
-                                } catch (NumberFormatException pE) {
-                                    toast(getString(R.string.ewm_failed));
-                                }
-                            } else {
+                            mSbSp.setSelection(adapter.selectItemById(resultArr[1]));
+                        } else if (type.equals("chsu")) {
+                            MySpinnerAdapter<CsInfo> adapter = (MySpinnerAdapter<CsInfo>) mCsSp.getAdapter();
+                            int selection = adapter.selectItemById(resultArr[1]);
+                            mCsSp.setSelection(selection == -1 ? 0 : selection);
+                            if (selection != -1) {
+                                MySpinnerAdapter<SbInfo> sbAdapter = (MySpinnerAdapter<SbInfo>) mSbSp.getAdapter();
+                                sbAdapter.filterSb(resultArr[1]);
+                            }
+                        } else if (type.equals("sjdw")) {
+                            try {
+                                mObjOrganizationID = Integer.parseInt(resultArr[1]);
+                            } catch (NumberFormatException pE) {
                                 toast(getString(R.string.ewm_failed));
                             }
-                        } catch (Exception pE) {
-                            pE.printStackTrace();
+                        } else if ("sssb".equals(type)) {
+                            try {
+                                mEwmSssbId = Integer.parseInt(resultArr[1]);
+                                mPresenter.getSssb(mEwmSssbId, Integer.parseInt(myApp.getComInfo().getCom_id()));
+                            } catch (NumberFormatException pE) {
+                                toast(getString(R.string.ewm_failed));
+                            }
+                        } else {
                             toast(getString(R.string.ewm_failed));
                         }
-                    } else {
+                    } catch (Exception pE) {
+                        pE.printStackTrace();
                         toast(getString(R.string.ewm_failed));
                     }
+                } else {
+                    toast(getString(R.string.ewm_failed));
                 }
+
             }
         } catch (Exception e) {
             e.printStackTrace();

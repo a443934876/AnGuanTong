@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:orientation="vertical">
-
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
 
     <ScrollView
@@ -15,11 +14,10 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-           <!-- <com.cqj.test.wbd2_gwpy.view.MyCamera
-                android:id="@+id/my_camera"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>-->
-
+            <!-- <com.cqj.test.wbd2_gwpy.view.MyCamera
+                 android:id="@+id/my_camera"
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"/>-->
 
 
             <LinearLayout
@@ -33,12 +31,12 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="检查表："
-                    android:textSize="16sp"/>
+                    android:textSize="16sp" />
 
                 <Spinner
                     android:id="@+id/jcb_spinner"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content" />
 
             </LinearLayout>
 
@@ -61,12 +59,12 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="4dp"
                         android:text="场所："
-                        android:textSize="13sp"/>
+                        android:textSize="13sp" />
 
                     <Spinner
                         android:id="@+id/cs_spinner"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content" />
 
                 </LinearLayout>
 
@@ -82,12 +80,12 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="4dp"
                         android:text="设备："
-                        android:textSize="13sp"/>
+                        android:textSize="13sp" />
 
                     <Spinner
                         android:id="@+id/sb_spinner"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content" />
 
                 </LinearLayout>
 
@@ -105,12 +103,12 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="任务："
-                    android:textSize="16sp"/>
+                    android:textSize="16sp" />
 
                 <Spinner
                     android:id="@+id/rw_spinner"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content" />
 
             </LinearLayout>
 
@@ -133,13 +131,13 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="4dp"
                         android:text="隐患等级："
-                        android:textSize="13sp"/>
+                        android:textSize="13sp" />
 
                     <Spinner
                         android:id="@+id/yhdj_spinner"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:entries="@array/yhdj_arr"/>
+                        android:entries="@array/yhdj_arr" />
 
                 </LinearLayout>
 
@@ -155,7 +153,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="4dp"
                         android:text="预估费用（元）："
-                        android:textSize="13sp"/>
+                        android:textSize="13sp" />
 
                     <EditText
                         android:id="@+id/ygfy_edit"
@@ -163,7 +161,7 @@
                         android:layout_height="wrap_content"
                         android:numeric="decimal"
                         android:singleLine="true"
-                        android:text="0"/>
+                        android:text="0" />
 
                 </LinearLayout>
 
@@ -183,7 +181,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="left|top"
-                    android:lines="4"/>
+                    android:lines="4" />
 
                 <LinearLayout
                     android:id="@+id/jcb_ln"
@@ -200,27 +198,27 @@
                         android:background="#00000000"
                         android:clickable="true"
                         android:padding="10dp"
-                        android:src="@drawable/up_icon"/>
+                        android:src="@drawable/up_icon" />
 
                     <TextView
                         android:id="@+id/jcb_position"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="0"
-                        android:textSize="16sp"/>
+                        android:textSize="16sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="|"
-                        android:textSize="16sp"/>
+                        android:textSize="16sp" />
 
                     <TextView
                         android:id="@+id/jcb_count"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="0"
-                        android:textSize="16sp"/>
+                        android:textSize="16sp" />
 
                     <ImageView
                         android:id="@+id/jcbdetail_next"
@@ -229,7 +227,7 @@
                         android:background="#00000000"
                         android:clickable="true"
                         android:padding="10dp"
-                        android:src="@drawable/down_icon"/>
+                        android:src="@drawable/down_icon" />
 
                     <Button
                         android:id="@+id/jcb_detail_btn"
@@ -237,8 +235,7 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="3dp"
                         android:background="@drawable/jcb_detail"
-                        android:visibility="gone"
-                        />
+                        android:visibility="gone" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -247,14 +244,14 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:text="建议整改措施："
-                android:textSize="16sp"/>
+                android:textSize="16sp" />
 
             <EditText
                 android:id="@+id/zgcs_edit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="left|top"
-                android:lines="2"/>
+                android:lines="2" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -265,14 +262,15 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="隐患整改限期："/>
+                    android:text="隐患整改限期：" />
 
                 <EditText
                     android:id="@+id/date_yhzg_edit"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content" />
 
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -284,29 +282,19 @@
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:layout_marginLeft="8dp"
-                    android:background="@drawable/ewm_icon"/>
+                    android:background="@drawable/ewm_icon" />
 
                 <RelativeLayout
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:layout_marginLeft="16dp">
 
-                    <ImageButton
+                    <Button
                         android:id="@+id/xcpz_btn"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:background="@drawable/yjbj_xcpz_btn"/>
-
-                 <!--   <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true"
-                        android:background="@drawable/icon_unread"
-                        android:padding="2dp"
-                        android:text="0"
-                        android:id="@+id/photo_count"
-                        android:textColor="@color/white"
-                        android:textSize="12sp"/>-->
+                        android:background="@drawable/yjbj_xcpz_btn"
+                        android:textSize="16sp" />
 
                 </RelativeLayout>
 
@@ -316,14 +304,14 @@
                     android:layout_height="50dp"
                     android:layout_marginLeft="16dp"
                     android:background="@drawable/yjbj_xcly_btn"
-                    android:textSize="16sp"/>
+                    android:textSize="16sp" />
 
                 <ImageButton
                     android:id="@+id/bddh_btn"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:layout_marginLeft="16dp"
-                    android:background="@android:drawable/sym_call_incoming"/>
+                    android:background="@android:drawable/sym_call_incoming" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -337,7 +325,7 @@
                         android:layout_height="wrap_content"
                         android:background="@drawable/blue_button_background"
                         android:text="记录"
-                        android:textColor="#FFFFFF"/>
+                        android:textColor="#FFFFFF" />
                 </LinearLayout>
 
             </LinearLayout>
