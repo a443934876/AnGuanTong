@@ -48,6 +48,7 @@
                 android:padding="8dp">
 
                 <LinearLayout
+                    android:visibility="gone"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -55,6 +56,7 @@
                     android:orientation="horizontal">
 
                     <TextView
+
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="4dp"
@@ -62,6 +64,7 @@
                         android:textSize="13sp" />
 
                     <Spinner
+
                         android:id="@+id/cs_spinner"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" />
@@ -69,6 +72,7 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:visibility="gone"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -141,29 +145,7 @@
 
                 </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="4dp"
-                        android:text="预估费用（元）："
-                        android:textSize="13sp" />
-
-                    <EditText
-                        android:id="@+id/ygfy_edit"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:numeric="decimal"
-                        android:singleLine="true"
-                        android:text="0" />
-
-                </LinearLayout>
 
             </LinearLayout>
 
@@ -193,8 +175,8 @@
 
                     <ImageView
                         android:id="@+id/jcbdetail_pre"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
                         android:background="#00000000"
                         android:clickable="true"
                         android:padding="10dp"
@@ -222,8 +204,8 @@
 
                     <ImageView
                         android:id="@+id/jcbdetail_next"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
                         android:background="#00000000"
                         android:clickable="true"
                         android:padding="10dp"
@@ -238,36 +220,65 @@
                         android:visibility="gone" />
                 </LinearLayout>
             </LinearLayout>
+<LinearLayout
+    android:id="@+id/zgLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:visibility="gone">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:text="建议整改措施："
+        android:textSize="16sp" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:text="建议整改措施："
-                android:textSize="16sp" />
+    <EditText
+        android:id="@+id/zgcs_edit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="left|top"
+        android:lines="2" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
 
-            <EditText
-                android:id="@+id/zgcs_edit"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="left|top"
-                android:lines="2" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="4dp"
+            android:text="预估费用（元）："
+            android:textSize="13sp" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:padding="8dp">
+        <EditText
+            android:id="@+id/ygfy_edit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:numeric="decimal"
+            android:singleLine="true"
+            android:text="0" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="隐患整改限期：" />
+    </LinearLayout>
 
-                <EditText
-                    android:id="@+id/date_yhzg_edit"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="8dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="隐患整改限期：" />
+
+        <EditText
+            android:id="@+id/date_yhzg_edit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+</LinearLayout>
+
 
             </LinearLayout>
 

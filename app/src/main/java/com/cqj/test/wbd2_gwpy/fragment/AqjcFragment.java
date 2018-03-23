@@ -59,7 +59,7 @@ public class AqjcFragment extends Fragment implements IYhdjPresenter.View, View.
     private final static int CAMERA = 50;
     private ImageButton mQrCodeBtn, mCallBtn;
     private Button mCommitBtn, mAudioBtn, mCameraBtn;
-    private LinearLayout mJcbLn;
+    private LinearLayout mJcbLn, mzgLayout;
     private EditText mJcbDetailEdit;
     private ImageView mJcbDetailPre, mJcbDetailNext;
     private TextView mJcbPositionTv, mJcbCountTv;
@@ -111,6 +111,8 @@ public class AqjcFragment extends Fragment implements IYhdjPresenter.View, View.
         mCallBtn = (ImageButton) mView.findViewById(R.id.bddh_btn);
         mCommitBtn = (Button) mView.findViewById(R.id.commit_btn);
         mJcbLn = (LinearLayout) mView.findViewById(R.id.jcb_ln);
+        mzgLayout = (LinearLayout) mView.findViewById(R.id.zgLayout);
+
         mJcbDetailEdit = (EditText) mView.findViewById(R.id.jcb_edit);
         mJcbDetailPre = (ImageView) mView.findViewById(R.id.jcbdetail_pre);
         mJcbDetailNext = (ImageView) mView.findViewById(R.id.jcbdetail_next);
@@ -242,11 +244,17 @@ public class AqjcFragment extends Fragment implements IYhdjPresenter.View, View.
                 } else {
                     mDateZg.setText("");
                 }
+                String item = (String) pAdapterView.getItemAtPosition(pI);
+                if ("无隐患".equals(item)) {
+                    mzgLayout.setVisibility(View.GONE);
+
+                } else {
+                    mzgLayout.setVisibility(View.VISIBLE);
+                }
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> pAdapterView) {
-
             }
         });
         mJcbSp.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -467,15 +475,17 @@ public class AqjcFragment extends Fragment implements IYhdjPresenter.View, View.
         }
         int taskId = Integer.parseInt(((IChooseItem) mRwSp.getSelectedItem()).getItemId());
         int fliedId = Integer.parseInt(((IChooseItem) mCsSp.getSelectedItem()).getItemId());
-        String sbMark = ((IChooseItem) mSbSp.getSelectedItem()).getItemName();
+       /* String sbMark = ((IChooseItem) mSbSp.getSelectedItem()).getItemName();*/
+        String sbMark ="";
         AqjcCommitInfo info = new AqjcCommitInfo();
         info.setCheckDate(nowDate);
         info.setDCost(dCost);
         info.setDLimit(limit);
         info.setDScheme(dScheme);
         info.setFliedID(fliedId);
-        String hDetail = "场所：" + ((IChooseItem) mCsSp.getSelectedItem()).getItemName() +
-                ",设备：" + ((IChooseItem) mSbSp.getSelectedItem()).getItemName() + "。" + mJcbDetailEdit.getText().toString();
+        /*String hDetail = "场所：" + ((IChooseItem) mCsSp.getSelectedItem()).getItemName() +
+                ",设备：" + ((IChooseItem) mSbSp.getSelectedItem()).getItemName() + "。" + mJcbDetailEdit.getText().toString();*/
+        String hDetail = "场所：,设备：";
         info.setHDetail(hDetail);
         info.setHGrade(hGrade);
         info.setLEmid(lEmid);
@@ -547,7 +557,7 @@ public class AqjcFragment extends Fragment implements IYhdjPresenter.View, View.
 //        mMyCamera.setCameraCallback();
         try {
             if (requestCode == CAMERA) {
-              String  imagePathResult = data.getStringExtra("imagePathResult");
+                String imagePathResult = data.getStringExtra("imagePathResult");
                 if (imagePathResult != null) {
                     mCameraBtn.setBackgroundResource(R.drawable.blue_button_background);
                     mCameraBtn.setText("重拍");
