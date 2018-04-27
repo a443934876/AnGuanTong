@@ -66,8 +66,8 @@ public class YhdjPresenterCompl implements IYhdjPresenter {
                     subscriber.onCompleted();
                     return;
                 }
-                ArrayList<HashMap<String, Object>> result = new ArrayList<HashMap<String, Object>>();
-                HashMap<String, Object> map = new HashMap<String, Object>();
+                ArrayList<HashMap<String, Object>> result = new ArrayList<>();
+                HashMap<String, Object> map = new HashMap<>();
                 map.put("TaskID", "0");
                 map.put("TaskTitle", "默认安全检查任务");
                 result.add(map);

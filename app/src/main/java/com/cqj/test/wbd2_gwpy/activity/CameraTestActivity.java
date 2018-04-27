@@ -99,9 +99,10 @@ public class CameraTestActivity extends Activity {
         super.onResume();
         if (mCamera != null) {
             mCamera.setPreviewCallback(previewCb);
+            /*mCamera.autoFocus(autoFocusCB);*/
             mCamera.startPreview();
             previewing = true;
-            mCamera.autoFocus(autoFocusCB);
+
         }
     }
 

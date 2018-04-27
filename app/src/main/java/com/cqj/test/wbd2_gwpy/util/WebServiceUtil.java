@@ -17,6 +17,7 @@ public class WebServiceUtil {
     public static final String HUIWEI_5VIN_URL = "http://www.huiweioa.com/5VInformPublish.asmx";
     public static final String HUIWEI_PM_URL ="http://www.huiweioa.com/5VProjectManager.asmx";
     public static final String HUIWEI_NAMESPACE = "http://www.huiweioa.com/";
+    public static final String HUIWEI_PM_NAMESPACE = "http://www.huweioa.com/";
     public static final String URL = "http://www.wisebus.com/5VCommon.asmx";
     public static final String SAFE_URL = "http://www.wisebus.com/5VSafetyProduction.asmx";
     public static final String HUIWEI_SAFE_URL = "http://www.huiweioa.com/5VSafetyProduction.asmx";

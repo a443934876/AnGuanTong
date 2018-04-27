@@ -483,9 +483,9 @@ public class AqjcFragment extends Fragment implements IYhdjPresenter.View, View.
         info.setDLimit(limit);
         info.setDScheme(dScheme);
         info.setFliedID(fliedId);
-        /*String hDetail = "场所：" + ((IChooseItem) mCsSp.getSelectedItem()).getItemName() +
-                ",设备：" + ((IChooseItem) mSbSp.getSelectedItem()).getItemName() + "。" + mJcbDetailEdit.getText().toString();*/
-        String hDetail = "场所：,设备：";
+        String hDetail = /*"场所：" + ((IChooseItem) mCsSp.getSelectedItem()).getItemName() +
+                ",设备：" + ((IChooseItem) mSbSp.getSelectedItem()).getItemName() + "。" +*/ mJcbDetailEdit.getText().toString();
+        /*String hDetail = "场所：,设备：";*/
         info.setHDetail(hDetail);
         info.setHGrade(hGrade);
         info.setLEmid(lEmid);
