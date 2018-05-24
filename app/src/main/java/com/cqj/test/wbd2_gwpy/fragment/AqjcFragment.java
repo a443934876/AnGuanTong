@@ -92,6 +92,7 @@ public class AqjcFragment extends Fragment implements IYhdjPresenter.View, View.
         mView = inflater.inflate(R.layout.fragment_aqjc, container, false);
         initComplement();
         registListener();
+
         mPresenter = new YhdjPresenterCompl(this, getActivity());
         mPresenter.getRwData();
         mPresenter.getCsData();

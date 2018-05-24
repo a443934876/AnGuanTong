@@ -2,31 +2,30 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
         android:orientation="horizontal"
-        android:padding="5dp" >
+        android:padding="5dp">
 
         <TextView
-            android:layout_weight="1"
             android:id="@+id/gwlist_arc_progress"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:background="@drawable/safetyindex00"
             android:layout_margin="8dp"
-            android:textSize="24sp"
+            android:layout_weight="1"
+            android:background="@drawable/safetyindex00"
             android:gravity="center"
-            />
+            android:textSize="24sp" />
 
         <LinearLayout
-            android:layout_weight="2"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:orientation="vertical" >
+            android:layout_weight="2"
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/gwlist_title_date"
@@ -42,7 +41,7 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:orientation="horizontal" >
+                android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -70,67 +69,71 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="1"
                 android:layout_margin="5dp"
+                android:layout_weight="1"
                 android:gravity="center"
-                android:orientation="horizontal" >
+                android:orientation="horizontal">
 
                 <TextView
-                    android:gravity="center"
+                    android:id="@+id/TV_renwu"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="2个任务未完成"
+                    android:gravity="center"
+                    android:text="@string/dataLoad"
                     android:textSize="13sp" />
 
                 <TextView
-                    android:gravity="center"
+                    android:id="@+id/TV_yinhuan"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="2个隐患未整改"
+                    android:gravity="center"
+                    android:text="@string/dataLoad"
                     android:textSize="13sp" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="1"
                 android:layout_margin="5dp"
+                android:layout_weight="1"
                 android:gravity="center"
-                android:orientation="horizontal" >
+                android:orientation="horizontal">
 
                 <TextView
-                    android:gravity="center"
+                    android:id="@+id/TV_kecheng"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="6个证件需年检"
+                    android:gravity="center"
+                    android:text="@string/dataLoad"
                     android:textSize="13sp" />
 
                 <TextView
-                    android:gravity="center"
+                    android:id="@+id/TV_shebei"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="2个设施未巡查"
+                    android:gravity="center"
+                    android:text="@string/dataLoad"
                     android:textSize="13sp" />
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
 
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="3">
+        android:layout_weight="3"
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="9"
             android:layout_marginTop="10dp"
-            android:orientation="vertical" >
+            android:layout_weight="9"
+            android:orientation="vertical">
 
             <View
                 android:layout_width="match_parent"
@@ -141,7 +144,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:orientation="horizontal" >
+                android:orientation="horizontal">
 
                 <LinearLayout
                     android:id="@+id/hp_aqjc"
@@ -149,7 +152,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:onClick="hpClick" >
+                    android:onClick="hpClick">
 
                     <ImageView
                         android:layout_width="wrap_content"
@@ -174,7 +177,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:onClick="hpClick" >
+                    android:onClick="hpClick">
 
                     <ImageView
                         android:layout_width="wrap_content"
@@ -198,7 +201,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:orientation="horizontal" >
+                android:orientation="horizontal">
 
                 <LinearLayout
                     android:id="@+id/hp_pxks"
@@ -206,7 +209,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:onClick="hpClick" >
+                    android:onClick="hpClick">
 
                     <ImageView
                         android:layout_width="wrap_content"
@@ -231,7 +234,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:onClick="hpClick" >
+                    android:onClick="hpClick">
 
                     <ImageView
                         android:layout_width="wrap_content"
@@ -255,7 +258,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:orientation="horizontal" >
+                android:orientation="horizontal">
 
                 <LinearLayout
                     android:id="@+id/hp_zygl"
@@ -263,7 +266,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:onClick="hpClick" >
+                    android:onClick="hpClick">
 
                     <ImageView
                         android:layout_width="wrap_content"
@@ -288,7 +291,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:onClick="hpClick" >
+                    android:onClick="hpClick">
 
                     <ImageView
                         android:layout_width="wrap_content"
@@ -301,7 +304,7 @@
                         android:layout_height="wrap_content"
                         android:text="应急演练" />
                 </LinearLayout>
-                
+
             </LinearLayout>
 
             <View
@@ -310,13 +313,14 @@
                 android:background="#999999" />
 
             <Button
+                android:id="@+id/homepage_exit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/blue_button_background"
                 android:layout_margin="16dp"
-                android:id="@+id/homepage_exit"
-                android:text="退出登录"/>
+                android:background="@drawable/blue_button_background"
+                android:text="退出登录" />
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"

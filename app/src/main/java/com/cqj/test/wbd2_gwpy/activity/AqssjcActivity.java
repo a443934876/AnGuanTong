@@ -213,13 +213,13 @@ public class AqssjcActivity extends Activity {
         aqssjc_commit = (Button) findViewById(R.id.aqssjc_commit);
         LinearLayout shaiLn = (LinearLayout) findViewById(R.id.shaixuan_item);
         aqssjc_sxbtn = (Button) findViewById(R.id.aqssjc_sxbtn);
-        data2 = new ArrayList<HashMap<String, Object>>();
-        gyData = new ArrayList<HashMap<String, Object>>();
-        HashMap<String, Object> allCs = new HashMap<String, Object>();
+        data2 = new ArrayList<>();
+        gyData = new ArrayList<>();
+        HashMap<String, Object> allCs = new HashMap<>();
         allCs.put("mplid", 0);
         allCs.put("mplname", "所有");
         data2.add(allCs);
-        HashMap<String, Object> allZrr = new HashMap<String, Object>();
+        HashMap<String, Object> allZrr = new HashMap<>();
         allZrr.put("Emid", 0);
         allZrr.put("emName", "所有");
         gyData.add(allZrr);

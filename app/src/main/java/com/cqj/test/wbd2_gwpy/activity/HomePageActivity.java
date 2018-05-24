@@ -21,6 +21,9 @@ import com.cqj.test.wbd2_gwpy.R;
 import com.cqj.test.wbd2_gwpy.SbjcCommitInfo;
 import com.cqj.test.wbd2_gwpy.UserInfoDao;
 import com.cqj.test.wbd2_gwpy.dao.SqliteOperator;
+
+import com.cqj.test.wbd2_gwpy.myinterface.HomeData;
+import com.cqj.test.wbd2_gwpy.presenter.compl.HomeDataImpl;
 import com.cqj.test.wbd2_gwpy.util.BitmapUtil;
 import com.cqj.test.wbd2_gwpy.util.PermisionUtils;
 import com.cqj.test.wbd2_gwpy.util.StringUtil;
@@ -40,24 +43,13 @@ import de.greenrobot.dao.query.QueryBuilder;
 import rx.functions.Action1;
 
 
-public class HomePageActivity extends Activity implements OnClickListener {
+public class HomePageActivity extends Activity implements HomeData.GetInfo, OnClickListener {
 
-    private TextView arcProgress;
+    private TextView arcProgress, TV_renwu, TV_yinhuan, TV_kecheng, TV_shebei;
     private ArrayList<HashMap<String, Object>> safeData;
     private Calendar canl;
     private MyApplication myApp;
     private Button mExitLogin;
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        // TODO Auto-generated method stub
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.homepage_view);
-        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);//屏幕常亮
-        PermisionUtils.verifyStoragePermissions(this);
-        initComplement();
-        geneItems();
-    }
 
     private Handler mHandler = new Handler(new Handler.Callback() {
 
@@ -91,6 +83,21 @@ public class HomePageActivity extends Activity implements OnClickListener {
             return false;
         }
     });
+
+    private static int getDayOfMonth() {
+        Calendar aCalendar = Calendar.getInstance(Locale.CHINA);
+        return aCalendar.getActualMaximum(Calendar.DATE);
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.homepage_view);
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);//屏幕常亮
+        PermisionUtils.verifyStoragePermissions(this);
+        initComplement();
+        geneItems();
+    }
 
     private int getSafeIndexDrawable(double safeIndex) {
         if (safeIndex > 0 && safeIndex < 10) {
@@ -140,6 +147,15 @@ public class HomePageActivity extends Activity implements OnClickListener {
         }
         safeData = new ArrayList<HashMap<String, Object>>();
         arcProgress = (TextView) findViewById(R.id.gwlist_arc_progress);
+        TV_renwu = (TextView) findViewById(R.id.TV_renwu);
+        TV_yinhuan = (TextView) findViewById(R.id.TV_yinhuan);
+        TV_kecheng = (TextView) findViewById(R.id.TV_kecheng);
+        TV_shebei = (TextView) findViewById(R.id.TV_shebei);
+        HomeData homeData = new HomeDataImpl(this, this);
+        homeData.getRenWuData();
+        homeData.getYinHuanData();
+        homeData.getKeChengData();
+        homeData.getSheShiData();
         TextView listTitleDate = (TextView) findViewById(R.id.gwlist_title_date);
         mExitLogin = (Button) findViewById(R.id.homepage_exit);
         mExitLogin.setOnClickListener(this);
@@ -198,11 +214,6 @@ public class HomePageActivity extends Activity implements OnClickListener {
                 }
             }
         }).start();
-    }
-
-    private static int getDayOfMonth() {
-        Calendar aCalendar = Calendar.getInstance(Locale.CHINA);
-        return aCalendar.getActualMaximum(Calendar.DATE);
     }
 
     public void hpClick(View v) {
@@ -328,5 +339,25 @@ public class HomePageActivity extends Activity implements OnClickListener {
             startActivity(intent);
             finish();
         }
+    }
+
+    @Override
+    public void getRenWuDataSum(String result) {
+        TV_renwu.setText(result+"个任务未完成");
+    }
+
+    @Override
+    public void getYinHuanDataSum(String result) {
+        TV_yinhuan.setText(result+"个隐患未整改");
+    }
+
+    @Override
+    public void getKeChengDataSum(String result) {
+        TV_kecheng.setText(result+"个课程需学习");
+    }
+
+    @Override
+    public void getSheShiDataSum(String result) {
+        TV_shebei.setText(result+"个设施未巡查");
     }
 }

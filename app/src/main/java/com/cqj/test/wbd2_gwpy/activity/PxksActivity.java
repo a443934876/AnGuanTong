@@ -108,7 +108,7 @@ public class PxksActivity extends Activity {
 					mData = WebServiceUtil.getWebServiceMsg(keys, values,
 							"getLessonFromEm", new String[] { "currName",
 									"studyid", "lesscore", "currid","leshour","teachemname" },
-							WebServiceUtil.PART_DUTY_URL);
+							WebServiceUtil.HUIWEI_5HR,WebServiceUtil.HUIWEI_NAMESPACE);
 					handler.sendEmptyMessage(1);
 				} catch (Exception e) {
 					// TODO Auto-generated catch block

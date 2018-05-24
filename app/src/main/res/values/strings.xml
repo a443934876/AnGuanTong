@@ -23,6 +23,8 @@
     <string name="ewm_scanning">识别中...</string>
     <string name="take_photo_max_toast">最多只能拍3张照片</string>
     <string name="photographic">拍照</string>
+    <string name="dataLoad">数据加载中</string>
+
 
     <string-array name="yhjb">
         <item>一般</item>
