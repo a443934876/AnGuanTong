@@ -1,8 +1,5 @@
 package com.cqj.test.wbd2_gwpy.activity;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-
 import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
@@ -11,8 +8,12 @@ import android.view.MenuItem;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.cqj.test.wbd2_gwpy.R;
 import com.cqj.test.wbd2_gwpy.adapter.MySpinnerAdapter;
-import com.cqj.test.wbd2_gwpy.util.WebServiceUtil;import com.cqj.test.wbd2_gwpy.R;
+import com.cqj.test.wbd2_gwpy.util.WebServiceUtil;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 
 
 public class ChooseActivity extends Activity {
@@ -92,7 +93,7 @@ public class ChooseActivity extends Activity {
 				@Override
 				public void run() {
 					// TODO Auto-generated method stub
-					String keys2[] = { "ComID", "nStart", "eStart" };
+					String keys2[] = { "ComID", "nStart", "nEnd" };
 					Object values2[] = {
 							Integer.parseInt(myApp.getComInfo().getCom_id()),
 							"2010-01-01T01:00:00.000",
@@ -102,7 +103,7 @@ public class ChooseActivity extends Activity {
 						data2 = WebServiceUtil.getWebServiceMsg(keys2, values2,
 								"getSafetyCheckTaskListFromCom", new String[] {
 										"TaskTitle", "TaskID" },
-								WebServiceUtil.SAFE_URL);
+								WebServiceUtil.HUIWEI_SAFE_URL,WebServiceUtil.HUIWEI_NAMESPACE);
 					} catch (Exception e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();

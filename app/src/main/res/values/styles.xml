@@ -2,18 +2,21 @@
 
     <!--
         Base application theme, dependent on API level. This theme is replaced
-        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
+        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
+
     -->
     <style name="AppBaseTheme" parent="android:Theme.Light">
         <!--
             Theme customizations available in newer API levels can go in
             res/values-vXX/styles.xml, while customizations related to
-            backward-compatibility can go here.
+            backward-compatibility can go here.
+
         -->
     </style>
-<style name="CustomCheckboxTheme" parent="@android:style/Widget.CompoundButton.CheckBox">  
-    <item name="android:button">@drawable/checkbox_normal_style</item>  
-</style>
+
+    <style name="CustomCheckboxTheme" parent="@android:style/Widget.CompoundButton.CheckBox">
+        <item name="android:button">@drawable/checkbox_normal_style</item>
+    </style>
     <!-- Application theme. -->
     <style name="AppTheme" parent="AppBaseTheme">
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
@@ -29,7 +32,7 @@
         <item name="android:backgroundDimEnabled">true</item>
         <item name="android:backgroundDimAmount">0.4</item>
     </style>
-    
+
     <style name="dialog_blue_button" parent="android:Widget.Button">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">31dp</item>
@@ -43,5 +46,5 @@
     <style name="switch_btn" parent="@android:style/Widget.CompoundButton.CheckBox">
         <item name="android:button">@drawable/yingsi_protected</item>
     </style>
-    
+
 </resources>

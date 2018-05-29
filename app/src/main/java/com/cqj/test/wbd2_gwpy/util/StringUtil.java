@@ -5,6 +5,8 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
 
+import java.io.File;
+
 public class StringUtil {
 
 	public static final String SPACE = "\u3000";
@@ -161,5 +163,16 @@ public class StringUtil {
 			break;
 		}
 		return ret;
+	}
+	public static   boolean isFolderExists(String strFolder) {
+		File file = new File(strFolder);
+
+		if (!file.exists()) {
+			if (file.mkdir()) {
+				return true;
+			} else
+				return false;
+		}
+		return true;
 	}
 }

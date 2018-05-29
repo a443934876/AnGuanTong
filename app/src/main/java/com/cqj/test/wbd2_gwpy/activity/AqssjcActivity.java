@@ -25,7 +25,6 @@ import com.cqj.test.wbd2_gwpy.adapter.AqssAdapter;
 import com.cqj.test.wbd2_gwpy.dao.SqliteOperator;
 import com.cqj.test.wbd2_gwpy.util.StringUtil;
 import com.cqj.test.wbd2_gwpy.util.WebServiceUtil;
-import com.zxing.activity.MipcaActivityCapture;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -267,12 +266,12 @@ public class AqssjcActivity extends Activity {
                 try {
                     String[] keys = {"SCPID", "SCType", "FliedID", "isOver",
                             "KEmid", "Comid"};
-                    Object[] values = {0, "", csid, true, zrrid,
+                    Object[] values = {0, "", csid, -1, zrrid,
                             Integer.parseInt(myApp.getComInfo().getCom_id())};// Integer.parseInt(myApp.getComInfo().getComId())
                     dataList = WebServiceUtil.getWebServiceMsg(keys, values,
                             "getSafetySetList", new String[]{"cpname",
                                     "SCPID", "lastcheck", "cpid"},
-                            WebServiceUtil.SAFE_URL);
+                            WebServiceUtil.HUIWEI_SAFE_URL,WebServiceUtil.HUIWEI_NAMESPACE);
                     handler.sendEmptyMessage(1);
                 } catch (Exception e) {
                     e.printStackTrace();

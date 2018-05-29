@@ -71,7 +71,7 @@ public class YhdjPresenterCompl implements IYhdjPresenter {
                 map.put("TaskID", "0");
                 map.put("TaskTitle", "默认安全检查任务");
                 result.add(map);
-                String keys2[] = {"ComID", "nStart", "eStart"};
+                String keys2[] = {"ComID", "nStart", "nEnd"};
                 Object values2[] = {
                         Integer.parseInt(myApp.getComInfo().getCom_id()),
                         "2010-01-01T01:00:00.000",
@@ -80,7 +80,7 @@ public class YhdjPresenterCompl implements IYhdjPresenter {
                     ArrayList<HashMap<String, Object>> data = WebServiceUtil.getWebServiceMsg(keys2, values2,
                             "getSafetyCheckTaskListFromCom", new String[]{
                                     "TaskTitle", "TaskID"},
-                            WebServiceUtil.HUIWEI_SAFE_URL);
+                            WebServiceUtil.HUIWEI_SAFE_URL,WebServiceUtil.HUIWEI_NAMESPACE);
                     result.addAll(data);
                     subscriber.onNext(parseRwInfo(result));
                 } catch (Exception e) {
