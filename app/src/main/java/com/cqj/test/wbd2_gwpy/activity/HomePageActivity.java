@@ -6,11 +6,14 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.text.Html;
+import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,6 +25,10 @@ import com.cqj.test.wbd2_gwpy.SbjcCommitInfo;
 import com.cqj.test.wbd2_gwpy.UserInfoDao;
 import com.cqj.test.wbd2_gwpy.dao.SqliteOperator;
 
+import com.cqj.test.wbd2_gwpy.mode.HiddenIllnessInfo;
+import com.cqj.test.wbd2_gwpy.mode.LessonInfo;
+import com.cqj.test.wbd2_gwpy.mode.MissionInfo;
+import com.cqj.test.wbd2_gwpy.mode.SafetySetInfo;
 import com.cqj.test.wbd2_gwpy.myinterface.HomeData;
 import com.cqj.test.wbd2_gwpy.presenter.compl.HomeDataImpl;
 import com.cqj.test.wbd2_gwpy.util.BitmapUtil;
@@ -40,16 +47,24 @@ import java.util.HashMap;
 import java.util.Locale;
 
 import de.greenrobot.dao.query.QueryBuilder;
+import q.rorbin.badgeview.QBadgeView;
 import rx.functions.Action1;
 
 
 public class HomePageActivity extends Activity implements HomeData.GetInfo, OnClickListener {
 
-    private TextView arcProgress, TV_renwu, TV_yinhuan, TV_kecheng, TV_shebei;
+    private TextView arcProgress;
     private ArrayList<HashMap<String, Object>> safeData;
     private Calendar canl;
     private MyApplication myApp;
     private Button mExitLogin;
+    private LinearLayout renwu_Layout, yihuan_Layout, kecheng_Layout, sheshi_Layout;
+    private QBadgeView bv, bv1, bv2, bv3;
+    private ArrayList<MissionInfo> missionInfoList;
+    private ArrayList<HiddenIllnessInfo> hiddenIllnessInfoList;
+    private ArrayList<LessonInfo> lessonInfoList;
+    private ArrayList<SafetySetInfo> safetySetInfoList;
+
 
     private Handler mHandler = new Handler(new Handler.Callback() {
 
@@ -147,10 +162,18 @@ public class HomePageActivity extends Activity implements HomeData.GetInfo, OnCl
         }
         safeData = new ArrayList<HashMap<String, Object>>();
         arcProgress = (TextView) findViewById(R.id.gwlist_arc_progress);
-        TV_renwu = (TextView) findViewById(R.id.TV_renwu);
-        TV_yinhuan = (TextView) findViewById(R.id.TV_yinhuan);
-        TV_kecheng = (TextView) findViewById(R.id.TV_kecheng);
-        TV_shebei = (TextView) findViewById(R.id.TV_shebei);
+        renwu_Layout = (LinearLayout) findViewById(R.id.renwu_Layout);
+        yihuan_Layout = (LinearLayout) findViewById(R.id.yihuan_Layout);
+        kecheng_Layout = (LinearLayout) findViewById(R.id.kecheng_Layout);
+        sheshi_Layout = (LinearLayout) findViewById(R.id.sheshi_Layout);
+        bv = new QBadgeView(this);
+        bv1 = new QBadgeView(this);
+        bv2 = new QBadgeView(this);
+        bv3 = new QBadgeView(this);
+        renwu_Layout.setOnClickListener(this);
+        yihuan_Layout.setOnClickListener(this);
+        kecheng_Layout.setOnClickListener(this);
+        sheshi_Layout.setOnClickListener(this);
         HomeData homeData = new HomeDataImpl(this, this);
         homeData.getRenWuData();
         homeData.getYinHuanData();
@@ -301,6 +324,38 @@ public class HomePageActivity extends Activity implements HomeData.GetInfo, OnCl
             Intent intent = new Intent(HomePageActivity.this, MainActivity.class);
             startActivity(intent);
             finish();
+        } else if (id == renwu_Layout.getId()) {
+            Intent intent = new Intent(this, ShowDataActivity.class);
+            Bundle bundle = new Bundle();
+            bundle.putSerializable("missionInfoList", missionInfoList);
+            intent.putExtra("bundle", bundle);
+            intent.putExtra("type", "missionInfoList");
+
+            startActivity(intent);
+        } else if (id == yihuan_Layout.getId()) {
+            Intent intent = new Intent(this, ShowDataActivity.class);
+            Bundle bundle = new Bundle();
+            bundle.putSerializable("hiddenIllnessInfoList", hiddenIllnessInfoList);
+            intent.putExtra("bundle", bundle);
+            intent.putExtra("type", "hiddenIllnessInfoList");
+            startActivity(intent);
+
+        } else if (id == kecheng_Layout.getId()) {
+            Intent intent = new Intent(this, ShowDataActivity.class);
+            Bundle bundle = new Bundle();
+            bundle.putSerializable("lessonInfoList", lessonInfoList);
+            intent.putExtra("bundle", bundle);
+            intent.putExtra("type", "lessonInfoList");
+            startActivity(intent);
+
+        } else if (id == sheshi_Layout.getId()) {
+            Intent intent = new Intent(this, ShowDataActivity.class);
+            Bundle bundle = new Bundle();
+            bundle.putSerializable("safetySetInfoList", safetySetInfoList);
+            intent.putExtra("bundle", bundle);
+            intent.putExtra("type", "safetySetInfoList");
+            startActivity(intent);
+
         }
 
     }
@@ -342,22 +397,26 @@ public class HomePageActivity extends Activity implements HomeData.GetInfo, OnCl
     }
 
     @Override
-    public void getRenWuDataSum(String result) {
-        TV_renwu.setText(result+"个任务未完成");
+    public void getRenWuDataSum(ArrayList<MissionInfo> result) {
+        bv.bindTarget(renwu_Layout).setBadgeNumber(result.size()).setBadgeGravity(Gravity.END | Gravity.TOP);
+        missionInfoList = result;
     }
 
     @Override
-    public void getYinHuanDataSum(String result) {
-        TV_yinhuan.setText(result+"个隐患未整改");
+    public void getYinHuanDataSum(ArrayList<HiddenIllnessInfo> result) {
+        bv1.bindTarget(yihuan_Layout).setBadgeNumber(result.size()).setBadgeGravity(Gravity.END | Gravity.TOP);
+        hiddenIllnessInfoList = result;
     }
 
     @Override
-    public void getKeChengDataSum(String result) {
-        TV_kecheng.setText(result+"个课程需学习");
+    public void getKeChengDataSum(ArrayList<LessonInfo> result) {
+        bv2.bindTarget(kecheng_Layout).setBadgeNumber(result.size()).setBadgeGravity(Gravity.END | Gravity.TOP);
+        lessonInfoList = result;
     }
 
     @Override
-    public void getSheShiDataSum(String result) {
-        TV_shebei.setText(result+"个设施未巡查");
+    public void getSheShiDataSum(ArrayList<SafetySetInfo> result) {
+        bv3.bindTarget(sheshi_Layout).setBadgeNumber(result.size()).setBadgeGravity(Gravity.END | Gravity.TOP);
+        safetySetInfoList = result;
     }
 }

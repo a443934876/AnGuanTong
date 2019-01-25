@@ -153,14 +153,14 @@ public class ChooseActivity extends Activity {
 				@Override
 				public void run() {
 					// TODO Auto-generated method stub
-					String keys2[] = { "Comid" };
+					String keys2[] = { "comid","keepEmid" };
 					Object values2[] = { Integer.parseInt(myApp.getComInfo()
-							.getCom_id()) };
+							.getCom_id()),0 };
 					data2 = new ArrayList<HashMap<String, Object>>();
 					try {
 						data2 = WebServiceUtil.getWebServiceMsg(keys2, values2,
-								"getAllField", new String[] { "mplid",
-										"mplname" }, WebServiceUtil.URL);
+								"getAllPlace", new String[] { "mplid",
+										"mplname" }, WebServiceUtil.HUIWEI_URL,WebServiceUtil.HUIWEI_NAMESPACE);
 					} catch (Exception e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();

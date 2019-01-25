@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">慧为安管通移动应用系统</string>
+    <string name="app_name">慧为安管通</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="xlistview_header_hint_normal">下拉刷新</string>
@@ -24,6 +24,41 @@
     <string name="take_photo_max_toast">最多只能拍3张照片</string>
     <string name="photographic">拍照</string>
     <string name="dataLoad">数据加载中</string>
+    <string name="renwu">任务</string>
+    <string name="yinhuan">隐患</string>
+    <string name="kecheng">课程</string>
+    <string name="sheshi">设施</string>
+    <string name="transaction">事务:</string>
+    <string name="missionTitle">任务计划标题:</string>
+    <string name="dispathName">分配任务人员:</string>
+    <string name="missionLimit">任务完成截止时间：</string>
+    <string name="TV_checkDate">检查日期:</string>
+    <string name="TV_actionOrgName">执行检查的单位:</string>
+    <string name="TV_cpeoname">检查记录人:</string>
+    <string name="TV_troubleGrade">隐患等级:</string>
+    <string name="TV_safetyTrouble">隐患描述:</string>
+    <string name="TV_dScheme">整改建议方案:</string>
+    <string name="TV_limitDate">整改时限:</string>
+    <string name="TV_LiabelName">整改责任人:</string>
+    <string name="TV_alertmphone">整改责任人手机号:</string>
+    <string name="TV_currName">课程名称:</string>
+    <string name="TV_lesstart">上课时间:</string>
+    <string name="TV_lesroom">授课场所:</string>
+    <string name="TV_lesmunitue">授课时长:</string>
+    <string name="TV_leshour">规定课时:</string>
+    <string name="TV_teachemname">授课教师:</string>
+    <string name="TV_lescomm">授课内容:</string>
+    <string name="TV_stuemname">学员姓名:</string>
+    <string name="TV_cpname">设备名称:</string>
+    <string name="TV_cpnumber">设备编号:</string>
+    <string name="TV_cplocal">设备所在场所:</string>
+    <string name="TV_lon">设备所在经度:</string>
+    <string name="TV_lat">设备所在维度:</string>
+    <string name="TV_checkcount">设备已检查次数:</string>
+    <string name="TV_cpmaintain">设备保养负责人:</string>
+    <string name="TV_cpmaster">设备负责人:</string>
+    <string name="TV_lastcheck">最后一次巡查日期:</string>
+    <string name="TV_nextcheck">下一次巡查日期:</string>
 
 
     <string-array name="yhjb">

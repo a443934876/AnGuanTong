@@ -4,7 +4,6 @@ import com.cqj.test.wbd2_gwpy.AqjcCommitInfo;
 import com.cqj.test.wbd2_gwpy.CsInfo;
 import com.cqj.test.wbd2_gwpy.JcbDetailInfo;
 import com.cqj.test.wbd2_gwpy.JcbInfo;
-import com.cqj.test.wbd2_gwpy.RwInfo;
 import com.cqj.test.wbd2_gwpy.SbInfo;
 
 import java.util.List;
@@ -14,7 +13,7 @@ import java.util.List;
  */
 public interface IYhdjPresenter {
     //安全检查任务
-    void getRwData();
+   /* void getRwData();*/
 
     //场所
     void getCsData();
@@ -40,7 +39,7 @@ public interface IYhdjPresenter {
     void getSssb(int pSbid, int comid);
 
     interface View {
-        void getRwDataSuccess(List<RwInfo> data);
+       /* void getRwDataSuccess(List<RwInfo> data);*/
 
         void getCsDataSuccess(List<CsInfo> data);
 

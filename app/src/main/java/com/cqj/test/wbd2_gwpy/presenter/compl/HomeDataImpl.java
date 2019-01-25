@@ -3,6 +3,10 @@ package com.cqj.test.wbd2_gwpy.presenter.compl;
 import android.app.Activity;
 
 import com.cqj.test.wbd2_gwpy.activity.MyApplication;
+import com.cqj.test.wbd2_gwpy.mode.HiddenIllnessInfo;
+import com.cqj.test.wbd2_gwpy.mode.LessonInfo;
+import com.cqj.test.wbd2_gwpy.mode.MissionInfo;
+import com.cqj.test.wbd2_gwpy.mode.SafetySetInfo;
 import com.cqj.test.wbd2_gwpy.myinterface.HomeData;
 import com.cqj.test.wbd2_gwpy.util.StringUtil;
 import com.cqj.test.wbd2_gwpy.util.WebServiceUtil;
@@ -52,9 +56,9 @@ public class HomeDataImpl implements HomeData {
 
     @Override
     public void getRenWuData() {
-        Subscription subscription = Observable.create(new Observable.OnSubscribe<String>() {
+        Subscription subscription = Observable.create(new Observable.OnSubscribe<ArrayList<MissionInfo>>() {
             @Override
-            public void call(Subscriber<? super String> subscriber) {
+            public void call(Subscriber<? super ArrayList<MissionInfo>> subscriber) {
                 SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
                 Calendar ca = Calendar.getInstance();
                 ca.setTime(new Date());
@@ -69,7 +73,8 @@ public class HomeDataImpl implements HomeData {
                     ArrayList<HashMap<String, Object>> result = WebServiceUtil.getWebServiceMsg(keys, values,
                             "getMissionFromEm",
                             WebServiceUtil.HUIWEI_5VTF_URL, WebServiceUtil.HUIWEI_NAMESPACE);
-                    subscriber.onNext(String.valueOf(result.size()));
+                    ArrayList<MissionInfo> info = MissionInfo.fromData(result);
+                    subscriber.onNext(info);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -78,7 +83,7 @@ public class HomeDataImpl implements HomeData {
         })
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<String>() {
+                .subscribe(new Subscriber<ArrayList<MissionInfo>>() {
                     @Override
                     public void onCompleted() {
 
@@ -90,7 +95,7 @@ public class HomeDataImpl implements HomeData {
                     }
 
                     @Override
-                    public void onNext(String result) {
+                    public void onNext(ArrayList<MissionInfo> result) {
                         mGetInfo.getRenWuDataSum(result);
                     }
                 });
@@ -99,9 +104,9 @@ public class HomeDataImpl implements HomeData {
 
     @Override
     public void getYinHuanData() {
-        Subscription subscription = Observable.create(new Observable.OnSubscribe<String>() {
+        Subscription subscription = Observable.create(new Observable.OnSubscribe<ArrayList<HiddenIllnessInfo>>() {
             @Override
-            public void call(Subscriber<? super String> subscriber) {
+            public void call(Subscriber<? super ArrayList<HiddenIllnessInfo>> subscriber) {
                 SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
                 Calendar ca = Calendar.getInstance();
                 ca.setTime(new Date());
@@ -117,14 +122,8 @@ public class HomeDataImpl implements HomeData {
                     ArrayList<HashMap<String, Object>> result = WebServiceUtil.getWebServiceMsg(keys, values,
                             "getAllHiddenIllness",
                             WebServiceUtil.HUIWEI_SAFE_URL, WebServiceUtil.HUIWEI_NAMESPACE);
-                    int sum = 0;
-                    for (HashMap<String, Object> hashMap : result) {
-                        String noNull = StringUtil.noNull(hashMap.get("LiabelName"));
-                        if (!StringUtil.isEmpty(noNull) && noNull.equals(myApp.getUser().getName())) {
-                            sum++;
-                        }
-                    }
-                    subscriber.onNext(String.valueOf(sum));
+                    ArrayList<HiddenIllnessInfo> hiddenIllnessInfo = HiddenIllnessInfo.fromData(result);
+                    subscriber.onNext(hiddenIllnessInfo);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -133,7 +132,7 @@ public class HomeDataImpl implements HomeData {
         })
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<String>() {
+                .subscribe(new Subscriber<ArrayList<HiddenIllnessInfo>>() {
                     @Override
                     public void onCompleted() {
 
@@ -145,7 +144,7 @@ public class HomeDataImpl implements HomeData {
                     }
 
                     @Override
-                    public void onNext(String result) {
+                    public void onNext(ArrayList<HiddenIllnessInfo> result) {
                         mGetInfo.getYinHuanDataSum(result);
                     }
                 });
@@ -155,9 +154,9 @@ public class HomeDataImpl implements HomeData {
 
     @Override
     public void getKeChengData() {
-        Subscription subscription = Observable.create(new Observable.OnSubscribe<String>() {
+        Subscription subscription = Observable.create(new Observable.OnSubscribe<ArrayList<LessonInfo>>() {
             @Override
-            public void call(Subscriber<? super String> subscriber) {
+            public void call(Subscriber<? super ArrayList<LessonInfo>> subscriber) {
                 SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
                 Calendar ca = Calendar.getInstance();
                 ca.setTime(new Date());
@@ -172,7 +171,8 @@ public class HomeDataImpl implements HomeData {
                     ArrayList<HashMap<String, Object>> result = WebServiceUtil.getWebServiceMsg(keys, values,
                             "getLessonFromEm",
                             WebServiceUtil.HUIWEI_5HR, WebServiceUtil.HUIWEI_NAMESPACE);
-                    subscriber.onNext(String.valueOf(result.size()));
+                    ArrayList<LessonInfo> lessonInfo = LessonInfo.fromData(result);
+                    subscriber.onNext(lessonInfo);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -181,7 +181,7 @@ public class HomeDataImpl implements HomeData {
         })
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<String>() {
+                .subscribe(new Subscriber<ArrayList<LessonInfo>>() {
                     @Override
                     public void onCompleted() {
 
@@ -193,7 +193,7 @@ public class HomeDataImpl implements HomeData {
                     }
 
                     @Override
-                    public void onNext(String result) {
+                    public void onNext(ArrayList<LessonInfo> result) {
                         mGetInfo.getKeChengDataSum(result);
                     }
                 });
@@ -203,43 +203,35 @@ public class HomeDataImpl implements HomeData {
 
     @Override
     public void getSheShiData() {
-        Subscription subscription = Observable.create(new Observable.OnSubscribe<String>() {
+        Subscription subscription = Observable.create(new Observable.OnSubscribe<ArrayList<SafetySetInfo>>() {
             @Override
-            public void call(Subscriber<? super String> subscriber) {
+            public void call(Subscriber<? super ArrayList<SafetySetInfo>> subscriber) {
                 SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
                 Calendar ca = Calendar.getInstance();
                 ca.setTime(new Date());
                 Date now = ca.getTime();
                 String[] keys = {"SCPID", "SCType", "FliedID", "isOver",
                         "KEmid", "Comid"};
-                Object[] values = {0, "", 0, -1, 0,
+                Object[] values = {0, "", 0, -1, Integer.parseInt(myApp.getComInfo().getEmid()),
                         Integer.parseInt(myApp.getComInfo().getCom_id())};
                 try {
                     ArrayList<HashMap<String, Object>> result = WebServiceUtil.getWebServiceMsg(keys, values,
                             "getSafetySetList",
                             WebServiceUtil.HUIWEI_SAFE_URL, WebServiceUtil.HUIWEI_NAMESPACE);
-                    int sum = 0;
-                    ArrayList<HashMap<String, Object>> newResult = new ArrayList<>();
-                    for (HashMap<String, Object> hashMap : result) {
-                        if (hashMap.get("cpmaster").equals(myApp.getUser().getName())) {
-                            newResult.add(hashMap);
-                        }
-                    }
-                    for (HashMap<String, Object> hashMap : newResult) {
-                        if (hashMap.get("lastcheck") == null) {
-                            sum++;
-                        } else {
-                            String time = hashMap.get("lastcheck").toString().substring(0, hashMap
+                    for (int i = 0; i < result.size(); i++) {
+                        if (result.get(i).get("lastcheck") != null) {
+                            String time = result.get(i).get("lastcheck").toString().substring(0, result.get(i)
                                     .get("lastcheck").toString().indexOf("T"));
                             SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
                             Date date = format.parse(time);
                             int days = getDays(date, now);
-                            if (days > 30) {
-                                sum++;
+                            if (days < 0) {
+                                result.remove(i);
                             }
                         }
                     }
-                    subscriber.onNext(String.valueOf(sum));
+                    ArrayList<SafetySetInfo> safetySetInfoList = SafetySetInfo.fromData(result);
+                    subscriber.onNext(safetySetInfoList);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -248,7 +240,7 @@ public class HomeDataImpl implements HomeData {
         })
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<String>() {
+                .subscribe(new Subscriber<ArrayList<SafetySetInfo>>() {
                     @Override
                     public void onCompleted() {
 
@@ -260,7 +252,7 @@ public class HomeDataImpl implements HomeData {
                     }
 
                     @Override
-                    public void onNext(String result) {
+                    public void onNext(ArrayList<SafetySetInfo> result) {
                         mGetInfo.getSheShiDataSum(result);
                     }
                 });

@@ -232,7 +232,7 @@ public class AqssDetailActivity extends Activity {
                             "getSafetySetCheck", new String[]{"prodname","scnumber",
                                     "sccheckname", "sccheckdate",
                                     "sccheckstat", "sccheckdetail"},
-                            WebServiceUtil.SAFE_URL);
+                            WebServiceUtil.SAFE_URL,WebServiceUtil.WEBSERVICE_NAMESPACE);
                     if (dataList != null)
                         handler.sendEmptyMessage(1);
                 } catch (Exception e) {

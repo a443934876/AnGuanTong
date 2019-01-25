@@ -16,7 +16,7 @@ public class WebServiceUtil {
     public static final String HUIWEI_URL = "http://www.huiweioa.com/5VCommon.asmx";
     public static final String HUIWEI_5VTF_URL = "http://www.huiweioa.com/5VTaskFollow.asmx";
     public static final String HUIWEI_5VIN_URL = "http://www.huiweioa.com/5VInformPublish.asmx";
-    public static final String HUIWEI_PM_URL ="http://www.huiweioa.com/5VProjectManager.asmx";
+    public static final String HUIWEI_PM_URL = "http://www.huiweioa.com/5VProjectManager.asmx";
     public static final String HUIWEI_NAMESPACE = "http://www.huiweioa.com/";
     public static final String URL = "http://www.wisebus.com/5VCommon.asmx";
     public static final String HUIWEI_5VPM_URL = "http://www.huiweioa.com/5VProjectManager.asmx";
@@ -51,43 +51,10 @@ public class WebServiceUtil {
             System.out.println("result:" + resultStr);
         } catch (Exception e) {
             SoapFault soaF = (SoapFault) envelope.bodyIn;
-            System.out.println("FaultString:" + soaF.faultstring);
+            System.out.println("FaultString:" + methodName + "----" + soaF.faultstring);
         }
     }
 
-    /*上传照片*/
-    public static String putWebServiceMsg(String[] keys, Object[] values,
-                                          String methodName, String url) throws Exception {
-        String actionUrl = WEBSERVICE_NAMESPACE + methodName;
-        SoapObject so = new SoapObject(WEBSERVICE_NAMESPACE, methodName);
-        if (keys != null) {
-            for (int i = 0; i < keys.length; i++) {
-                so.addProperty(keys[i], values[i]);
-            }
-        }
-        SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(
-                SoapEnvelope.VER11);
-        envelope.bodyOut = so;
-        envelope.encodingStyle = "UTF-8";
-        envelope.dotNet = true;
-        HttpTransportSE ht = new HttpTransportSE(url, 5000);
-        ht.call(actionUrl, envelope);
-        SoapObject result = null;
-        try {
-            result = (SoapObject) envelope.bodyIn;
-            String resultStr = result.toString();
-            int start = resultStr.indexOf("e{UploadFileResult=")
-                    + "e{UploadFileResult=".length();
-            int end = resultStr.indexOf(";");
-            resultStr = resultStr.substring(start, end);
-            System.out.println("result:" + resultStr);
-            return resultStr;
-        } catch (Exception e) {
-            SoapFault soaF = (SoapFault) envelope.bodyIn;
-            System.out.println("FaultString:" + soaF.faultstring);
-            return "";
-        }
-    }
 
     public static String putWebServiceMsg(String[] keys, Object[] values,
                                           String methodName, String url, String nameSpace) throws Exception {
@@ -117,7 +84,7 @@ public class WebServiceUtil {
             return resultStr;
         } catch (Exception e) {
             SoapFault soaF = (SoapFault) envelope.bodyIn;
-            System.out.println("FaultString:" + soaF.faultstring);
+            System.out.println("FaultString:" + methodName + "----" + soaF.faultstring);
             return "";
         }
     }
@@ -145,7 +112,7 @@ public class WebServiceUtil {
             result = (SoapObject) envelope.bodyIn;
         } catch (Exception e) {
             SoapFault soaF = (SoapFault) envelope.bodyIn;
-            System.out.println("FaultString:" + soaF.faultstring);
+            System.out.println("FaultString:" + methodName + "----" + soaF.faultstring);
         }
         ArrayList<HashMap<String, Object>> datas = new ArrayList<HashMap<String, Object>>();
         if (result != null) {
@@ -205,7 +172,7 @@ public class WebServiceUtil {
             result = (SoapObject) envelope.bodyIn;
         } catch (Exception e) {
             SoapFault soaF = (SoapFault) envelope.bodyIn;
-            System.out.println("FaultString:" + soaF.faultstring);
+            System.out.println("FaultString:" + methodName + "----" + soaF.faultstring);
         }
         ArrayList<HashMap<String, Object>> datas = new ArrayList<HashMap<String, Object>>();
         if (result != null) {
@@ -247,11 +214,6 @@ public class WebServiceUtil {
         return datas;
     }
 
-    public static ArrayList<HashMap<String, Object>> getWebServiceMsg(
-            String[] keys, Object[] values, String methodName, String url)
-            throws Exception {
-        return getWebServiceMsg(keys, values, methodName, url, WEBSERVICE_NAMESPACE);
-    }
 
     public static ArrayList<HashMap<String, Object>> getWebServiceMsg(
             String[] keys, Object[] values, String methodName,
@@ -275,7 +237,7 @@ public class WebServiceUtil {
             result = (SoapObject) envelope.bodyIn;
         } catch (Exception e) {
             SoapFault soaF = (SoapFault) envelope.bodyIn;
-            System.out.println("FaultString:" + soaF.faultstring);
+            System.out.println("FaultString:" + methodName + "----" + soaF.faultstring);
         }
         ArrayList<HashMap<String, Object>> datas = new ArrayList<HashMap<String, Object>>();
         if (result != null) {
@@ -336,7 +298,7 @@ public class WebServiceUtil {
             result = (SoapObject) envelope.bodyIn;
         } catch (Exception e) {
             SoapFault soaF = (SoapFault) envelope.bodyIn;
-            System.out.println("FaultString:" + soaF.faultstring);
+            System.out.println("FaultString:" + methodName + "----" + soaF.faultstring);
         }
         ArrayList<HashMap<String, Object>> datas = new ArrayList<HashMap<String, Object>>();
         if (result != null) {
@@ -400,7 +362,7 @@ public class WebServiceUtil {
             result = (SoapObject) envelope.bodyIn;
         } catch (Exception e) {
             SoapFault soaF = (SoapFault) envelope.bodyIn;
-            System.out.println("FaultString:" + soaF.faultstring);
+            System.out.println("FaultString:" + methodName + "----" + soaF.faultstring);
         }
         ArrayList<HashMap<String, Object>> datas = new ArrayList<HashMap<String, Object>>();
         if (result != null) {

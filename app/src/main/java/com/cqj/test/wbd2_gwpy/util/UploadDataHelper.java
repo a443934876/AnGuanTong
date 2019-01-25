@@ -53,18 +53,14 @@ public class UploadDataHelper {
 //                    if (info.getTaskid() == 0) {
         String keys3[] = {"checkDate", "recEmid", "dLimit",
                 "hDetail", "dScheme", "hGrade", "lEmid",
-                "dCost", "imgPatch", "objOrganizationID",
-                /*"Taskid", "FliedID", "objPartid", "SetStr",*/
-                "retstr"};
-        Object[] values3 = {pFinalInfo.getCheckDate(),
-                pFinalInfo.getRecEmid(),
+                "dCost", "imgPatch", "objOrganizationID", "Areaid"};
+        Object[] values3 = {pFinalInfo.getCheckDate(), pFinalInfo.getRecEmid(),
                 pFinalInfo.getDLimit(), pFinalInfo.getHDetail(), pFinalInfo.getDScheme(),
                 pFinalInfo.getHGrade(), pFinalInfo.getLEmid(), pFinalInfo.getDCost(),
-                imageResult, pFinalInfo.getObjOrganizationID(),
-                /*info.getTaskid(), info.getFliedID(), info.getObjPartid(),
-                info.getSetStr(), */""};
+                imageResult, pFinalInfo.getObjOrganizationID(),pFinalInfo.getFliedID()};
+        System.out.println("imageResult:" + imageResult);
         data = WebServiceUtil.getWebServiceMsg(keys3, values3,
-                "AddHiddenTroubleSimple", new String[]{},
+                "AddHiddenTroubleFromAreaID", new String[]{},
                 WebServiceUtil.HUIWEI_SAFE_URL, WebServiceUtil.HUIWEI_NAMESPACE);
 //                    } else {
 //                        String keys3[] = {"checkDate", "recEmid", "dLimit",
@@ -134,14 +130,14 @@ public class UploadDataHelper {
                         uploadBuffer = new String(Base64.encode(fileData)); // 进行Base64编码
                     }
                     String methodName = "UploadFile";
-                    String[] keys = {"fileBytesstr", "fileName"};
+                    String[] keys = {"fileBytesstr", "SaveToUrl"};
                     // TODO: 2018/3/1  上传图片
                     Object[] values = {uploadBuffer, fileName};
                     System.out.println("fileName:" + fileName);
                     String serverPath = WebServiceUtil.putWebServiceMsg(keys, values,
-                            methodName, WebServiceUtil.URL);
+                            methodName, WebServiceUtil.HUIWEI_URL, WebServiceUtil.HUIWEI_NAMESPACE);
                     result.append(serverPath);
-                    result.append(",");
+                    result.append(";");
                 } finally {
                     if (b != null) {
                         b.recycle();

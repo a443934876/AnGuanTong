@@ -169,13 +169,13 @@ public class AqssjcActivity extends Activity {
                                     "SCPID", "lastcheck", "cpid","cpmaintain"},
                             WebServiceUtil.HUIWEI_SAFE_URL,WebServiceUtil.HUIWEI_NAMESPACE);
                     handler.sendEmptyMessage(1);
-                    String keys2[] = {"Comid"};
+                    String keys2[] = {"comid","keepEmid"};
                     Object values2[] = {Integer.parseInt(myApp.getComInfo()
-                            .getCom_id())};
+                            .getCom_id()),0};
                     ArrayList<HashMap<String, Object>> tempdata2 = WebServiceUtil
-                            .getWebServiceMsg(keys2, values2, "getAllField",
+                            .getWebServiceMsg(keys2, values2, "getAllPlace",
                                     new String[]{"mplid", "mplname"},
-                                    WebServiceUtil.URL);
+                                    WebServiceUtil.HUIWEI_URL,WebServiceUtil.HUIWEI_NAMESPACE);
                     if (tempdata2.size() > 1) {
                         data2.addAll(tempdata2);
                     }
@@ -186,7 +186,7 @@ public class AqssjcActivity extends Activity {
                     ArrayList<HashMap<String, Object>> tempData = WebServiceUtil
                             .getWebServiceMsg(keys3, values3,
                                     "getAllEmployeeFromOrgID", new String[]{
-                                            "emName", "Emid"});
+                                            "emName", "Emid"},WebServiceUtil.HUIWEI_URL,WebServiceUtil.HUIWEI_NAMESPACE);
                     if (tempData.size() > 1) {
                         gyData.addAll(tempData);
                     }
@@ -338,7 +338,7 @@ public class AqssjcActivity extends Activity {
                                     sbzt.getSelectedItem().toString()};
                             dataList = WebServiceUtil.getWebServiceMsg(keys,
                                     values, "AddSafetySetCheck", new String[]{},
-                                    WebServiceUtil.SAFE_URL);
+                                    WebServiceUtil.HUIWEI_SAFE_URL,WebServiceUtil.HUIWEI_NAMESPACE);
                         }
                     }
                     if(MyApplication.isConnection){

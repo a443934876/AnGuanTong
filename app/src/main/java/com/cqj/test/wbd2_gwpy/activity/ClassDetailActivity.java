@@ -179,7 +179,7 @@ public class ClassDetailActivity extends Activity {
                                     xxjl.getText().toString()};
                             WebServiceUtil.getWebServiceMsg(keys, values,
                                     "setCourseReCord",
-                                    WebServiceUtil.PART_DUTY_URL);
+                                    WebServiceUtil.PART_DUTY_URL,WebServiceUtil.WEBSERVICE_NAMESPACE);
                             handler.sendEmptyMessage(3);
                         } catch (Exception e) {
                             e.printStackTrace();
