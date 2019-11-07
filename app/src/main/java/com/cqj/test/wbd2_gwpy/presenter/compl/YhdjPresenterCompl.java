@@ -13,7 +13,6 @@ import com.cqj.test.wbd2_gwpy.JcbInfo;
 import com.cqj.test.wbd2_gwpy.JcbInfoDao;
 import com.cqj.test.wbd2_gwpy.R;
 import com.cqj.test.wbd2_gwpy.RwInfo;
-import com.cqj.test.wbd2_gwpy.RwInfoDao;
 import com.cqj.test.wbd2_gwpy.SbInfo;
 import com.cqj.test.wbd2_gwpy.SbInfoDao;
 import com.cqj.test.wbd2_gwpy.activity.MyApplication;
@@ -55,7 +54,7 @@ public class YhdjPresenterCompl implements IYhdjPresenter {
         mCompositeSubscription = new CompositeSubscription();
     }
 
-    @Override
+   /* @Override
     public void getRwData() {
         Subscription subscription = Observable.create(new Observable.OnSubscribe<List<RwInfo>>() {
             @Override
@@ -75,12 +74,12 @@ public class YhdjPresenterCompl implements IYhdjPresenter {
                 Object values2[] = {
                         Integer.parseInt(myApp.getComInfo().getCom_id()),
                         "2010-01-01T01:00:00.000",
-                        "2015-12-31T01:00:00.000"};
+                        "2025-12-31T01:00:00.000"};
                 try {
                     ArrayList<HashMap<String, Object>> data = WebServiceUtil.getWebServiceMsg(keys2, values2,
                             "getSafetyCheckTaskListFromCom", new String[]{
                                     "TaskTitle", "TaskID"},
-                            WebServiceUtil.HUIWEI_SAFE_URL,WebServiceUtil.HUIWEI_NAMESPACE);
+                            WebServiceUtil.HUIWEI_SAFE_URL, WebServiceUtil.HUIWEI_NAMESPACE);
                     result.addAll(data);
                     subscriber.onNext(parseRwInfo(result));
                 } catch (Exception e) {
@@ -109,7 +108,7 @@ public class YhdjPresenterCompl implements IYhdjPresenter {
                 });
         mCompositeSubscription.add(subscription);
     }
-
+*/
     @Override
     public void getCsData() {
         Subscription subscription = Observable.create(new Observable.OnSubscribe<List<CsInfo>>() {
@@ -122,13 +121,13 @@ public class YhdjPresenterCompl implements IYhdjPresenter {
                     return;
                 }
                 ArrayList<HashMap<String, Object>> result;
-                String keys2[] = {"Comid"};
+                String keys2[] = {"comid", "keepEmid"};
                 Object values2[] = {Integer.parseInt(myApp.getComInfo()
-                        .getCom_id())};
+                        .getCom_id()), 0};
                 try {
                     result = WebServiceUtil.getWebServiceMsg(keys2, values2,
-                            "getAllField", new String[]{"mplid",
-                                    "mplname"}, WebServiceUtil.URL);
+                            "getAllPlace", new String[]{"mplid",
+                                    "mplname"}, WebServiceUtil.HUIWEI_URL, WebServiceUtil.HUIWEI_NAMESPACE);
                     if (result == null || result.isEmpty()) {
                         result = new ArrayList<HashMap<String, Object>>();
                         HashMap<String, Object> map = new HashMap<String, Object>();
@@ -323,7 +322,7 @@ public class YhdjPresenterCompl implements IYhdjPresenter {
                             "getSafetyCheckList", new String[]{"oblititle",
                                     "odetail", "sCheckListtype", "induname",
                                     "inseName", "malName", "rAdvise"},
-                            WebServiceUtil.SAFE_URL,WebServiceUtil.WEBSERVICE_NAMESPACE);
+                            WebServiceUtil.SAFE_URL, "http://wisebus.com/");
                     if (result == null || result.isEmpty()) {
                         result = new ArrayList<HashMap<String, Object>>();
                         HashMap<String, Object> map = new HashMap<String, Object>();

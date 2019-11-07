@@ -12,7 +12,7 @@ import java.util.HashMap;
 
 public class WebServiceUtil {
 
-    public static final String WEBSERVICE_NAMESPACE = "http://wisebus.com/";
+    public static final String WEBSERVICE_NAMESPACE = "http://www.wisebus.com/";
     public static final String HUIWEI_URL = "http://www.huiweioa.com/5VCommon.asmx";
     public static final String HUIWEI_5VTF_URL = "http://www.huiweioa.com/5VTaskFollow.asmx";
     public static final String HUIWEI_5VIN_URL = "http://www.huiweioa.com/5VInformPublish.asmx";
@@ -55,39 +55,7 @@ public class WebServiceUtil {
         }
     }
 
-    /*上传照片*/
-    public static String putWebServiceMsg(String[] keys, Object[] values,
-                                          String methodName, String url) throws Exception {
-        String actionUrl = WEBSERVICE_NAMESPACE + methodName;
-        SoapObject so = new SoapObject(WEBSERVICE_NAMESPACE, methodName);
-        if (keys != null) {
-            for (int i = 0; i < keys.length; i++) {
-                so.addProperty(keys[i], values[i]);
-            }
-        }
-        SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(
-                SoapEnvelope.VER11);
-        envelope.bodyOut = so;
-        envelope.encodingStyle = "UTF-8";
-        envelope.dotNet = true;
-        HttpTransportSE ht = new HttpTransportSE(url, 5000);
-        ht.call(actionUrl, envelope);
-        SoapObject result = null;
-        try {
-            result = (SoapObject) envelope.bodyIn;
-            String resultStr = result.toString();
-            int start = resultStr.indexOf("e{UploadFileResult=")
-                    + "e{UploadFileResult=".length();
-            int end = resultStr.indexOf(";");
-            resultStr = resultStr.substring(start, end);
-            System.out.println("result:" + resultStr);
-            return resultStr;
-        } catch (Exception e) {
-            SoapFault soaF = (SoapFault) envelope.bodyIn;
-            System.out.println("FaultString:" + soaF.faultstring);
-            return "";
-        }
-    }
+
 
     public static String putWebServiceMsg(String[] keys, Object[] values,
                                           String methodName, String url, String nameSpace) throws Exception {
@@ -247,11 +215,7 @@ public class WebServiceUtil {
         return datas;
     }
 
-    public static ArrayList<HashMap<String, Object>> getWebServiceMsg(
-            String[] keys, Object[] values, String methodName, String url)
-            throws Exception {
-        return getWebServiceMsg(keys, values, methodName, url, WEBSERVICE_NAMESPACE);
-    }
+
 
     public static ArrayList<HashMap<String, Object>> getWebServiceMsg(
             String[] keys, Object[] values, String methodName,

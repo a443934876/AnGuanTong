@@ -29,7 +29,6 @@ import com.cqj.test.wbd2_gwpy.CsInfo;
 import com.cqj.test.wbd2_gwpy.JcbDetailInfo;
 import com.cqj.test.wbd2_gwpy.JcbInfo;
 import com.cqj.test.wbd2_gwpy.R;
-import com.cqj.test.wbd2_gwpy.RwInfo;
 import com.cqj.test.wbd2_gwpy.SbInfo;
 import com.cqj.test.wbd2_gwpy.activity.CameraActivity;
 import com.cqj.test.wbd2_gwpy.activity.CameraTestActivity;
@@ -92,9 +91,8 @@ public class AqjcFragment extends Fragment implements IYhdjPresenter.View, View.
         mView = inflater.inflate(R.layout.fragment_aqjc, container, false);
         initComplement();
         registListener();
-
         mPresenter = new YhdjPresenterCompl(this, getActivity());
-        mPresenter.getRwData();
+     /*   mPresenter.getRwData();*/
         mPresenter.getCsData();
         mPresenter.getJcbData();
         return mView;
@@ -113,7 +111,6 @@ public class AqjcFragment extends Fragment implements IYhdjPresenter.View, View.
         mCommitBtn = (Button) mView.findViewById(R.id.commit_btn);
         mJcbLn = (LinearLayout) mView.findViewById(R.id.jcb_ln);
         mzgLayout = (LinearLayout) mView.findViewById(R.id.zgLayout);
-
         mJcbDetailEdit = (EditText) mView.findViewById(R.id.jcb_edit);
         mJcbDetailPre = (ImageView) mView.findViewById(R.id.jcbdetail_pre);
         mJcbDetailNext = (ImageView) mView.findViewById(R.id.jcbdetail_next);
@@ -122,7 +119,7 @@ public class AqjcFragment extends Fragment implements IYhdjPresenter.View, View.
         mJcbSp = (Spinner) mView.findViewById(R.id.jcb_spinner);
         mCsSp = (Spinner) mView.findViewById(R.id.cs_spinner);
         mSbSp = (Spinner) mView.findViewById(R.id.sb_spinner);
-        mRwSp = (Spinner) mView.findViewById(R.id.rw_spinner);
+     /*   mRwSp = (Spinner) mView.findViewById(R.id.rw_spinner);*/
         mYhdjSp = (Spinner) mView.findViewById(R.id.yhdj_spinner);
         mYgfyEdt = (EditText) mView.findViewById(R.id.ygfy_edit);
         mJyzgEdt = (EditText) mView.findViewById(R.id.zgcs_edit);
@@ -246,12 +243,12 @@ public class AqjcFragment extends Fragment implements IYhdjPresenter.View, View.
                     mDateZg.setText("");
                 }
                 String item = (String) pAdapterView.getItemAtPosition(pI);
-                if ("无隐患".equals(item)) {
-                    mzgLayout.setVisibility(View.GONE);
-
-                } else {
-                    mzgLayout.setVisibility(View.VISIBLE);
-                }
+//                if ("无隐患".equals(item)) {
+//                    mzgLayout.setVisibility(View.GONE);
+//
+//                } else {
+//                    mzgLayout.setVisibility(View.VISIBLE);
+//                }
             }
 
             @Override
@@ -290,11 +287,11 @@ public class AqjcFragment extends Fragment implements IYhdjPresenter.View, View.
         });
     }
 
-    @Override
+  /*  @Override
     public void getRwDataSuccess(List<RwInfo> data) {
         MySpinnerAdapter<RwInfo> adapter = new MySpinnerAdapter<RwInfo>(data, getActivity());
         mRwSp.setAdapter(adapter);
-    }
+    }*/
 
     @Override
     public void getCsDataSuccess(List<CsInfo> data) {
@@ -474,7 +471,7 @@ public class AqjcFragment extends Fragment implements IYhdjPresenter.View, View.
                 dCost = Float.parseFloat(zgfyStr);
             }
         }
-        int taskId = Integer.parseInt(((IChooseItem) mRwSp.getSelectedItem()).getItemId());
+       /* int taskId = Integer.parseInt(((IChooseItem) mRwSp.getSelectedItem()).getItemId());*/
         int fliedId = Integer.parseInt(((IChooseItem) mCsSp.getSelectedItem()).getItemId());
        /* String sbMark = ((IChooseItem) mSbSp.getSelectedItem()).getItemName();*/
         String sbMark ="";
@@ -492,9 +489,9 @@ public class AqjcFragment extends Fragment implements IYhdjPresenter.View, View.
         info.setLEmid(lEmid);
         info.setObjOrganizationID(mObjOrganizationID);
         info.setObjPartid(bmId);
-        info.setTaskName(((IChooseItem) mRwSp.getSelectedItem()).getItemName());
+      /*  info.setTaskName(((IChooseItem) mRwSp.getSelectedItem()).getItemName());*/
         info.setCsName(((IChooseItem) mCsSp.getSelectedItem()).getItemName());
-        info.setTaskid(taskId);
+    /*    info.setTaskid(taskId);*/
         info.setSetStr(sbMark);
         info.setRecEmid(Integer.parseInt(myApp.getComInfo().getEmid()));
         // TODO: 2018/3/1  照片

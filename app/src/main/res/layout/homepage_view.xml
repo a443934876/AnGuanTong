@@ -12,6 +12,7 @@
         android:padding="5dp">
 
         <TextView
+            android:visibility="gone"
             android:id="@+id/gwlist_arc_progress"
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -57,6 +58,7 @@
                     android:textSize="18sp" />
 
                 <TextView
+                    android:visibility="gone"
                     android:id="@+id/gwlist_zzclick"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -67,6 +69,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_margin="5dp"
@@ -94,6 +97,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_margin="5dp"
@@ -198,12 +202,14 @@
                 android:background="#999999" />
 
             <LinearLayout
+                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:orientation="horizontal">
 
                 <LinearLayout
+                    android:visibility="gone"
                     android:id="@+id/hp_pxks"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
@@ -229,6 +235,7 @@
                     android:background="#999999" />
 
                 <LinearLayout
+                    android:visibility="gone"
                     android:id="@+id/hp_sbxc"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"

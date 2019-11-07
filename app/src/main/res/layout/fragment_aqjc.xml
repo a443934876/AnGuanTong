@@ -31,7 +31,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="检查表："
-                    android:textSize="16sp" />
+                    android:textSize="15sp" />
 
                 <Spinner
                     android:id="@+id/jcb_spinner"
@@ -53,15 +53,14 @@
                     android:layout_weight="1"
                     android:gravity="center_vertical"
                     android:orientation="horizontal"
-                    android:visibility="gone">
+                   >
 
                     <TextView
 
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="4dp"
-                        android:text="场所："
-                        android:textSize="13sp" />
+                        android:text="场    所："
+                        android:textSize="15sp" />
 
                     <Spinner
 
@@ -101,7 +100,8 @@
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
                 android:padding="8dp"
-                android:visibility="gone">
+                android:visibility="gone"
+                >
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -133,9 +133,8 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="4dp"
                         android:text="隐患等级："
-                        android:textSize="13sp" />
+                        android:textSize="15sp" />
 
                     <Spinner
                         android:id="@+id/yhdj_spinner"
@@ -291,6 +290,7 @@
                 android:padding="8dp">
 
                 <ImageButton
+                    android:visibility="gone"
                     android:id="@+id/ewm_btn"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
@@ -298,6 +298,7 @@
                     android:background="@drawable/ewm_icon" />
 
                 <RelativeLayout
+                    android:visibility="gone"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:layout_marginLeft="16dp">
@@ -312,6 +313,7 @@
                 </RelativeLayout>
 
                 <Button
+                    android:visibility="gone"
                     android:id="@+id/xcly_btn"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
@@ -320,6 +322,7 @@
                     android:textSize="16sp" />
 
                 <ImageButton
+                    android:visibility="gone"
                     android:id="@+id/bddh_btn"
                     android:layout_width="50dp"
                     android:layout_height="50dp"

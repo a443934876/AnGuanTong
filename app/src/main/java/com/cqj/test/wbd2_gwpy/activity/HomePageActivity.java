@@ -21,9 +21,6 @@ import com.cqj.test.wbd2_gwpy.R;
 import com.cqj.test.wbd2_gwpy.SbjcCommitInfo;
 import com.cqj.test.wbd2_gwpy.UserInfoDao;
 import com.cqj.test.wbd2_gwpy.dao.SqliteOperator;
-
-import com.cqj.test.wbd2_gwpy.myinterface.HomeData;
-import com.cqj.test.wbd2_gwpy.presenter.compl.HomeDataImpl;
 import com.cqj.test.wbd2_gwpy.util.BitmapUtil;
 import com.cqj.test.wbd2_gwpy.util.PermisionUtils;
 import com.cqj.test.wbd2_gwpy.util.StringUtil;
@@ -43,7 +40,7 @@ import de.greenrobot.dao.query.QueryBuilder;
 import rx.functions.Action1;
 
 
-public class HomePageActivity extends Activity implements HomeData.GetInfo, OnClickListener {
+public class HomePageActivity extends Activity implements OnClickListener {
 
     private TextView arcProgress, TV_renwu, TV_yinhuan, TV_kecheng, TV_shebei;
     private ArrayList<HashMap<String, Object>> safeData;
@@ -151,11 +148,11 @@ public class HomePageActivity extends Activity implements HomeData.GetInfo, OnCl
         TV_yinhuan = (TextView) findViewById(R.id.TV_yinhuan);
         TV_kecheng = (TextView) findViewById(R.id.TV_kecheng);
         TV_shebei = (TextView) findViewById(R.id.TV_shebei);
-        HomeData homeData = new HomeDataImpl(this, this);
-        homeData.getRenWuData();
-        homeData.getYinHuanData();
-        homeData.getKeChengData();
-        homeData.getSheShiData();
+//        HomeData homeData = new HomeDataImpl(this, this);
+//        homeData.getRenWuData();
+//        homeData.getYinHuanData();
+//        homeData.getKeChengData();
+//        homeData.getSheShiData();
         TextView listTitleDate = (TextView) findViewById(R.id.gwlist_title_date);
         mExitLogin = (Button) findViewById(R.id.homepage_exit);
         mExitLogin.setOnClickListener(this);
@@ -341,23 +338,23 @@ public class HomePageActivity extends Activity implements HomeData.GetInfo, OnCl
         }
     }
 
-    @Override
-    public void getRenWuDataSum(String result) {
-        TV_renwu.setText(result+"个任务未完成");
-    }
-
-    @Override
-    public void getYinHuanDataSum(String result) {
-        TV_yinhuan.setText(result+"个隐患未整改");
-    }
-
-    @Override
-    public void getKeChengDataSum(String result) {
-        TV_kecheng.setText(result+"个课程需学习");
-    }
-
-    @Override
-    public void getSheShiDataSum(String result) {
-        TV_shebei.setText(result+"个设施未巡查");
-    }
+//    @Override
+//    public void getRenWuDataSum(String result) {
+//        TV_renwu.setText(result+"个任务未完成");
+//    }
+//
+//    @Override
+//    public void getYinHuanDataSum(String result) {
+//        TV_yinhuan.setText(result+"个隐患未整改");
+//    }
+//
+//    @Override
+//    public void getKeChengDataSum(String result) {
+//        TV_kecheng.setText(result+"个课程需学习");
+//    }
+//
+//    @Override
+//    public void getSheShiDataSum(String result) {
+//        TV_shebei.setText(result+"个设施未巡查");
+//    }
 }
