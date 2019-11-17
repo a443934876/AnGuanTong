@@ -1,6 +1,6 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".activity.MainActivity" >
+    tools:context="cn.fjmz.agt.activity.LoginActivity" >
 
     <item
         android:id="@+id/action_search"

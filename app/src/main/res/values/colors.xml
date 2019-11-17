@@ -28,7 +28,7 @@
     <color name="material_deep_teal_20">#ff80cbc4</color>
     <color name="material_deep_teal_50">#ff009688</color>
     <color name="black_semi_transparent">#B2000000</color>
-    <color name="possible_result_points">#c0ffff00</color>  
+    <color name="possible_result_points">#c0ffff00</color>
     <color name="background">#e5e5e5</color>
     <color name="half_black">#808080</color>
     <color name="gray">#999999</color>
@@ -46,5 +46,15 @@
     <color name="result_points">#c000ff00</color>
     <color name="result_text">#ffffffff</color>
     <color name="result_view">#b0000000</color>
+    <color name="aqss_text_color">#343434</color>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="colorSkyBlue">#00A1DD</color>
+    <color name="backgroundColor">#EEEEEE</color>
+    <color name="color_line">#f6f6f6</color>
+    <color name="color_blue">#1c91f2</color>
+    <color name="color_gray">#9a9a9a</color>
+    <color name="color_tab">#FAFBFE</color>
 
 </resources>

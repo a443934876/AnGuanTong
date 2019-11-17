@@ -59,6 +59,10 @@
     <string name="TV_cpmaster">设备负责人:</string>
     <string name="TV_lastcheck">最后一次巡查日期:</string>
     <string name="TV_nextcheck">下一次巡查日期:</string>
+    <string name="hon">安全员：</string>
+    <string name="time">2014年12月12日</string>
+    <string name="name">张宝亮</string>
+    <string name="duty">[职责]</string>
 
 
     <string-array name="yhjb">
@@ -86,4 +90,10 @@
         <item>未考核过</item>
         <item>未达60分及格线</item>
     </string-array>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="tv_hello">你好，%1$s ！</string>
+    <string name="tv_safety_check_number">-第%1$d条，共%2$d条-</string>
+    <string name="org_name_file">%s文件</string>
+    <string name="colon">%s：</string>
 </resources>

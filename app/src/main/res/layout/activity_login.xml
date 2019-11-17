@@ -1,0 +1,167 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <ImageView
+        android:id="@+id/iv_login"
+        android:layout_width="match_parent"
+        android:layout_height="230dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/login_title_icon" />
+
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/cv_account"
+        android:layout_width="270dp"
+        android:layout_height="43dp"
+        android:layout_below="@+id/iv_login"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/shape_login_bg"
+        android:singleLine="true"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="5dp">
+
+
+        <EditText
+            android:id="@+id/et_login_account"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
+            android:background="@null"
+            android:hint="请输入账号"
+            android:singleLine="true"
+            android:textSize="14dp" />
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/cv_password"
+        android:layout_width="270dp"
+        android:layout_height="43dp"
+        android:layout_below="@+id/cv_account"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/shape_login_bg"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="5dp">
+
+        <EditText
+            android:id="@+id/et_login_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/et_login_account"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
+            android:background="@null"
+            android:hint="请输入密码"
+            android:inputType="textPassword"
+            android:singleLine="true"
+            android:textSize="14dp" />
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/cv_verification_code"
+        android:layout_width="270dp"
+        android:layout_height="43dp"
+        android:layout_below="@+id/cv_password"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/shape_login_bg"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="5dp">
+
+
+        <EditText
+            android:id="@+id/et_verification_code"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/et_login_account"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
+            android:background="@null"
+            android:hint="请输入验证码"
+            android:singleLine="true"
+            android:textSize="14dp" />
+
+        <ImageView
+            android:id="@+id/iv_verification_code"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="150dp"
+            android:layout_marginLeft="150dp" />
+    </android.support.v7.widget.CardView>
+
+    <LinearLayout
+        android:id="@+id/ll_account_operation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/cv_verification_code"
+        android:layout_marginTop="30dp"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <CheckBox
+                android:id="@+id/cb_save_account"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="记住账密" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <CheckBox
+                android:id="@+id/cb_automatic_login"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="自动登录" />
+        </LinearLayout>
+    </LinearLayout>
+
+
+    <Button
+        android:id="@+id/btn_login"
+        android:layout_width="271dp"
+        android:layout_height="40dp"
+        android:layout_below="@+id/ll_account_operation"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/shape_login_color"
+        android:text="登 录"
+        android:textColor="@color/white"
+        android:textSize="16dp" />
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="20dp"
+        android:gravity="center"
+        android:text="福建省仲能网络科技有限公司"
+        android:textSize="14dp" />
+
+
+</RelativeLayout>

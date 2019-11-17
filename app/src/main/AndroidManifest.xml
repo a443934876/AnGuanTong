@@ -1,120 +1,107 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.cqj.test.wbd2_gwpy">
+    xmlns:tools="http://schemas.android.com/tools"
+    package="cn.fjmz.agt">
 
-    <uses-permission android:name="android.permission.VIBRATE" />
-
-    <uses-feature android:name="android.hardware.camera" />
-
-    <uses-permission android:name="android.permission.DOWNLOAD_WITHOUT_NOTIFICATION" />
-    <uses-permission android:name="android.permission.FLASHLIGHT" />
-
+    <uses-permission android:name="android.permission.KILL_BACKGROUND_PROCESSES" />
     <uses-feature android:name="android.hardware.camera.autofocus" />
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
-    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
-    <uses-permission android:name="android.permission.READ_LOGS" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
-    <uses-permission android:name="android.permission.BODY_SENSORS" />
     <uses-permission android:name="android.permission.BAIDU_LOCATION_SERVICE" />
     <uses-permission android:name="android.permission.ACCES_MOCK_LOCATION" />
     <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.ACCESS_GPS" />
-    <!-- SDK1.5需要android.permission.GET_TASKS权限判断本程序是否为当前运行的应用? -->
-    <uses-permission android:name="android.permission.GET_TASKS" />
     <uses-permission android:name="android.permission.BROADCAST_STICKY" />
     <!-- 来电消音 -->
     <uses-permission android:name="android.permission.PROCESS_OUTGOING_CALLS" />
     <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
 
     <application
-        android:name=".activity.MyApplication"
+        android:name=".App"
         android:allowBackup="true"
         android:icon="@drawable/dargon108"
-        android:label="@string/app_name"
-        android:theme="@style/AppTheme">
-        <activity
-            android:name=".activity.MainActivity"
-            android:theme="@android:style/Theme.Black.NoTitleBar" />
+        android:resizeableActivity="true"
+        android:theme="@style/AppTheme"
+        tools:replace="android:icon"
+        tools:targetApi="n">
+
         <activity
             android:name=".activity.SplashActivity"
-            android:label="@string/app_name"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.VIEW" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity android:name=".view.AudioRecordUtil" />
         <activity
+            android:name=".activity.LoginActivity"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".activity.ClassDetailActivity"
-            android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.DeviceDefault.Light.DarkActionBar" />
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activity.PxksActivity"
-            android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.DeviceDefault.Light.DarkActionBar" />
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activity.AqssDetailActivity"
-            android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.DeviceDefault.Light.DarkActionBar" />
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activity.AqssjcActivity"
-            android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.DeviceDefault.Light.DarkActionBar" />
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activity.JcbDetailActivity"
-            android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.DeviceDefault.Light.DarkActionBar" />
+            android:screenOrientation="portrait" />
         <activity
-            android:name=".activity.HomePageActivity"
+            android:name=".activity.MainActivity"
             android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.DeviceDefault.Light.DarkActionBar" />
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".activity.ChooseActivity"
             android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.DeviceDefault.Light.DarkActionBar" />
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
-            android:name=".activity.ComList_Activity"
-            android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.DeviceDefault.Light.DarkActionBar" />
+            android:name=".activity.CompanyListActivity"
+            android:screenOrientation="portrait" />
         <activity
-            android:name=".activity.GwList_Activity"
+            android:name=".activity.DocumentListActivity"
             android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.DeviceDefault.Light.DarkActionBar" />
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".activity.GwSearch_Activity"
             android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.DeviceDefault.Light.DarkActionBar" />
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
-            android:name=".activity.Gwpy_Activity"
+            android:name=".activity.DocumentReviewActivity"
             android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.DeviceDefault.Light.DarkActionBar" />
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".activity.Gwsh_Activity"
             android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.DeviceDefault.Light.DarkActionBar" />
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".activity.DutyDetailActivity"
             android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.DeviceDefault.Light.DarkActionBar" />
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".activity.Yhdj_Activity"
             android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.DeviceDefault.Light.DarkActionBar">
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
 
             <!-- <intent-filter> -->
             <!-- <action android:name="android.intent.action.MAIN" /> -->
@@ -124,9 +111,11 @@
             <!-- </intent-filter> -->
         </activity>
         <activity
-            android:name=".activity.Yhdj_Activity_V2"
+            android:name=".activity.SafetyCheckActivity"
+            android:exported="false"
+            android:launchMode="singleInstance"
             android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.DeviceDefault.Light.DarkActionBar" />
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".activity.ShowImageActivity"
             android:screenOrientation="portrait"
@@ -139,7 +128,6 @@
         <activity
             android:name=".activity.YhzgUploadActivity"
             android:screenOrientation="portrait" />
-        <activity android:name="com.zxing.activity.MipcaActivityCapture" />
         <activity
             android:name=".activity.CameraTestActivity"
             android:screenOrientation="portrait" />
@@ -168,13 +156,13 @@
             android:name=".activity.VideoPlayActivity"
             android:screenOrientation="landscape"
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
-        <activity android:name=".activity.CameraActivity"></activity>
+        <activity android:name=".activity.CameraActivity" />
 
         <service
             android:name=".util.DownloadIntentService"
             android:exported="false" />
 
-        <activity android:name=".activity.ShowDataActivity"></activity>
+        <activity android:name=".activity.ShowDataActivity" />
     </application>
 
 </manifest>

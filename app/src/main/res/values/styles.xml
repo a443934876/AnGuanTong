@@ -18,8 +18,13 @@
         <item name="android:button">@drawable/checkbox_normal_style</item>
     </style>
     <!-- Application theme. -->
-    <style name="AppTheme" parent="AppBaseTheme">
-        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
     </style>
 
     <style name="alert_dialog" parent="android:Theme.Dialog">
@@ -46,5 +51,6 @@
     <style name="switch_btn" parent="@android:style/Widget.CompoundButton.CheckBox">
         <item name="android:button">@drawable/yingsi_protected</item>
     </style>
+
 
 </resources>

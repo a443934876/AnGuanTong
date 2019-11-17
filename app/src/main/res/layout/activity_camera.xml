@@ -5,7 +5,7 @@
     android:orientation="vertical">
 
 
-    <com.cqj.test.wbd2_gwpy.view.MyCamera
+    <cn.fjmz.agt.view.MyCamera
         android:id="@+id/my_camera"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />

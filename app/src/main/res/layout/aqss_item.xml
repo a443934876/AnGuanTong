@@ -1,64 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/aqssitem_ln"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
     android:gravity="center_vertical"
     android:orientation="horizontal"
-    android:id="@+id/aqssitem_ln"
-    android:padding="5dp" >
+    android:padding="5dp">
 
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:orientation="vertical" >
+        android:orientation="vertical">
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:id="@+id/aqssitem_sbmc"
-            android:text="测试测试测试测试测试测试测试测试" />
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:orientation="horizontal" >
+            android:orientation="horizontal">
 
             <TextView
+                android:id="@+id/tv_device_location"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="#343434"
-                android:text="上次保养：" />
-            
+                android:textColor="@color/aqss_text_color" />
+
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="#343434"
-                android:layout_marginRight="5dp"
                 android:id="@+id/aqssitem_byrq"
-                android:text="2013-11-11" />
-            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="#343434"
-                android:text="目前状态：" />
-            
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="#343434"
-                android:id="@+id/aqssitem_mqzt"
-                android:layout_marginRight="5dp"
-                android:text="正常" />
+                android:layout_marginStart="5dp"
+                android:layout_marginLeft="5dp"
+                android:textColor="@color/aqss_text_color" />
+
         </LinearLayout>
     </LinearLayout>
 
     <CheckBox
+        android:id="@+id/aqssitem_check"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/aqssitem_check"
         android:padding="5dp" />
 
 </LinearLayout>

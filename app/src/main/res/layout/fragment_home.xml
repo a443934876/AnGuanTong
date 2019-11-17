@@ -1,0 +1,403 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/backgroundColor">
+
+
+    <ImageView
+        android:id="@+id/iv_main"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:adjustViewBounds="true"
+        android:scaleType="fitXY"
+        android:src="@drawable/bg_main" />
+
+    <RelativeLayout
+        android:id="@+id/rl_color_arc_progress_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp">
+
+        <cn.fjmz.agt.widget.ColorArcProgressBar
+            android:id="@+id/color_arc_progress_bar"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_centerHorizontal="true"
+            app:back_color="@android:color/darker_gray"
+            app:back_width="10dp"
+            app:front_color1="#FB7E00"
+            app:front_color2="#FAC405"
+            app:front_color3="#73CC7C"
+            app:front_color4="#06A2F3"
+            app:front_color5="#0079FC"
+            app:front_width="10dp"
+            app:is_need_content="true"
+            app:is_need_dial="true"
+            app:is_need_title="true"
+            app:is_need_unit="true"
+            app:max_value="100"
+            app:string_title="安全等级低"
+            app:string_unit="安全指数"
+            app:total_engle="230" />
+    </RelativeLayout>
+
+    <com.scwang.smartrefresh.layout.SmartRefreshLayout
+        android:id="@+id/srl_home"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="190dp">
+        <com.scwang.smartrefresh.layout.header.ClassicsHeader
+            android:id="@+id/ch_home"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:srlAccentColor="@color/half_black"
+            app:srlPrimaryColor="@android:color/transparent" />
+        <cn.fjmz.agt.widget.MyScrollView
+            android:id="@+id/sv_home"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
+            android:overScrollMode="never">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:id="@+id/rl_main_user"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/shape_main_bg">
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1">
+
+                        <TextView
+                            android:id="@+id/tv_user_name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:layout_gravity="center"
+                            android:text="你好，星期六"
+                            android:textColor="@color/black_semi_transparent"
+                            android:textSize="20dp" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center">
+
+                        <TextView
+                            android:id="@+id/tv_date"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="8月24日，星期六"
+                            android:textSize="15dp" />
+
+                        <!--<TextView-->
+                        <!--android:id="@+id/tv_weather"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_below="@+id/tv_date"-->
+                        <!--android:text="天气：晴，温度：30"-->
+                        <!--android:textSize="15dp" />-->
+                    </RelativeLayout>
+
+
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:id="@+id/rl_main_mission_msg"
+                    android:layout_width="match_parent"
+                    android:layout_height="25dp"
+                    android:layout_below="@+id/rl_main_user"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/shape_main_bg"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp">
+
+                    <ImageView
+                        android:id="@+id/iv_msg_mission_icon"
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/icon_msg" />
+
+                    <ImageView
+                        android:id="@+id/iv_msg_mission_arrow"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/detail_barcode_arrow" />
+
+
+                    <TextView
+                        android:id="@+id/tv_msg_mission_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_toEndOf="@+id/iv_msg_mission_icon"
+                        android:layout_toRightOf="@+id/iv_msg_mission_icon"
+                        android:background="@drawable/shape_main_msg_bg"
+                        android:paddingLeft="5dp"
+                        android:paddingRight="5dp"
+                        android:text="任务"
+                        android:textColor="@color/white"
+                        android:textSize="13dp" />
+
+
+                    <com.gongwen.marqueen.MarqueeView
+                        android:id="@+id/mv_mission_msg"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_toStartOf="@+id/iv_msg_mission_arrow"
+                        android:layout_toLeftOf="@+id/iv_msg_mission_arrow"
+                        android:layout_toEndOf="@+id/tv_msg_mission_title"
+                        android:layout_toRightOf="@+id/tv_msg_mission_title"
+                        android:flipInterval="5000"
+                        android:inAnimation="@anim/in_bottom"
+                        android:outAnimation="@anim/out_top"
+                        app:marqueeAnimDuration="2000" />
+
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/rl_main_hiddenIllness_msg"
+                    android:layout_width="match_parent"
+                    android:layout_height="25dp"
+                    android:layout_below="@+id/rl_main_mission_msg"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/shape_main_bg"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp">
+
+                    <ImageView
+                        android:id="@+id/iv_msg_hiddenIllness_icon"
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/icon_msg" />
+
+                    <ImageView
+                        android:id="@+id/iv_msg_hiddenIllness_arrow"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/detail_barcode_arrow" />
+
+
+                    <TextView
+                        android:id="@+id/tv_msg_hiddenIllness_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_toEndOf="@+id/iv_msg_hiddenIllness_icon"
+                        android:layout_toRightOf="@+id/iv_msg_hiddenIllness_icon"
+                        android:background="@drawable/shape_main_msg_bg"
+                        android:paddingLeft="5dp"
+                        android:paddingRight="5dp"
+                        android:text="隐患"
+                        android:textColor="@color/white"
+                        android:textSize="13dp" />
+
+
+                    <com.gongwen.marqueen.MarqueeView
+                        android:id="@+id/mv_hiddenIllness_msg"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_toStartOf="@+id/iv_msg_hiddenIllness_arrow"
+                        android:layout_toLeftOf="@+id/iv_msg_hiddenIllness_arrow"
+                        android:layout_toEndOf="@+id/tv_msg_hiddenIllness_title"
+                        android:layout_toRightOf="@+id/tv_msg_hiddenIllness_title"
+                        android:flipInterval="5000"
+                        android:inAnimation="@anim/in_bottom"
+                        android:outAnimation="@anim/out_top"
+                        app:marqueeAnimDuration="2000" />
+
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/rl_main_lesson_msg"
+                    android:layout_width="match_parent"
+                    android:layout_height="25dp"
+                    android:layout_below="@+id/rl_main_hiddenIllness_msg"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/shape_main_bg"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp">
+
+                    <ImageView
+                        android:id="@+id/iv_msg_lesson_icon"
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/icon_msg" />
+
+                    <ImageView
+                        android:id="@+id/iv_msg_lesson_arrow"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/detail_barcode_arrow" />
+
+
+                    <TextView
+                        android:id="@+id/tv_msg_lesson_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_toEndOf="@+id/iv_msg_lesson_icon"
+                        android:layout_toRightOf="@+id/iv_msg_lesson_icon"
+                        android:background="@drawable/shape_main_msg_bg"
+                        android:paddingLeft="5dp"
+                        android:paddingRight="5dp"
+                        android:text="课程"
+                        android:textColor="@color/white"
+                        android:textSize="13dp" />
+
+
+                    <com.gongwen.marqueen.MarqueeView
+                        android:id="@+id/mv_lesson_msg"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_toStartOf="@+id/iv_msg_lesson_arrow"
+                        android:layout_toLeftOf="@+id/iv_msg_lesson_arrow"
+                        android:layout_toEndOf="@+id/tv_msg_lesson_title"
+                        android:layout_toRightOf="@+id/tv_msg_lesson_title"
+                        android:flipInterval="5000"
+                        android:inAnimation="@anim/in_bottom"
+                        android:outAnimation="@anim/out_top"
+                        app:marqueeAnimDuration="2000" />
+
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/rl_main_safety_msg"
+                    android:layout_width="match_parent"
+                    android:layout_height="25dp"
+                    android:layout_below="@+id/rl_main_lesson_msg"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/shape_main_bg"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp">
+
+                    <ImageView
+                        android:id="@+id/iv_msg_safety_icon"
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/icon_msg" />
+
+                    <ImageView
+                        android:id="@+id/iv_msg_safety_arrow"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/detail_barcode_arrow" />
+
+
+                    <TextView
+                        android:id="@+id/tv_msg_safety_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_toEndOf="@+id/iv_msg_safety_icon"
+                        android:layout_toRightOf="@+id/iv_msg_safety_icon"
+                        android:background="@drawable/shape_main_msg_bg"
+                        android:paddingLeft="5dp"
+                        android:paddingRight="5dp"
+                        android:text="设施"
+                        android:textColor="@color/white"
+                        android:textSize="13dp" />
+
+
+                    <com.gongwen.marqueen.MarqueeView
+                        android:id="@+id/mv_safety_msg"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_toStartOf="@+id/iv_msg_safety_arrow"
+                        android:layout_toLeftOf="@+id/iv_msg_safety_arrow"
+                        android:layout_toEndOf="@+id/tv_msg_safety_title"
+                        android:layout_toRightOf="@+id/tv_msg_safety_title"
+                        android:flipInterval="5000"
+                        android:inAnimation="@anim/in_bottom"
+                        android:outAnimation="@anim/out_top"
+                        app:marqueeAnimDuration="2000" />
+
+
+                </RelativeLayout>
+
+
+                <RelativeLayout
+                    android:id="@+id/rl_main_recycler_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/rl_main_safety_msg"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/white">
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/rv_main"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:overScrollMode="never"
+                        android:scrollbars="none">
+
+                    </android.support.v7.widget.RecyclerView>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/rl_main_advert"
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:layout_below="@+id/rl_main_recycler_view"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/shape_main_bg">
+
+                    <com.bigkoo.convenientbanner.ConvenientBanner
+                        android:id="@+id/cb_main"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        app:autoTurningTime="3000"
+                        app:canLoop="true" />
+                </RelativeLayout>
+            </RelativeLayout>
+
+
+        </cn.fjmz.agt.widget.MyScrollView>
+
+
+
+
+    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+</FrameLayout>

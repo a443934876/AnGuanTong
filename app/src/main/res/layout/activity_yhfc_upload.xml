@@ -17,7 +17,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <com.cqj.test.wbd2_gwpy.view.MyCamera
+            <cn.fjmz.agt.view.MyCamera
                 android:id="@+id/yhfc_camera"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>

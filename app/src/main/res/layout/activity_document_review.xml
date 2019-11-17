@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:focusable="true"
+    android:focusableInTouchMode="true">
+
+    <include
+        android:id="@+id/tb_document_review"
+        layout="@layout/view_title_bar" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tb_document_review">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp">
+
+            <TextView
+                android:id="@+id/tv_review_company"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="15dp"
+                android:text="福清市永春混凝土外加剂有限公司文件"
+                android:textColor="@color/red"
+                android:textSize="15dp" />
+
+            <TextView
+                android:id="@+id/tv_review_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_review_company"
+                android:layout_centerHorizontal="true"
+                android:text="福清永春安[2019]3号"
+                android:textSize="12dp" />
+
+            <View
+                android:id="@+id/view_review"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@+id/tv_review_number"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:background="@color/red" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/view_review"
+                android:background="#007FFF"
+                android:padding="10dp"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="发布时间："
+                    android:textColor="#FFFFFF" />
+
+                <TextView
+                    android:id="@+id/gwpy_fbsj"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textColor="#FFFFFF" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="已经有"
+                        android:textColor="#FFFFFF" />
+
+                    <TextView
+                        android:id="@+id/gwpy_cyrs"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0"
+                        android:textColor="#FFFFFF" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="人已查阅"
+                        android:textColor="#FFFFFF" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_review_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/view_review"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:text="经济大垃圾袋垃圾圣诞快乐jaw建档立卡手机打开辣椒水恐龙当家奥斯卡了的进口蜡手机打开拉时间段"
+                android:textColor="#000000"
+                android:textSize="15dp" />
+
+            <TextView
+                android:id="@+id/tv_review_object"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_review_title"
+                android:layout_marginTop="10dp"
+                android:text="各位：" />
+
+
+            <TextView
+                android:id="@+id/tv_review_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_review_object"
+                android:text="         经济大垃圾袋垃圾圣诞快乐jaw诞快乐jaw建档立卡手机打开辣椒水诞快乐jaw建档立卡手机打开辣椒水诞快乐jaw建档立卡手机打开辣椒水诞快乐jaw建档立卡手机打开辣椒水建档立卡手机打开辣椒水恐龙当家奥斯卡了的进口蜡手机打开拉时间段" />
+
+            <LinearLayout
+                android:id="@+id/gwpy_fjwd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_review_content"
+                android:orientation="vertical" />
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/gwpy_fjwd">
+
+                <LinearLayout
+                    android:id="@+id/gwpy_fjbg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" />
+            </HorizontalScrollView>
+
+            <TextView
+                android:id="@+id/tv_review_remark"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/gwpy_fjwd"
+                android:text="dkaldkasldnsandasldnasndad"
+                android:visibility="gone" />
+
+            <RelativeLayout
+                android:id="@+id/rl_review_company"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_review_remark"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp">
+
+                <TextView
+                    android:id="@+id/tv_review_company_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:textSize="12dp" />
+
+                <TextView
+                    android:id="@+id/tv_review_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_review_company_name"
+                    android:layout_centerHorizontal="true"
+                    android:textSize="12dp" />
+            </RelativeLayout>
+
+
+            <TextView
+                android:id="@+id/tv_review_prompt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/rl_review_company"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="5dp"
+                android:text="批阅：" />
+
+            <EditText
+                android:id="@+id/et_review"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_review_prompt"
+                android:background="@drawable/shop_cate_refresh_btn" />
+
+            <Button
+                android:id="@+id/bt_review_commit"
+                android:layout_width="250dp"
+                android:layout_height="35dp"
+                android:layout_below="@+id/et_review"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="40dp"
+                android:layout_marginBottom="40dp"
+                android:background="@drawable/shape_login_color"
+                android:text="提    交"
+                android:textColor="@color/white"
+                android:textSize="15dp" />
+        </RelativeLayout>
+    </ScrollView>
+
+</RelativeLayout>

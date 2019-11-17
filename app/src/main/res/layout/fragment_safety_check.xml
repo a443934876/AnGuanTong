@@ -1,0 +1,360 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp">
+
+        <RelativeLayout
+            android:id="@+id/rl_safety_check"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp">
+
+            <TextView
+                android:id="@+id/tv_safety_check_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="检查表："
+                android:textSize="18dp" />
+
+            <TextView
+                android:id="@+id/tv_safety_check_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toStartOf="@+id/iv_safety_check_arrow"
+                android:layout_toLeftOf="@+id/iv_safety_check_arrow"
+                android:layout_toEndOf="@+id/tv_safety_check_name"
+                android:layout_toRightOf="@+id/tv_safety_check_name"
+                android:ellipsize="marquee"
+                android:gravity="center"
+                android:hint="请点击选择检查表"
+                android:marqueeRepeatLimit="marquee_forever"
+                android:singleLine="true"
+                android:textSize="15dp" />
+
+            <ImageView
+                android:id="@+id/iv_safety_check_arrow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/detail_barcode_arrow" />
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@+id/rl_safety_check"
+            android:layout_marginTop="10dp"
+            android:background="@color/color_line" />
+
+        <RelativeLayout
+            android:id="@+id/rl_place"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/rl_safety_check"
+            android:layout_marginTop="20dp">
+
+            <TextView
+                android:id="@+id/tv_place_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="场    所："
+                android:textSize="18dp" />
+
+            <TextView
+                android:id="@+id/tv_place_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toStartOf="@+id/iv_place_arrow"
+                android:layout_toLeftOf="@+id/iv_place_arrow"
+                android:layout_toEndOf="@+id/tv_place_name"
+                android:layout_toRightOf="@+id/tv_place_name"
+                android:ellipsize="marquee"
+                android:gravity="center"
+                android:hint="请点击选择场所"
+                android:marqueeRepeatLimit="marquee_forever"
+                android:singleLine="true"
+                android:textSize="15dp" />
+
+            <ImageView
+                android:id="@+id/iv_place_arrow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/detail_barcode_arrow" />
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@+id/rl_place"
+            android:layout_marginTop="10dp"
+            android:background="@color/color_line" />
+
+        <RelativeLayout
+            android:id="@+id/rl_hazard_registration"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/rl_place"
+            android:layout_marginTop="20dp">
+
+            <TextView
+                android:id="@+id/tv_hazard_registration_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="隐患等级："
+                android:textSize="18dp" />
+
+            <TextView
+                android:id="@+id/tv_hazard_registration_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toStartOf="@+id/iv_hazard_registration_arrow"
+                android:layout_toLeftOf="@+id/iv_hazard_registration_arrow"
+                android:layout_toEndOf="@+id/tv_hazard_registration_name"
+                android:layout_toRightOf="@+id/tv_hazard_registration_name"
+                android:ellipsize="marquee"
+                android:gravity="center"
+                android:hint="请点击选择隐患等级"
+                android:marqueeRepeatLimit="marquee_forever"
+                android:singleLine="true"
+                android:textSize="15dp" />
+
+            <ImageView
+                android:id="@+id/iv_hazard_registration_arrow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/detail_barcode_arrow" />
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@+id/rl_hazard_registration"
+            android:layout_marginTop="10dp"
+            android:background="@color/color_line" />
+
+        <TextView
+            android:id="@+id/tv_check_list_item"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/rl_hazard_registration"
+            android:layout_marginTop="20dp"
+            android:text="检查表内容："
+            android:textSize="18dp" />
+
+
+        <EditText
+            android:id="@+id/et_safety_check_detail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_check_list_item"
+            android:layout_marginTop="5dp"
+            android:gravity="left|top" />
+
+
+        <LinearLayout
+            android:id="@+id/ll_select"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/et_safety_check_detail"
+            android:layout_marginTop="15dp"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1">
+
+                <Button
+                    android:id="@+id/ib_up"
+                    android:layout_width="60dp"
+                    android:layout_height="25dp"
+                    android:layout_centerInParent="true"
+                    android:background="@drawable/shape_login_color"
+                    android:text="上一条"
+                    android:textColor="@color/white"
+                    android:textSize="12dp" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1">
+
+                <TextView
+                    android:id="@+id/tv_safety_check_number"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="-第1条，共1条-"
+                    android:textColor="@color/result_minor_text"
+                    android:textSize="12dp" />
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1">
+
+                <Button
+                    android:id="@+id/ib_down"
+                    android:layout_width="60dp"
+                    android:layout_height="25dp"
+                    android:layout_centerInParent="true"
+                    android:background="@drawable/shape_login_color"
+                    android:text="下一条"
+                    android:textColor="@color/white"
+                    android:textSize="12dp" />
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_corrective"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ll_select"
+            android:visibility="gone">
+
+            <RelativeLayout
+                android:id="@+id/rl_estimated_cost"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp">
+
+                <TextView
+                    android:id="@+id/tv_estimated_cost_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="预估费用（元）："
+                    android:textSize="18dp" />
+
+                <EditText
+                    android:id="@+id/et_estimated_cost"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toEndOf="@+id/tv_estimated_cost_name"
+                    android:layout_toRightOf="@+id/tv_estimated_cost_name"
+                    android:gravity="center"
+                    android:hint="请输入预估费用"
+                    android:inputType="number|numberDecimal"
+                    android:singleLine="true"
+                    android:textSize="15dp" />
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@+id/rl_estimated_cost"
+                android:layout_marginTop="10dp"
+                android:background="@color/color_line" />
+
+            <RelativeLayout
+                android:id="@+id/rl_rectification_period"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/rl_estimated_cost"
+                android:layout_marginTop="20dp">
+
+                <TextView
+                    android:id="@+id/tv_rectification_period_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="隐患整改限期："
+                    android:textSize="18dp" />
+
+                <EditText
+                    android:id="@+id/et_rectification_period_date"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toEndOf="@+id/tv_rectification_period_name"
+                    android:layout_toRightOf="@+id/tv_rectification_period_name"
+                    android:focusable="false"
+                    android:gravity="center"
+                    android:hint="请点击选择日期"
+                    android:inputType="datetime"
+                    android:textSize="15dp" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@+id/rl_rectification_period"
+                android:layout_marginTop="10dp"
+                android:background="@color/color_line" />
+
+            <TextView
+                android:id="@+id/tv_corrective_actions_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/rl_rectification_period"
+                android:layout_marginTop="20dp"
+                android:text="建议整改措施："
+                android:textSize="18dp" />
+
+
+            <EditText
+                android:id="@+id/et_corrective_actions"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_corrective_actions_name"
+                android:layout_marginTop="20dp"
+                android:gravity="left|top" />
+
+        </RelativeLayout>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/rl_corrective"
+            android:layout_marginTop="20dp"
+            android:overScrollMode="never"
+            android:scrollbars="none" />
+
+        <Button
+            android:id="@+id/bt_commit"
+            android:layout_width="250dp"
+            android:layout_height="45dp"
+            android:layout_below="@+id/rv_btn"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="50dp"
+            android:background="@drawable/shape_login_color"
+            android:text="提交记录"
+            android:textColor="@color/white" />
+    </RelativeLayout>
+</ScrollView>

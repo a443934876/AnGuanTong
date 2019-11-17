@@ -6,15 +6,6 @@
               android:focusableInTouchMode="true"
               android:orientation="vertical">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/blue_btn_bg_pressed_color"
-        android:padding="16dp"
-        android:id="@+id/fragment_title"
-        android:text="以下隐患已反馈未复查"
-        android:textColor="@color/white"
-        android:textSize="20sp"/>
 
     <LinearLayout
         android:layout_width="match_parent"

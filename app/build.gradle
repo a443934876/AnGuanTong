@@ -1,28 +1,29 @@
 apply plugin: 'com.android.application'
+apply plugin: 'realm-android'
+
 tasks.withType(JavaCompile) {
     options.encoding = "UTF-8"
 }
 android {
-    compileSdkVersion 25
-    buildToolsVersion "26.0.1"
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
 
-//    splits {
-//        abi {
-//            enable true
-//            reset()
-//            include 'x86', 'armeabi-v7a','x86_64'
-//            universalApk true
-//        }
-//    }
     defaultConfig {
-        applicationId "com.cqj.test.wbd2_gwpy"
-        minSdkVersion 15
-        targetSdkVersion 25
-        versionCode 4
-        versionName "1.0.4"
-
+        applicationId "cn.fjmz.agt"
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode rootProject.ext.versionCode
+        versionName rootProject.ext.versionName
+        multiDexEnabled true
         ndk {
-            abiFilters "armeabi", "armeabi-v7a", "x86", "mips"
+//            abiFilters 'armeabi-v7a', 'x86'
+            abiFilters 'armeabi-v7a'
+        }
+    }
+    // 自定义输出配置
+    android.applicationVariants.all { variant ->
+        variant.outputs.all {
+            outputFileName = "huiwei_agt_android.apk"
         }
     }
 
@@ -33,6 +34,7 @@ android {
             keyAlias "keystore"
             keyPassword "a6406551"
             v2SigningEnabled false
+
         }
         debug {
             storeFile file('Normal.keystore')
@@ -48,12 +50,26 @@ android {
             signingConfig signingConfigs.debug
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+            lintOptions {
+                checkReleaseBuilds false
+                abortOnError false
+            }
+
+
         }
         release {
             signingConfig signingConfigs.release
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+            // shrinkResources true
+            lintOptions {
+                checkReleaseBuilds false
+                abortOnError false
+            }
         }
+    }
+    dexOptions {
+        javaMaxHeapSize "4g"
     }
     sourceSets {
         main {
@@ -65,24 +81,55 @@ android {
 }
 
 dependencies {
-    /*    compile(name: 'LiteAVSDK_UGC_3.3.1655', ext: 'aar')*/
-    compile(name: 'LiteAVSDK_UGC_3.5.2170', ext: 'aar')
+    implementation 'com.android.support:multidex:1.0.3'
+    implementation(name: 'LiteAVSDK_UGC_3.5.2170', ext: 'aar')
+    implementation files('libs/afinal_0.5.1_bin.jar')
+    implementation files('libs/jsoup-1.7.2.jar')
+    implementation files('libs/ksoap2-android-assembly-2.4-jar-with-dependencies(修改).jar')
+    implementation "com.android.support:support-v4:$rootProject.ext.androidSupportSdkVersion"
+    implementation "com.android.support:recyclerview-v7:$rootProject.ext.androidSupportSdkVersion"
+    implementation "com.android.support:cardview-v7:$rootProject.ext.androidSupportSdkVersion"
+    implementation 'de.greenrobot:greendao:2.1.0'
+    implementation 'com.tbruyelle.rxpermissions:rxpermissions:0.7.0@aar'
+    implementation 'com.github.bumptech.glide:glide:3.7.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+    implementation 'com.github.dfqin:grantor:2.5'
+    implementation 'com.google.zxing:android-core:3.3.0'
+    implementation 'com.github.ikidou:FragmentBackHandler:2.1'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.0.2'
+    //日志
+    implementation 'com.orhanobut:logger:2.2.0'
+    //toast
+    implementation 'com.hjq:toast:5.8'
+    implementation 'pub.devrel:easypermissions:2.0.1'
+    //json
+    implementation 'com.alibaba:fastjson:1.2.60'
+    implementation 'com.google.code.gson:gson:2.8.5'
+    //BaseRecyclerViewAdapter
+    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.47'
+    //butterknife
+    implementation 'com.jakewharton:butterknife:8.8.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
+    //沉浸式
+    implementation 'com.jaeger.statusbarutil:library:1.5.1'
+    //ConvenientBanner
+    implementation 'com.bigkoo:ConvenientBanner:2.1.4'
+    //跑马灯
+    implementation 'com.gongwen:marqueelibrary:1.1.3'
+    //底部导航栏
+    implementation 'com.flyco.tablayout:FlycoTabLayout_Lib:2.1.2@aar'
+    //提示框
+    implementation 'cn.pedant.sweetalert:library:1.3'
+    //app-updater
+    implementation 'com.king.app:app-updater:1.0.4'
+    //app-dialog
+    implementation 'com.king.app:app-dialog:1.0.4'
+    //二维码
+    implementation 'com.mylhyl:zxingscanner:2.1.6'
+    // 下拉刷新
+    implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0'
 
-    compile files('libs/afinal_0.5.1_bin.jar')
-    compile files('libs/jsoup-1.7.2.jar')
-    compile files('libs/ksoap2-android-assembly-2.4-jar-with-dependencies(修改).jar')
-    compile files('libs/zxing.jar')
-    compile files('libs/zbardecoder.jar')
-    //    compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
-//    compile 'io.reactivex.rxjava2:rxjava:2.0.7'
-    compile 'pub.devrel:easypermissions:0.4.0'
-    compile 'com.android.support:support-v4:25.3.1'
-    compile 'de.greenrobot:greendao:2.1.0'
-    compile 'io.reactivex:rxandroid:1.1.0'
-    compile 'io.reactivex:rxjava:1.1.0'
-    compile 'q.rorbin:badgeview:1.1.3'
-    compile 'com.tbruyelle.rxpermissions:rxpermissions:0.7.0@aar'
-    compile 'org.apache.httpcomponents:httpclient:4.3.5@aar'
-    compile 'com.github.bumptech.glide:glide:3.7.0'
-    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    implementation 'com.github.CarGuo:GSYRecordWave:2.0.1'
+
+
 }

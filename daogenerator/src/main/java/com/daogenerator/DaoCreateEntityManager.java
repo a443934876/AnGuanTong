@@ -186,7 +186,7 @@ public class DaoCreateEntityManager {
  "sccheckname", "sccheckdate",
  "sccheckstat", "sccheckdetail"
  */
-        Entity info = pSchema.addEntity("SbjcListInfo");
+        Entity info = pSchema.addEntity("DeviceInfo");
         info.addIdProperty().primaryKey().autoincrement();
         info.addIntProperty("cpid");
         info.addStringProperty("prodname");
@@ -194,6 +194,7 @@ public class DaoCreateEntityManager {
         info.addStringProperty("sccheckdate");
         info.addStringProperty("sccheckstat");
         info.addStringProperty("sccheckdetail");
+        info.addStringProperty("deviceLocation");
     }
 
     private static void createYhfcInfo(Schema pSchema) {

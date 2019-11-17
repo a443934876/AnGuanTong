@@ -1,163 +1,29 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tl="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/bg"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
 
-    <LinearLayout
+    <FrameLayout
+        android:id="@+id/fl_main"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="2">
+        android:layout_height="match_parent"
+        android:layout_marginBottom="45dp" />
 
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:scaleType="centerCrop"
-            android:src="@drawable/login_title_icon" />
-    </LinearLayout>
-
-    <LinearLayout
+    <com.flyco.tablayout.CommonTabLayout
+        android:id="@+id/tab_layout"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginTop="20dp"
-        android:layout_weight="2"
-        android:orientation="vertical">
+        android:layout_height="45dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/color_tab"
+        app:tl_iconHeight="18dp"
+        app:tl_iconWidth="18dp"
+        app:tl_indicator_anim_enable="true"
+        app:tl_indicator_bounce_enable="true"
+        app:tl_indicator_height="0dp"
+        app:tl_textSelectColor="@color/color_blue"
+        app:tl_textUnselectColor="@color/color_gray"
+        app:tl_textsize="10dp" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <ImageView
-                android:layout_width="50dp"
-                android:layout_height="match_parent"
-                android:background="#FFFFFF"
-                android:scaleType="center"
-                android:src="@drawable/zhanghao_icon" />
-
-            <EditText
-                android:id="@+id/zhanghao_edt"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:background="#FFFFFF"
-                android:hint="请输入用户名" />
-        </LinearLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="0.5dp"
-            android:background="#999999" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <ImageView
-                android:layout_width="50dp"
-                android:layout_height="match_parent"
-                android:background="#FFFFFF"
-                android:scaleType="center"
-                android:src="@drawable/mima_icon" />
-
-            <EditText
-                android:id="@+id/mima_edt"
-                android:layout_width="wrap_content"
-                android:layout_height="50dp"
-                android:layout_weight="9"
-                android:background="#FFFFFF"
-                android:hint="请输入密码"
-                android:password="true" />
-
-            <ImageView
-                android:id="@+id/jzmm"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@drawable/bnt02"
-                android:clickable="true"
-                android:onClick="jzmm" />
-        </LinearLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="0.5dp"
-            android:background="#999999" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <ImageView
-                android:layout_width="50dp"
-                android:layout_height="match_parent"
-                android:background="#FFFFFF"
-                android:scaleType="center"
-                android:src="@drawable/yzm_icon" />
-
-            <EditText
-                android:id="@+id/yzm_edt"
-                android:layout_width="0dp"
-                android:layout_height="50dp"
-                android:layout_weight="1"
-                android:background="#FFFFFF"
-                android:ems="4"
-                android:hint="验证码"
-                android:maxLength="6" />
-
-            <ImageView
-                android:id="@+id/yzm_iv"
-                android:layout_width="100dp"
-                android:layout_height="match_parent"
-                android:clickable="true"
-                android:onClick="changeYzm" />
-        </LinearLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="0.5dp"
-            android:background="#999999" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="horizontal"></LinearLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="0.5dp"
-            android:layout_marginTop="20dip"
-            android:background="#999999" />
-
-        <Button
-            android:id="@+id/main_loginbtn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#00000000"
-            android:onClick="login"
-            android:paddingBottom="15dip"
-            android:paddingTop="15dip"
-            android:text="登　录"
-            android:textSize="30px" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="0.5dp"
-            android:background="#999999" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-
-            android:text="福建省仲能网络科技有限公司"
-            android:textSize="14sp" />
-    </LinearLayout>
-
-</LinearLayout>
+</RelativeLayout>
