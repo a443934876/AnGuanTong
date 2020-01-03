@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:myspace="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/rl_scan"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.mylhyl.zxing.scanner.ScannerView
+            android:id="@+id/scanner_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <cn.fjmz.agt.view.TitleBar
+            android:id="@+id/tb_scan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:alpha="0.5"
+            myspace:background_oa="@color/black"
+            myspace:left_enable="true"
+            myspace:left_icon="@drawable/icon_back"
+            myspace:title_color="@color/white"
+            myspace:title_oa="扫描二维码" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="50dp">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/iv_lamp"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:alpha="0.6"
+                    android:contentDescription="@string/app_name"
+                    android:src="@drawable/icon_lamp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="手电筒"
+                    android:textColor="@color/white" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/iv_picture"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:alpha="0.6"
+                    android:contentDescription="@string/app_name"
+                    android:src="@drawable/icon_picture" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="相册"
+                    android:textColor="@color/white" />
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+
+</RelativeLayout>

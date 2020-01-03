@@ -32,7 +32,7 @@ public class UploadDataHelper {
                 info.getResults(), info.getEvalstr(), info.getFactCost(), imageResult};
         return WebServiceUtil.getWebServiceMsg(keys, values,
                 "setHiddenTroubleDighted", new String[]{},
-                WebServiceUtil.HUIWEI_SAFE_URL, WebServiceUtil.HUIWEI_NAMESPACE);
+                WebServiceUtil.HUI_WEI_5VS, WebServiceUtil.HUI_WEI_NAMESPACE);
     }
 
     public static ArrayList<HashMap<String, Object>> uploadYhfc(YhfcCommitInfo info) throws Exception {
@@ -43,7 +43,7 @@ public class UploadDataHelper {
                 info.getReviewRemark(), info.getReviewDate(), imageResult};
         return WebServiceUtil.getWebServiceMsg(keys, values,
                 "setHiddenTroubleReview", new String[]{},
-                WebServiceUtil.HUIWEI_SAFE_URL, WebServiceUtil.HUIWEI_NAMESPACE);
+                WebServiceUtil.HUI_WEI_5VS, WebServiceUtil.HUI_WEI_NAMESPACE);
     }
 
     public static ArrayList<HashMap<String, Object>> uploadAqjc(AqjcCommitInfo pFinalInfo) throws Exception {
@@ -61,7 +61,7 @@ public class UploadDataHelper {
         System.out.println("imageResult:" + imageResult);
         data = WebServiceUtil.getWebServiceMsg(keys3, values3,
                 "AddHiddenTroubleFromAreaID", new String[]{},
-                WebServiceUtil.HUIWEI_SAFE_URL, WebServiceUtil.HUIWEI_NAMESPACE);
+                WebServiceUtil.HUI_WEI_5VS, WebServiceUtil.HUI_WEI_NAMESPACE);
 //                    } else {
 //                        String keys3[] = {"checkDate", "recEmid", "dLimit",
 //                                "hDetail", "dScheme", "hGrade", "lEmid",
@@ -135,7 +135,7 @@ public class UploadDataHelper {
                     Object[] values = {uploadBuffer, fileName};
                     System.out.println("fileName:" + fileName);
                     String serverPath = WebServiceUtil.putWebServiceMsg(keys, values,
-                            methodName, WebServiceUtil.HUIWEI_URL, WebServiceUtil.HUIWEI_NAMESPACE);
+                            methodName, WebServiceUtil.HUI_WEI_5VC, WebServiceUtil.HUI_WEI_NAMESPACE);
                     result.append(serverPath);
                     result.append(";");
                 } finally {

@@ -20,7 +20,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import cn.fjmz.agt.App;
+import cn.fjmz.agt.MyApplication;
 import cn.fjmz.agt.R;
 import cn.fjmz.agt.YhzgCommitInfo;
 import cn.fjmz.agt.dao.SqliteOperator;
@@ -225,7 +225,7 @@ public class YhzgUploadActivity extends Activity implements View.OnClickListener
     }
 
     private void commit(final YhzgCommitInfo info) {
-        if (!App.isConnection) {
+        if (!MyApplication.isConnection) {
             toast("未联网，已保存！等待下次联网后再提示");
             SqliteOperator.INSTANCE.getYhzgCommitInfo(YhzgUploadActivity.this).insertOrReplace(info);
             return;

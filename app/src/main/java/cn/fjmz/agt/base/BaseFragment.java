@@ -165,7 +165,7 @@ public abstract class BaseFragment<P extends BasePresenter> extends Fragment imp
      */
     public void startActivity(Class<?> clz, Bundle bundle) {
         Intent intent = new Intent();
-        intent.setClass(getActivity(), clz);
+        intent.setClass(mContext, clz);
         if (bundle != null) {
             intent.putExtras(bundle);
         }
@@ -178,7 +178,7 @@ public abstract class BaseFragment<P extends BasePresenter> extends Fragment imp
     public void startActivityForResult(Class<?> cls, Bundle bundle,
                                        int requestCode) {
         Intent intent = new Intent();
-        intent.setClass(getActivity(), cls);
+        intent.setClass(mContext, cls);
         if (bundle != null) {
             intent.putExtras(bundle);
         }

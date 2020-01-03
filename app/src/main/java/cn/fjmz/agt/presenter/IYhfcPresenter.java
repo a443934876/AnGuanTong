@@ -2,7 +2,7 @@ package cn.fjmz.agt.presenter;
 
 import android.content.Context;
 
-import cn.fjmz.agt.App;
+import cn.fjmz.agt.MyApplication;
 import cn.fjmz.agt.YhfcInfo;
 
 import java.util.List;
@@ -12,7 +12,7 @@ import java.util.List;
  */
 public interface IYhfcPresenter {
 
-    void getYhfcList(App pApp, String startDate, String endDate, String name);
+    void getYhfcList(MyApplication pMyApplication, String startDate, String endDate, String name);
 
     interface View{
         void getYhfcListSuccess(List<YhfcInfo> pYhfcInfoList);

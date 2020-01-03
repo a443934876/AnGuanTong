@@ -16,6 +16,7 @@ import cn.fjmz.agt.bean.TabEntity;
 import cn.fjmz.agt.fragment.HomeFragment;
 import cn.fjmz.agt.fragment.MineFragment;
 import cn.fjmz.agt.util.ActivityManageUtils;
+
 import com.flyco.tablayout.CommonTabLayout;
 import com.flyco.tablayout.listener.CustomTabEntity;
 
@@ -58,7 +59,7 @@ public class MainActivity extends BaseActivity {
         RealmResults<CompanyEntity> entities = getRealm().where(CompanyEntity.class).
                 equalTo("comName", getIntent().getStringExtra(mComName)).findAll();
         if (entities.size() > 0) {
-            Constants.entity = entities.get(0);
+            Constants.companyEntity = entities.get(0);
             mFragments.add(HomeFragment.newInstance());
             mFragments.add(MineFragment.newInstance());
             ArrayList<CustomTabEntity> mTabEntities = new ArrayList<>();
@@ -66,6 +67,7 @@ public class MainActivity extends BaseActivity {
                 mTabEntities.add(new TabEntity(mTitles[i], mIconSelectIds[i], mIconUnSelectIds[i]));
             }
             mTabLayout.setTabData(mTabEntities, this, R.id.fl_main, mFragments);
+            mTabLayout.setCurrentTab(0);
         } else {
             LoginActivity.launch(LoginActivity.class, this);
         }

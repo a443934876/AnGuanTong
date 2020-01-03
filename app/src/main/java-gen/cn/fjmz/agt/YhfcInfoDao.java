@@ -17,7 +17,7 @@ public class YhfcInfoDao extends AbstractDao<YhfcInfo, Long> {
     public static final String TABLENAME = "YHFC_INFO";
 
     /**
-     * Properties of entity YhfcInfo.<br/>
+     * Properties of companyEntity YhfcInfo.<br/>
      * Can be used for QueryBuilder and for referencing column names.
     */
     public static class Properties {

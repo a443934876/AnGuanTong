@@ -47,7 +47,7 @@ public class YhDetailActivity extends Activity {
 //                    Object values2[] = {mStringExtra};
 //                    ArrayList<HashMap<String, Object>> result = WebServiceUtil.getWebServiceMsg(keys2, values2,
 //                            "getHiddenTroubleDetail",
-//                            WebServiceUtil.HUIWEI_SAFE_URL, WebServiceUtil.HUIWEI_NAMESPACE);
+//                            WebServiceUtil.HUI_WEI_5VS, WebServiceUtil.HUI_WEI_NAMESPACE);
 //                    List<YhDetailInfo> list = parseYhDetail(result);
 //                    if (list.size() == 0) {
 //                        pSubscriber.onError(new Throwable());

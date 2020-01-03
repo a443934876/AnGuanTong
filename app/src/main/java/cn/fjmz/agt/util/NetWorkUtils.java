@@ -8,7 +8,7 @@ import android.net.wifi.WifiManager;
 import android.telephony.TelephonyManager;
 import android.util.Log;
 
-import cn.fjmz.agt.App;
+import cn.fjmz.agt.MyApplication;
 
 import java.io.BufferedReader;
 import java.io.Closeable;
@@ -54,9 +54,9 @@ public class NetWorkUtils {
      */
     public static void openWirelessSettings() {
         if (android.os.Build.VERSION.SDK_INT > 10) {
-            App.getContext().startActivity(new Intent(android.provider.Settings.ACTION_WIRELESS_SETTINGS).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+            MyApplication.getContext().startActivity(new Intent(android.provider.Settings.ACTION_WIRELESS_SETTINGS).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
         } else {
-            App.getContext().startActivity(new Intent(android.provider.Settings.ACTION_SETTINGS).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+            MyApplication.getContext().startActivity(new Intent(android.provider.Settings.ACTION_SETTINGS).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
         }
     }
 
@@ -67,7 +67,7 @@ public class NetWorkUtils {
      * @return NetworkInfo
      */
     private static NetworkInfo getActiveNetworkInfo() {
-        ConnectivityManager cm = (ConnectivityManager) App.getContext()
+        ConnectivityManager cm = (ConnectivityManager) MyApplication.getContext()
                 .getSystemService(Context.CONNECTIVITY_SERVICE);
         return cm.getActiveNetworkInfo();
     }
@@ -110,7 +110,7 @@ public class NetWorkUtils {
      */
     public static boolean getDataEnabled() {
         try {
-            TelephonyManager tm = (TelephonyManager) App.getContext().getSystemService(Context.TELEPHONY_SERVICE);
+            TelephonyManager tm = (TelephonyManager) MyApplication.getContext().getSystemService(Context.TELEPHONY_SERVICE);
             Method getMobileDataEnabledMethod = tm.getClass().getDeclaredMethod("getDataEnabled");
             if (null != getMobileDataEnabledMethod) {
                 return (boolean) getMobileDataEnabledMethod.invoke(tm);
@@ -129,7 +129,7 @@ public class NetWorkUtils {
      */
     public static void setDataEnabled(boolean enabled) {
         try {
-            TelephonyManager tm = (TelephonyManager) App.getContext().getSystemService(Context.TELEPHONY_SERVICE);
+            TelephonyManager tm = (TelephonyManager) MyApplication.getContext().getSystemService(Context.TELEPHONY_SERVICE);
             Method setMobileDataEnabledMethod = tm.getClass().getDeclaredMethod("setDataEnabled", boolean.class);
             if (null != setMobileDataEnabledMethod) {
                 setMobileDataEnabledMethod.invoke(tm, enabled);
@@ -157,7 +157,7 @@ public class NetWorkUtils {
      * @return {@code true}: 是<br>{@code false}: 否
      */
     public static boolean getWifiEnabled() {
-        WifiManager wifiManager = (WifiManager) App.getContext().getApplicationContext().getSystemService(Context.WIFI_SERVICE);
+        WifiManager wifiManager = (WifiManager) MyApplication.getContext().getApplicationContext().getSystemService(Context.WIFI_SERVICE);
         return wifiManager.isWifiEnabled();
     }
 
@@ -168,7 +168,7 @@ public class NetWorkUtils {
      * @param enabled {@code true}: 打开<br>{@code false}: 关闭
      */
     public static void setWifiEnabled(boolean enabled) {
-        WifiManager wifiManager = (WifiManager) App.getContext().getApplicationContext().getSystemService(Context.WIFI_SERVICE);
+        WifiManager wifiManager = (WifiManager) MyApplication.getContext().getApplicationContext().getSystemService(Context.WIFI_SERVICE);
         if (enabled) {
             if (!wifiManager.isWifiEnabled()) {
                 wifiManager.setWifiEnabled(true);
@@ -187,7 +187,7 @@ public class NetWorkUtils {
      * @return {@code true}: 连接<br>{@code false}: 未连接
      */
     public static boolean isWifiConnected() {
-        ConnectivityManager cm = (ConnectivityManager) App.getContext()
+        ConnectivityManager cm = (ConnectivityManager) MyApplication.getContext()
                 .getSystemService(Context.CONNECTIVITY_SERVICE);
         return cm != null && cm.getActiveNetworkInfo() != null
                 && cm.getActiveNetworkInfo().getType() == ConnectivityManager.TYPE_WIFI;
@@ -211,7 +211,7 @@ public class NetWorkUtils {
      * @return 运营商名称
      */
     public static String getNetworkOperatorName() {
-        TelephonyManager tm = (TelephonyManager) App.getContext().getSystemService(Context.TELEPHONY_SERVICE);
+        TelephonyManager tm = (TelephonyManager) MyApplication.getContext().getSystemService(Context.TELEPHONY_SERVICE);
         return tm != null ? tm.getNetworkOperatorName() : null;
     }
 

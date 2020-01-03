@@ -17,7 +17,7 @@ public class SbjcCommitInfoDao extends AbstractDao<SbjcCommitInfo, Long> {
     public static final String TABLENAME = "SBJC_COMMIT_INFO";
 
     /**
-     * Properties of entity SbjcCommitInfo.<br/>
+     * Properties of companyEntity SbjcCommitInfo.<br/>
      * Can be used for QueryBuilder and for referencing column names.
     */
     public static class Properties {

@@ -18,48 +18,21 @@ import java.util.Set;
 
 public class WebServiceUtil {
 
-    public static final String WEBSERVICE_NAMESPACE = "http://wisebus.com/";
-    public static final String HUIWEI_URL = "http://huiwei.contingencymanagement.cn/5VCommon.asmx";
-    public static final String HUIWEI_5VTF_URL = "http://huiwei.contingencymanagement.cn/5VTaskFollow.asmx";
-    public static final String HUIWEI_5VIN_URL = "http://huiwei.contingencymanagement.cn/5VInformPublish.asmx";
-    public static final String HUIWEI_PM_URL = "http://huiwei.contingencymanagement.cn/5VProjectManager.asmx";
-    public static final String HUIWEI_NAMESPACE = "http://www.huiweioa.com/";
-    public static final String URL = "http://www.wisebus.com/5VCommon.asmx";
-    public static final String HUIWEI_5VPM_URL = "http://huiwei.contingencymanagement.cn/5VProjectManager.asmx";
+    private static final String HUI_WEI_URL = "http://huiwei.contingencymanagement.cn/";
+    private static final String WISE_BUS_URL = "http://nhuiwei.contingencymanagement.cn/";
+    public static final String HUI_WEI_NAMESPACE = "http://www.huiweioa.com/";
+    public static final String WISEBUS_NAMESPACE = "http://wisebus.com/";
+    public static final String HUI_WEI_5VC = HUI_WEI_URL + "5VCommon.asmx";
+    public static final String HUI_WEI_5VT = HUI_WEI_URL + "5VTaskFollow.asmx";
+    public static final String HUI_WEI_5VI = HUI_WEI_URL + "5VInformPublish.asmx";
+    public static final String HUI_WEI_5VP = HUI_WEI_URL + "5VProjectManager.asmx";
+    public static final String HUI_WEI_5VS = HUI_WEI_URL + "5VSafetyProduction.asmx";
+    public static final String WISE_BUS_5VS = WISE_BUS_URL + "5VSafetyProduction.asmx";
+    public static final String HUI_WEI_5VH = HUI_WEI_URL + "5VHumanResource.asmx";
     public static final String SAFE_URL = "http://www.wisebus.com/5VSafetyProduction.asmx";
-    public static final String HUIWEI_SAFE_URL = "http://huiwei.contingencymanagement.cn/5VSafetyProduction.asmx";
+    public static final String WEBSERVICE_NAMESPACE = "http://wisebus.com/";
     public static final String PART_DUTY_URL = "http://www.wisebus.com/5VHumanResource.asmx";
-    public static final String HUIWEI_5HR = "http://huiwei.contingencymanagement.cn/5VHumanResource.asmx";
-    public static final String putURL = "http://www.wisebus.com/5VInformPublish.asmx";
-    public static final String putWEBSERVICE_NAMESPACE = "http://tempuri.org/";
-    public static final String IMAGE_URLPATH = "http://huiweioa.chinasafety.org/";
-
-    public static void putWebServiceMsg(String[] keys, Object[] values,
-                                        String methodName) throws Exception {
-        String actionUrl = putWEBSERVICE_NAMESPACE + methodName;
-        SoapObject so = new SoapObject(putWEBSERVICE_NAMESPACE, methodName);
-        if (keys != null) {
-            for (int i = 0; i < keys.length; i++) {
-                so.addProperty(keys[i], values[i]);
-            }
-        }
-        SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(
-                SoapEnvelope.VER11);
-        envelope.bodyOut = so;
-        envelope.encodingStyle = "UTF-8";
-        envelope.dotNet = true;
-        HttpTransportSE ht = new HttpTransportSE(putURL, 5000);
-        ht.call(actionUrl, envelope);
-        SoapObject result = null;
-        try {
-            result = (SoapObject) envelope.bodyIn;
-            String resultStr = result.toString();
-            System.out.println("result:" + resultStr);
-        } catch (Exception e) {
-            SoapFault soaF = (SoapFault) envelope.bodyIn;
-            System.out.println("FaultString:" + methodName + "----" + soaF.faultstring);
-        }
-    }
+    public static final String IMAGE_URL_PATH = "http://huiweioa.chinasafety.org/";
 
 
     public static String putWebServiceMsg(String[] keys, Object[] values,
@@ -78,7 +51,7 @@ public class WebServiceUtil {
         envelope.dotNet = true;
         HttpTransportSE ht = new HttpTransportSE(url, 5000);
         ht.call(actionUrl, envelope);
-        SoapObject result = null;
+        SoapObject result;
         try {
             result = (SoapObject) envelope.bodyIn;
             String resultStr = result.toString();
@@ -89,16 +62,14 @@ public class WebServiceUtil {
             System.out.println("result:" + resultStr);
             return resultStr;
         } catch (Exception e) {
-            SoapFault soaF = (SoapFault) envelope.bodyIn;
-            System.out.println("FaultString:" + methodName + "----" + soaF.faultstring);
             return "";
         }
     }
 
     public static ArrayList<HashMap<String, Object>> getWebServiceMsg(
             String[] keys, Object[] values, String methodName) throws Exception {
-        String actionUrl = HUIWEI_NAMESPACE + methodName;
-        SoapObject so = new SoapObject(HUIWEI_NAMESPACE, methodName);
+        String actionUrl = HUI_WEI_NAMESPACE + methodName;
+        SoapObject so = new SoapObject(HUI_WEI_NAMESPACE, methodName);
         if (keys != null) {
             for (int i = 0; i < keys.length; i++) {
                 so.addProperty(keys[i], values[i]);
@@ -111,7 +82,7 @@ public class WebServiceUtil {
         envelope.bodyOut = so;
         envelope.encodingStyle = "UTF-8";
         envelope.dotNet = true;
-        HttpTransportSE ht = new HttpTransportSE(HUIWEI_URL, 5000);
+        HttpTransportSE ht = new HttpTransportSE(HUI_WEI_5VC, 5000);
         ht.call(actionUrl, envelope);
         SoapObject result = null;
         try {
@@ -120,7 +91,7 @@ public class WebServiceUtil {
             SoapFault soaF = (SoapFault) envelope.bodyIn;
             System.out.println("FaultString:" + methodName + "----" + soaF.faultstring);
         }
-        ArrayList<HashMap<String, Object>> datas = new ArrayList<HashMap<String, Object>>();
+        ArrayList<HashMap<String, Object>> datas = new ArrayList<>();
         if (result != null) {
             String resultStr = "";
             try {
@@ -207,10 +178,8 @@ public class WebServiceUtil {
         return datas;
     }
 
-    public static String getWebServiceMsg1(
-            Map<String, Object> requestData, String methodName, String url, String nameSpace)
-            throws Exception {
-        String actionUrl = nameSpace + methodName;
+    public static String getWebServiceMsgList(Map<String, Object> requestData, String methodName,
+                                              String url, String nameSpace) throws Exception {
         SoapObject so = new SoapObject(nameSpace, methodName);
         if (requestData != null) {
             Set<Map.Entry<String, Object>> requestEntry = requestData.entrySet();
@@ -218,32 +187,28 @@ public class WebServiceUtil {
                 so.addProperty(entry.getKey(), entry.getValue());
             }
         }
-        SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(
-                SoapEnvelope.VER11);
+        SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
         MarshalFloat marshalFloat = new MarshalFloat();
         marshalFloat.register(envelope);
         envelope.bodyOut = so;
         envelope.encodingStyle = "UTF-8";
         envelope.dotNet = true;
         HttpTransportSE ht = new HttpTransportSE(url, 5000);
-        ht.call(actionUrl, envelope);
+        ht.call(nameSpace + methodName, envelope);
         SoapObject result = (SoapObject) envelope.bodyIn;
-        ArrayList<HashMap<String, Object>> maps;
-        maps = new ArrayList<>();
+        ArrayList<HashMap<String, Object>> maps = new ArrayList<>();
         if (result != null) {
             String resultStr = result.toString();
-            System.out.println("result:" + resultStr);
+            Log.e("ljj", methodName + ":" + resultStr);
             int endInt = resultStr.lastIndexOf("};");
-            resultStr = resultStr.substring(endInt + 2,
-                    resultStr.length() - 2);
+            resultStr = resultStr.substring(endInt + 2, resultStr.length() - 2);
             SoapObject detail = (SoapObject) result.getProperty(0);
             SoapObject detailProperty = (SoapObject) detail.getProperty(1);
             if (detailProperty.getPropertyCount() > 0) {
                 SoapObject property = (SoapObject) detailProperty.getProperty(0);
                 for (int i = 0; i < property.getPropertyCount(); i++) {
                     String str_result = property.getProperty(i).toString();
-                    HashMap<String, Object> map = parseData(str_result,
-                            resultStr);
+                    HashMap<String, Object> map = parseData(str_result, resultStr);
                     if (map != null) {
                         maps.add(map);
                     }
@@ -254,6 +219,39 @@ public class WebServiceUtil {
                     maps.add(map);
                 }
             }
+
+        }
+        String s = JSONObject.toJSONString(maps);
+        Log.e("ljj", methodName + ":" + s);
+        return s;
+    }
+
+    public static String getWebServiceMsgStr(Map<String, Object> requestData, String methodName,
+                                             String url, String nameSpace) throws Exception {
+        SoapObject so = new SoapObject(nameSpace, methodName);
+        if (requestData != null) {
+            Set<Map.Entry<String, Object>> requestEntry = requestData.entrySet();
+            for (Map.Entry<String, Object> entry : requestEntry) {
+                so.addProperty(entry.getKey(), entry.getValue());
+            }
+        }
+        SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
+        MarshalFloat marshalFloat = new MarshalFloat();
+        marshalFloat.register(envelope);
+        envelope.bodyOut = so;
+        envelope.encodingStyle = "UTF-8";
+        envelope.dotNet = true;
+        HttpTransportSE ht = new HttpTransportSE(url, 5000);
+        ht.call(nameSpace + methodName, envelope);
+        SoapObject result = (SoapObject) envelope.bodyIn;
+        ArrayList<HashMap<String, Object>> maps = new ArrayList<>();
+        if (result != null) {
+            String resultStr = result.toString();
+            HashMap<String, Object> map = parseData(resultStr, "");
+            if (map != null && map.isEmpty()) {
+                return "";
+            }
+            maps.add(map);
         }
         String s = JSONObject.toJSONString(maps);
         Log.e("ljj", methodName + ":" + s);
@@ -330,8 +328,8 @@ public class WebServiceUtil {
     public static ArrayList<HashMap<String, Object>> getWebServiceMsg(
             String[] keys, Object[] values, String methodName,
             String[] getParams_Keys) throws Exception {
-        String actionUrl = HUIWEI_NAMESPACE + methodName;
-        SoapObject so = new SoapObject(HUIWEI_NAMESPACE, methodName);
+        String actionUrl = HUI_WEI_NAMESPACE + methodName;
+        SoapObject so = new SoapObject(HUI_WEI_NAMESPACE, methodName);
         if (keys != null) {
             for (int i = 0; i < keys.length; i++) {
                 so.addProperty(keys[i], values[i]);
@@ -342,7 +340,7 @@ public class WebServiceUtil {
         envelope.bodyOut = so;
         envelope.encodingStyle = "UTF-8";
         envelope.dotNet = true;
-        HttpTransportSE ht = new HttpTransportSE(HUIWEI_URL, 5000);
+        HttpTransportSE ht = new HttpTransportSE(HUI_WEI_5VC, 5000);
         ht.call(actionUrl, envelope);
         SoapObject result = null;
         try {
@@ -351,9 +349,9 @@ public class WebServiceUtil {
             SoapFault soaF = (SoapFault) envelope.bodyIn;
             System.out.println("FaultString:" + methodName + "----" + soaF.faultstring);
         }
-        ArrayList<HashMap<String, Object>> datas = new ArrayList<HashMap<String, Object>>();
+        ArrayList<HashMap<String, Object>> datas = new ArrayList<>();
         if (result != null) {
-            String resultStr = "";
+            String resultStr;
             try {
                 resultStr = result.toString();
                 System.out.println("result:" + resultStr);
@@ -514,8 +512,7 @@ public class WebServiceUtil {
         return datas;
     }
 
-    private static HashMap<String, Object> parseData(String str_result,
-                                                     String outStr) {
+    private static HashMap<String, Object> parseData(String str_result, String outStr) {
         HashMap<String, Object> data = new HashMap<>();
         if (StringUtil.isEmpty(str_result)) {
             if (StringUtil.isEmpty(outStr)) {

@@ -28,7 +28,7 @@
             android:ellipsize="end"
             android:maxLines="3"
             android:text="关于开张电风扇电风扇电扇电风扇的gas等发达省扇电风扇的gas等发达省风扇的gas等发达省份斯蒂芬"
-            android:textColor="@color/balck"
+            android:textColor="@color/black"
             android:textSize="15dp" />
 
         <TextView

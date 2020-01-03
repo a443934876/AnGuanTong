@@ -17,7 +17,7 @@ public class YhzgInfoDao extends AbstractDao<YhzgInfo, Long> {
     public static final String TABLENAME = "YHZG_INFO";
 
     /**
-     * Properties of entity YhzgInfo.<br/>
+     * Properties of companyEntity YhzgInfo.<br/>
      * Can be used for QueryBuilder and for referencing column names.
     */
     public static class Properties {

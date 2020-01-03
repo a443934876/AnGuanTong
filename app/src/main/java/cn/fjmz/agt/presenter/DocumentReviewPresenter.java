@@ -18,6 +18,7 @@ import java.util.Map;
 import io.reactivex.Observable;
 import io.reactivex.ObservableEmitter;
 import io.reactivex.ObservableOnSubscribe;
+import io.reactivex.functions.Function;
 
 /**
  *
@@ -46,8 +47,8 @@ public class DocumentReviewPresenter extends BasePresenter<DocumentReviewView> {
                 map.put("docTempId", 0);
                 map.put("retstr", "");
                 try {
-                    String msg = WebServiceUtil.getWebServiceMsg1(map, "getCapacityDocument",
-                            WebServiceUtil.HUIWEI_URL, WebServiceUtil.HUIWEI_NAMESPACE);
+                    String msg = WebServiceUtil.getWebServiceMsgList(map, "getCapacityDocument",
+                            WebServiceUtil.HUI_WEI_5VC, WebServiceUtil.HUI_WEI_NAMESPACE);
                     List<DocumentEntity> entity = DocumentEntity.arrayDocumentDetailsEntityFromData(msg);
                     if (entity.size() > 0) {
                         emitter.onNext(entity.get(0));
@@ -85,8 +86,8 @@ public class DocumentReviewPresenter extends BasePresenter<DocumentReviewView> {
                 map.put("CRemark", cRemark);
                 map.put("IPStr", Utils.getSerialNumber());
                 try {
-                    String msg = WebServiceUtil.getWebServiceMsg1(map, "setInfoTurning",
-                            WebServiceUtil.HUIWEI_URL, WebServiceUtil.HUIWEI_NAMESPACE);
+                    String msg = WebServiceUtil.getWebServiceMsgList(map, "setInfoTurning",
+                            WebServiceUtil.HUI_WEI_5VC, WebServiceUtil.HUI_WEI_NAMESPACE);
                     emitter.onNext(DocumentListEntity.arrayDocumentListEntityFromData(msg));
                 } catch (Exception e) {
                     emitter.onError(e);
@@ -125,8 +126,8 @@ public class DocumentReviewPresenter extends BasePresenter<DocumentReviewView> {
                 map.put("cDocDetailID", 0);
                 map.put("retstr", "");
                 try {
-                    String msg = WebServiceUtil.getWebServiceMsg1(map, "getCapacityDocumentDetail",
-                            WebServiceUtil.HUIWEI_URL, WebServiceUtil.HUIWEI_NAMESPACE);
+                    String msg = WebServiceUtil.getWebServiceMsgList(map, "getCapacityDocumentDetail",
+                            WebServiceUtil.HUI_WEI_5VC, WebServiceUtil.HUI_WEI_NAMESPACE);
                     emitter.onNext(DocumentDetailEntity.arrayDocumentDetailEntityFromData(msg));
                 } catch (Exception e) {
                     emitter.onError(e);

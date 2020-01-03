@@ -18,7 +18,7 @@ public class SbjcListInfoDao extends AbstractDao<DeviceInfo, Long> {
     public static final String TABLENAME = "SBJC_LIST_INFO";
 
     /**
-     * Properties of entity DeviceInfo.<br/>
+     * Properties of companyEntity DeviceInfo.<br/>
      * Can be used for QueryBuilder and for referencing column names.
      */
     public static class Properties {

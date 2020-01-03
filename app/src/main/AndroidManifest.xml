@@ -4,6 +4,7 @@
     package="cn.fjmz.agt">
 
     <uses-permission android:name="android.permission.KILL_BACKGROUND_PROCESSES" />
+
     <uses-feature android:name="android.hardware.camera.autofocus" />
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
@@ -23,13 +24,12 @@
     <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.ACCESS_GPS" />
-    <uses-permission android:name="android.permission.BROADCAST_STICKY" />
-    <!-- 来电消音 -->
+    <uses-permission android:name="android.permission.BROADCAST_STICKY" /> <!-- 来电消音 -->
     <uses-permission android:name="android.permission.PROCESS_OUTGOING_CALLS" />
     <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
 
     <application
-        android:name=".App"
+        android:name=".MyApplication"
         android:allowBackup="true"
         android:icon="@drawable/dargon108"
         android:resizeableActivity="true"
@@ -39,7 +39,7 @@
 
         <activity
             android:name=".activity.SplashActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+            android:theme="@style/StartAppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.intent.action.VIEW" />
@@ -47,7 +47,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".view.AudioRecordUtil" />
+        <activity
+            android:name=".activity.AboutActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.ShareActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.PasswordChangeActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".view.AudioRecordUtil"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activity.LoginActivity"
             android:screenOrientation="portrait" />
@@ -58,20 +69,17 @@
             android:name=".activity.PxksActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".activity.AqssDetailActivity"
+            android:name=".activity.EquipmentInspectionDetailActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".activity.AqssjcActivity"
-            android:screenOrientation="portrait" />
+            android:name=".activity.EquipmentInspectionActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".activity.JcbDetailActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".activity.MainActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity
-            android:name=".activity.ChooseActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
@@ -99,18 +107,6 @@
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
-            android:name=".activity.Yhdj_Activity"
-            android:screenOrientation="portrait"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-
-            <!-- <intent-filter> -->
-            <!-- <action android:name="android.intent.action.MAIN" /> -->
-
-
-            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
-            <!-- </intent-filter> -->
-        </activity>
-        <activity
             android:name=".activity.SafetyCheckActivity"
             android:exported="false"
             android:launchMode="singleInstance"
@@ -135,9 +131,6 @@
             android:name=".activity.YhfcUploadActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".activity.SbjcCommitActivity"
-            android:screenOrientation="portrait" />
-        <activity
             android:name=".activity.AqjcCommitActivity"
             android:screenOrientation="portrait" />
         <activity
@@ -156,13 +149,17 @@
             android:name=".activity.VideoPlayActivity"
             android:screenOrientation="landscape"
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
-        <activity android:name=".activity.CameraActivity" />
+        <activity
+            android:name=".activity.CameraActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.ScanActivity"
+            android:screenOrientation="portrait" />
 
         <service
             android:name=".util.DownloadIntentService"
             android:exported="false" />
 
-        <activity android:name=".activity.ShowDataActivity" />
     </application>
 
 </manifest>

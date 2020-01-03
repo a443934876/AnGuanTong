@@ -23,7 +23,7 @@ import android.widget.Toast;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
-import cn.fjmz.agt.App;
+import cn.fjmz.agt.MyApplication;
 import cn.fjmz.agt.AqjcCommitInfo;
 import cn.fjmz.agt.R;
 import cn.fjmz.agt.base.BaseFragment;
@@ -91,7 +91,7 @@ public class SafetyCheckFragment extends BaseFragment<SafetyCheckPresenter> impl
     /*private TextView mPhotoCount;*/
     private File mCache;
     private Calendar mCalendar;
-    private App myApp;
+    private MyApplication myMyApplication;
     private int mObjOrganizationID;
     private boolean isSetPlace;
     private int mEwmSssbId;
@@ -125,8 +125,8 @@ public class SafetyCheckFragment extends BaseFragment<SafetyCheckPresenter> impl
 
     @Override
     protected void initData() {
-        mPresenter.getSafetyCheckList(StringUtil.noNull(Constants.entity.getComId()));
-        mPresenter.getAllPlace(StringUtil.noNull(Constants.entity.getComId()));
+        mPresenter.getSafetyCheckList(StringUtil.noNull(Constants.companyEntity.getComId()));
+        mPresenter.getAllPlace(StringUtil.noNull(Constants.companyEntity.getComId()));
         initComplement();
         registListener();
         initIcon();
@@ -220,7 +220,7 @@ public class SafetyCheckFragment extends BaseFragment<SafetyCheckPresenter> impl
     }
 
     private void initComplement() {
-        myApp = (App) getActivity().getApplication();
+        myMyApplication = (MyApplication) getActivity().getApplication();
         mCalendar = Calendar.getInstance();
         mCache = new File(Environment.getExternalStorageDirectory(),
                 "hwagtCache");
@@ -229,7 +229,7 @@ public class SafetyCheckFragment extends BaseFragment<SafetyCheckPresenter> impl
 
         mObjOrganizationID = -1;
         try {
-            mObjOrganizationID = Integer.parseInt(myApp.getComInfo().getOrg_id());
+            mObjOrganizationID = Integer.parseInt(myMyApplication.getComInfo().getOrg_id());
         } catch (Exception pE) {
             pE.printStackTrace();
         }
@@ -557,7 +557,7 @@ public class SafetyCheckFragment extends BaseFragment<SafetyCheckPresenter> impl
 //        info.setCsName(((IChooseItem) mCsSp.getSelectedItem()).getItemName());
         /*    info.setTaskid(taskId);*/
         info.setSetStr(sbMark);
-        info.setRecEmid(Integer.parseInt(myApp.getComInfo().getEmid()));
+        info.setRecEmid(Integer.parseInt(myMyApplication.getComInfo().getEmid()));
         // TODO: 2018/3/1  照片
        /* ArrayList<String> imagePaths = mMyCamera.getImageDatas();
         StringBuilder stringBuilder = new StringBuilder();
@@ -658,7 +658,7 @@ public class SafetyCheckFragment extends BaseFragment<SafetyCheckPresenter> impl
                         } else if ("sssb".equals(type)) {
                             try {
                                 mEwmSssbId = Integer.parseInt(resultArr[1]);
-//                                mPresenter.getSssb(mEwmSssbId, Integer.parseInt(myApp.getComInfo().getCom_id()));
+//                                mPresenter.getSssb(mEwmSssbId, Integer.parseInt(myMyApplication.getComInfo().getCom_id()));
                             } catch (NumberFormatException pE) {
 //                                toast(getString(R.string.ewm_failed));
                             }

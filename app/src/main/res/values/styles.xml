@@ -52,5 +52,13 @@
         <item name="android:button">@drawable/yingsi_protected</item>
     </style>
 
+    <style name="StartAppTheme" parent="Theme.AppCompat.Light">
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:fitsSystemWindows">true</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowBackground">@drawable/splash_bg</item>
+    </style>
 
 </resources>

@@ -21,7 +21,7 @@ import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import cn.fjmz.agt.App;
+import cn.fjmz.agt.MyApplication;
 import cn.fjmz.agt.R;
 import cn.fjmz.agt.adapter.PxksAdapter;
 import cn.fjmz.agt.base.Constants;
@@ -43,7 +43,7 @@ public class PxksActivity extends Activity {
     private PxksAdapter mAdapter;
     private Calendar mCal;
     private ArrayList<HashMap<String, Object>> mData;
-    private App myApp;
+    private MyApplication myMyApplication;
     private String mEmId;
 
     public static void launch(Context context) {
@@ -79,7 +79,7 @@ public class PxksActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.pxks_view);
-        myApp = (App) getApplication();
+        myMyApplication = (MyApplication) getApplication();
         initComplement();
         registListener();
         getData();
@@ -91,7 +91,7 @@ public class PxksActivity extends Activity {
 
     private void getData() {
         shaiXuan.setEnabled(false);
-        mEmId = Constants.entity.getEmId();
+        mEmId = Constants.companyEntity.getEmId();
         new Thread(new Runnable() {
 
             @Override
@@ -123,13 +123,13 @@ public class PxksActivity extends Activity {
                     map.put("IsExamed", "-1");
 
 
-                    String getLessonFromEm = WebServiceUtil.getWebServiceMsg1(map,
+                    String getLessonFromEm = WebServiceUtil.getWebServiceMsgList(map,
                             "getLessonFromEm",
-                            WebServiceUtil.HUIWEI_5HR, WebServiceUtil.HUIWEI_NAMESPACE);
+                            WebServiceUtil.HUI_WEI_5VH, WebServiceUtil.HUI_WEI_NAMESPACE);
                     mData = WebServiceUtil.getWebServiceMsg(keys, values,
                             "getLessonFromEm", new String[]{"currName",
                                     "studyid", "lesscore", "currid", "leshour", "teachemname"},
-                            WebServiceUtil.HUIWEI_5HR, WebServiceUtil.HUIWEI_NAMESPACE);
+                            WebServiceUtil.HUI_WEI_5VH, WebServiceUtil.HUI_WEI_NAMESPACE);
                     handler.sendEmptyMessage(1);
                 } catch (Exception e) {
                     e.printStackTrace();

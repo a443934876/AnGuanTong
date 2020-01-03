@@ -20,7 +20,7 @@ import android.widget.SimpleAdapter;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import cn.fjmz.agt.App;
+import cn.fjmz.agt.MyApplication;
 import cn.fjmz.agt.R;
 import cn.fjmz.agt.util.StringUtil;
 import cn.fjmz.agt.util.WebServiceUtil;
@@ -38,7 +38,7 @@ public class GwSearch_Activity extends Activity {
 	private ArrayList<HashMap<String, Object>> comData;//公司数据集
 	private Calendar calendar;
 	private String orgid;
-	private App myApp;
+	private MyApplication myMyApplication;
 	private Spinner fbdwSp;
 	private Handler mHandler = new Handler(new Handler.Callback() {
 
@@ -78,8 +78,8 @@ public class GwSearch_Activity extends Activity {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.gwsearch_view);
-		myApp = (App) getApplication();
-		orgid = myApp.getComInfo().getOrg_idstr();
+		myMyApplication = (MyApplication) getApplication();
+		orgid = myMyApplication.getComInfo().getOrg_idstr();
 		initComplement();
 		getData();
 	}
@@ -96,10 +96,10 @@ public class GwSearch_Activity extends Activity {
 				try {
 					String keys[] = { "orgid", "relType", "includeself" };
 					Object values[] = {
-							Integer.parseInt(myApp.getComInfo().getOrg_id()),
+							Integer.parseInt(myMyApplication.getComInfo().getOrg_id()),
 							"", false };
 					comData = WebServiceUtil.getWebServiceMsg(keys, values,
-							"getRelationOrg",WebServiceUtil.HUIWEI_URL,WebServiceUtil.HUIWEI_NAMESPACE);
+							"getRelationOrg",WebServiceUtil.HUI_WEI_5VC,WebServiceUtil.HUI_WEI_NAMESPACE);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -122,7 +122,7 @@ public class GwSearch_Activity extends Activity {
 		setDate(startDate);
 		comData = new ArrayList<HashMap<String, Object>>();
 		HashMap<String, Object> map = new HashMap<String, Object>();
-		map.put("relOrgName", myApp.getComInfo().getCom_fullname());
+		map.put("relOrgName", myMyApplication.getComInfo().getCom_fullname());
 		map.put("relOrgID", orgid);
 		comData.add(map);
 	}

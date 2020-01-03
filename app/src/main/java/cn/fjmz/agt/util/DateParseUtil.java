@@ -183,5 +183,15 @@ public class DateParseUtil {
         return format.format(date) + "T00:00:01.000";
     }
 
+    public static String getStringTime(String time) {
+        if (time.contains("T")) {
+            time = time.replace("T", " ");
+        }
+        if (time.contains("+")) {
+            time = time.substring(0, time.indexOf("+"));
+        }
+        return time;
+    }
+
 
 }

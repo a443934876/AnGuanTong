@@ -37,8 +37,8 @@ public class SplashPresenter extends BasePresenter<SplashView> {
                 map.put("packageid", packageId);
                 map.put("comid", comId);
                 try {
-                    String version = WebServiceUtil.getWebServiceMsg1(map, "getNewPackageVersion",
-                            WebServiceUtil.HUIWEI_5VPM_URL, WebServiceUtil.HUIWEI_NAMESPACE);
+                    String version = WebServiceUtil.getWebServiceMsgList(map, "getNewPackageVersion",
+                            WebServiceUtil.HUI_WEI_5VP, WebServiceUtil.HUI_WEI_NAMESPACE);
                     List<VersionEntity> entityList = VersionEntity.arrayVersionEntityFromData(version);
                     if (entityList.size() > 0) {
                         emitter.onNext(VersionEntity.arrayVersionEntityFromData(version).get(0));
@@ -72,8 +72,8 @@ public class SplashPresenter extends BasePresenter<SplashView> {
                 map.put("pwd", password);
                 map.put("ret", -1);
                 try {
-                    String user = WebServiceUtil.getWebServiceMsg1(map, "getSinglePersonalUserFromLogin",
-                            WebServiceUtil.HUIWEI_URL, WebServiceUtil.HUIWEI_NAMESPACE);
+                    String user = WebServiceUtil.getWebServiceMsgList(map, "getSinglePersonalUserFromLogin",
+                            WebServiceUtil.HUI_WEI_5VC, WebServiceUtil.HUI_WEI_NAMESPACE);
                     emitter.onNext(UserEntity.arrayUserEntityFromData(user).get(0));
                 } catch (Exception e) {
                     emitter.onError(e);
@@ -102,8 +102,8 @@ public class SplashPresenter extends BasePresenter<SplashView> {
                 map.put("uPersonalID", Uid);
                 map.put("sState", "在职");
                 try {
-                    String user = WebServiceUtil.getWebServiceMsg1(map, "getMoreComs",
-                            WebServiceUtil.HUIWEI_URL, WebServiceUtil.HUIWEI_NAMESPACE);
+                    String user = WebServiceUtil.getWebServiceMsgList(map, "getMoreComs",
+                            WebServiceUtil.HUI_WEI_5VC, WebServiceUtil.HUI_WEI_NAMESPACE);
                     emitter.onNext(CompanyEntity.arrayCompanyEntityFromData(user));
                 } catch (Exception e) {
                     emitter.onError(e);

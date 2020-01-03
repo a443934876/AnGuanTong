@@ -1,88 +1,50 @@
 package cn.fjmz.agt.adapter;
 
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.TextView;
+import android.support.annotation.NonNull;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 
-import cn.fjmz.agt.R;
-import cn.fjmz.agt.mode.SafetySetInfo;
-import cn.fjmz.agt.util.StringUtil;
+import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.chad.library.adapter.base.BaseViewHolder;
 
 import java.util.ArrayList;
+import java.util.List;
 
-/*
- * Created by Administrator on 2019/1/25.
- */
+import cn.fjmz.agt.R;
+import cn.fjmz.agt.bean.SafetySetEntity;
+import cn.fjmz.agt.util.DateParseUtil;
 
-public class SafetySetAdapter extends BaseAdapter {
-    private Context context;
-    private ArrayList<SafetySetInfo> infoList;
+public class SafetySetAdapter extends BaseQuickAdapter<SafetySetEntity, BaseViewHolder> {
 
-    public SafetySetAdapter(Context context,
-                            ArrayList<SafetySetInfo> infoList) {
-        this.context = context;
-        this.infoList = infoList;
+    private List<SafetySetEntity> selectList = new ArrayList<>();
+
+    public SafetySetAdapter(int layoutResId) {
+        super(layoutResId);
     }
 
     @Override
-    public int getCount() {
-        return infoList.size();
-    }
-
-    @Override
-    public Object getItem(int position) {
-        return infoList.get(position);
-    }
-
-    @Override
-    public long getItemId(int position) {
+    public int getItemViewType(int position) {
         return position;
     }
 
-    @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-        ViewHolder holder;
-        if (convertView == null) {
-            holder = new ViewHolder();
-            convertView = LayoutInflater.from(context).inflate(
-                    R.layout.item_safetysetinfo, parent, false);
-            // 获取控件对象
-            holder.TV_cpname = (TextView) convertView.findViewById(R.id.TV_cpname);
-            holder.TV_cpnumber = (TextView) convertView.findViewById(R.id.TV_cpnumber);
-            holder.TV_cplocal = (TextView) convertView.findViewById(R.id.TV_cplocal);
-            holder.TV_lon = (TextView) convertView.findViewById(R.id.TV_lon);
-            holder.TV_lat = (TextView) convertView.findViewById(R.id.TV_lat);
-            holder.TV_checkcount = (TextView) convertView.findViewById(R.id.TV_checkcount);
-            holder.TV_cpmaintain = (TextView) convertView.findViewById(R.id.TV_cpmaintain);
-            holder.TV_cpmaster = (TextView) convertView.findViewById(R.id.TV_cpmaster);
-            holder.TV_lastcheck = (TextView) convertView.findViewById(R.id.TV_lastcheck);
-            holder.TV_nextcheck = (TextView) convertView.findViewById(R.id.TV_nextcheck);
-            // 设置控件集到convertView
-            convertView.setTag(holder);
-        } else {
-            holder = (ViewHolder) convertView.getTag();
-        }
-//
-        holder.TV_cpname.setText(StringUtil.noNull(infoList.get(position).getCpname()));
-        holder.TV_cpnumber.setText(StringUtil.noNull(infoList.get(position).getCpnumber()));
-        holder.TV_cplocal.setText(StringUtil.noNull(infoList.get(position).getCplocal()));
-        holder.TV_lon.setText(StringUtil.noNull(infoList.get(position).getLon()));
-        holder.TV_lat.setText(StringUtil.noNull(infoList.get(position).getLat()));
-        holder.TV_checkcount.setText(StringUtil.noNull(infoList.get(position).getCheckcount()));
-        holder.TV_cpmaintain.setText(StringUtil.noNull(infoList.get(position).getCpmaintain()));
-        holder.TV_cpmaster.setText(StringUtil.noNull(infoList.get(position).getCpmaster()));
-        holder.TV_lastcheck.setText(StringUtil.noNull(infoList.get(position).getLastcheck()));
-        holder.TV_nextcheck.setText(StringUtil.noNull(infoList.get(position).getNextcheck()));
-
-
-        return convertView;
+    public List<SafetySetEntity> getSelectList() {
+        return selectList;
     }
 
-    private class ViewHolder {
-        TextView TV_cpname, TV_cpnumber, TV_cplocal, TV_lon, TV_lat
-                , TV_checkcount, TV_cpmaintain, TV_cpmaster, TV_lastcheck, TV_nextcheck;
+    @Override
+    protected void convert(@NonNull BaseViewHolder helper, final SafetySetEntity item) {
+        CheckBox checkBox = helper.getView(R.id.cb_equipment_inspection);
+        checkBox.setOnCheckedChangeListener((compoundButton, b) -> {
+            if (b) {
+                selectList.add(item);
+            } else {
+                selectList.remove(item);
+            }
+            notifyDataSetChanged();
+        });
+        helper.setText(R.id.tv_title, item.getCpname());
+        helper.setText(R.id.tv_local, item.getCplocal());
+        helper.setText(R.id.tv_master, item.getCpmaster());
+        helper.setText(R.id.tv_check_date, DateParseUtil.getStringTime(item.getLastcheck()));
     }
 }

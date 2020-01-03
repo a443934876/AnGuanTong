@@ -17,7 +17,7 @@ public class YhzgCommitInfoDao extends AbstractDao<YhzgCommitInfo, Long> {
     public static final String TABLENAME = "YHZG_COMMIT_INFO";
 
     /**
-     * Properties of entity YhzgCommitInfo.<br/>
+     * Properties of companyEntity YhzgCommitInfo.<br/>
      * Can be used for QueryBuilder and for referencing column names.
     */
     public static class Properties {

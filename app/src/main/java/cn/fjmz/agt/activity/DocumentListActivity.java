@@ -56,7 +56,7 @@ public class DocumentListActivity extends BaseActivity<DocumentPresenter> implem
     protected void initData() {
         mTvTitleCenter.setText("公文信息列表");
         mIvTitleLeft.setImageResource(R.drawable.ic_title_back_arrow);
-        mPresenter.getWebInformFroEmID(Constants.entity.getEmId());
+        mPresenter.getWebInformFroEmID(Constants.companyEntity.getEmId());
         intiRecyclerView();
     }
 

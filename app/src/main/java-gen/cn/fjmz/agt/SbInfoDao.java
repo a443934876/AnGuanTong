@@ -17,7 +17,7 @@ public class SbInfoDao extends AbstractDao<SbInfo, Long> {
     public static final String TABLENAME = "SB_INFO";
 
     /**
-     * Properties of entity SbInfo.<br/>
+     * Properties of companyEntity SbInfo.<br/>
      * Can be used for QueryBuilder and for referencing column names.
     */
     public static class Properties {

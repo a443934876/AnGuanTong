@@ -14,10 +14,10 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 
 import cn.fjmz.agt.R;
+import cn.fjmz.agt.activity.EquipmentInspectionActivity;
 import cn.fjmz.agt.activity.DocumentListActivity;
 import cn.fjmz.agt.activity.PxksActivity;
 import cn.fjmz.agt.activity.SafetyCheckActivity;
-import cn.fjmz.agt.activity.SbjcCommitActivity;
 import cn.fjmz.agt.base.BaseFragment;
 import cn.fjmz.agt.base.BaseModel;
 import cn.fjmz.agt.base.Constants;
@@ -35,6 +35,7 @@ import cn.fjmz.agt.util.StringUtil;
 import cn.fjmz.agt.widget.ColorArcProgressBar;
 import cn.fjmz.agt.widget.ComplexViewMF;
 import cn.fjmz.agt.widget.ImageHolderView;
+
 import com.gongwen.marqueen.MarqueeView;
 import com.gongwen.marqueen.util.OnItemClickListener;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
@@ -55,7 +56,6 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeVie
     RecyclerView mRvMain;
     @BindView(R.id.cb_main)
     ConvenientBanner<Integer> mCbMain;
-    private static String mComName = "comName";
     @BindView(R.id.tv_user_name)
     TextView mTvUserName;
     @BindView(R.id.tv_date)
@@ -129,14 +129,14 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeVie
         mTvDate.setText(String.format("%s，%s", DateParseUtil.getNowDate(), DateParseUtil.getWeek()));
         initView();
         initBanner();
-        if (Constants.entity != null) {
-            mPresenter.getSafetyIndexFromComSuccess(StringUtil.noNull(Constants.entity.getComId()));
-            mPresenter.getMissionFromEm(StringUtil.noNull(Constants.entity.getEmId()));
-            mPresenter.getAllHiddenIllness(StringUtil.noNull(Constants.entity.getEmId()));
-            mPresenter.getLessonFromEm(StringUtil.noNull(Constants.entity.getEmId()));
-            mPresenter.getSafetySetList(StringUtil.noNull(Constants.entity.getComId()),
-                    StringUtil.noNull(Constants.entity.getEmId()));
-            mTvUserName.setText(getString(R.string.tv_hello, StringUtil.noNull(Constants.entity.getEmName())));
+        if (Constants.companyEntity != null) {
+            mPresenter.getSafetyIndexFromComSuccess(StringUtil.noNull(Constants.companyEntity.getComId()));
+            mPresenter.getMissionFromEm(StringUtil.noNull(Constants.companyEntity.getEmId()));
+            mPresenter.getAllHiddenIllness(StringUtil.noNull(Constants.companyEntity.getEmId()));
+            mPresenter.getLessonFromEm(StringUtil.noNull(Constants.companyEntity.getEmId()));
+            mPresenter.getSafetySetList(StringUtil.noNull(Constants.companyEntity.getComId()),
+                    StringUtil.noNull(Constants.companyEntity.getEmId()));
+            mTvUserName.setText(getString(R.string.tv_hello, StringUtil.noNull(Constants.companyEntity.getEmName())));
         }
         List<IconItemEntity> iconItemEntityList = new ArrayList<>();
         for (int i = 0; i < names.length; i++) {
@@ -191,7 +191,7 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeVie
                             PxksActivity.launch(getContext());
                             break;
                         case "设备巡查":
-                            SbjcCommitActivity.launch(getContext());
+                            EquipmentInspectionActivity.launch(getContext());
                             break;
                     }
                 }
@@ -229,12 +229,12 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeVie
         mSrlHome.setOnRefreshListener(new OnRefreshListener() {
             @Override
             public void onRefresh(@NonNull RefreshLayout refreshLayout) {
-                mPresenter.getSafetyIndexFromComSuccess(StringUtil.noNull(Constants.entity.getComId()));
-                mPresenter.getMissionFromEm(StringUtil.noNull(Constants.entity.getEmId()));
-                mPresenter.getAllHiddenIllness(StringUtil.noNull(Constants.entity.getEmId()));
-                mPresenter.getLessonFromEm(StringUtil.noNull(Constants.entity.getEmId()));
-                mPresenter.getSafetySetList(StringUtil.noNull(Constants.entity.getComId()),
-                        StringUtil.noNull(Constants.entity.getEmId()));
+                mPresenter.getSafetyIndexFromComSuccess(StringUtil.noNull(Constants.companyEntity.getComId()));
+                mPresenter.getMissionFromEm(StringUtil.noNull(Constants.companyEntity.getEmId()));
+                mPresenter.getAllHiddenIllness(StringUtil.noNull(Constants.companyEntity.getEmId()));
+                mPresenter.getLessonFromEm(StringUtil.noNull(Constants.companyEntity.getEmId()));
+                mPresenter.getSafetySetList(StringUtil.noNull(Constants.companyEntity.getComId()),
+                        StringUtil.noNull(Constants.companyEntity.getEmId()));
                 refreshLayout.finishRefresh(1000);
             }
         });

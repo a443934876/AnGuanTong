@@ -3,7 +3,7 @@ package cn.fjmz.agt.activity;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import cn.fjmz.agt.App;
+import cn.fjmz.agt.MyApplication;
 import cn.fjmz.agt.R;
 import cn.fjmz.agt.adapter.DutyListAdapter;
 import cn.fjmz.agt.util.WebServiceUtil;
@@ -39,14 +39,14 @@ public class DutyDetailActivity extends Activity {
 			return false;
 		}
 	});
-	protected App myApp;
+	protected MyApplication myMyApplication;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.duty_detail_view);
-		myApp = (App) getApplication();
+		myMyApplication = (MyApplication) getApplication();
 		initComplement();
 		getData();
 	}
@@ -62,7 +62,7 @@ public class DutyDetailActivity extends Activity {
 					// System.out.println("orgidstr" +
 					// orgItem.get("Emid").toString());
 					Object values[] = {
-							Integer.parseInt(myApp.getComInfo().getEmid()), 0,
+							Integer.parseInt(myMyApplication.getComInfo().getEmid()), 0,
 							0, "在职" };
 					data = WebServiceUtil.getWebServiceMsg(keys, values,
 							"getPartDutyFromEm", new String[] { "pName",

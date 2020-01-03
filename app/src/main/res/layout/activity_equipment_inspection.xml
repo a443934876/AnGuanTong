@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/tb_equipment_inspection"
+        layout="@layout/view_title_bar" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Spinner
+            android:id="@+id/sp_place"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:spinnerMode="dialog" />
+
+        <Spinner
+            android:id="@+id/sp_head"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:padding="0dip"
+
+            android:spinnerMode="dialog" />
+
+        <Button
+            android:id="@+id/btn_query"
+            android:layout_width="50dp"
+            android:layout_height="25dp"
+            android:layout_margin="5dp"
+            android:background="@drawable/shape_login_color"
+            android:text="筛选"
+            android:textColor="@color/white"
+            android:textSize="12dp" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/gray_btn_bg_color" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_equipment_inspection"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:scrollbars="vertical" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/gray_btn_bg_color" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/et_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_buttonwhite"
+            android:gravity="left|top"
+            android:hint="请输入批量检查记录内容"
+            android:lines="3"
+            android:padding="5dp"
+            android:textSize="14dp" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="设备状态："
+                android:textSize="15dp" />
+
+            <TextView
+                android:id="@+id/tv_normal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="正常"
+                android:textColor="@color/color_blue"
+                android:textSize="15dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_unattended"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:text="待修"
+                android:textColor="@color/text_color"
+                android:textSize="15dp" />
+
+            <TextView
+                android:id="@+id/tv_lost"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="遗失"
+                android:textColor="@color/text_color"
+                android:textSize="15dp" />
+
+            <TextView
+                android:id="@+id/tv_damaged"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:text="损毁"
+                android:textColor="@color/text_color"
+                android:textSize="15dp" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -37,8 +37,8 @@ public class LoginPresenter extends BasePresenter<LoginView> {
                 map.put("pwd", password);
                 map.put("ret", -1);
                 try {
-                    String user = WebServiceUtil.getWebServiceMsg1(map, "getSinglePersonalUserFromLogin",
-                            WebServiceUtil.HUIWEI_URL, WebServiceUtil.HUIWEI_NAMESPACE);
+                    String user = WebServiceUtil.getWebServiceMsgList(map, "getSinglePersonalUserFromLogin",
+                            WebServiceUtil.HUI_WEI_5VC, WebServiceUtil.HUI_WEI_NAMESPACE);
                     emitter.onNext(UserEntity.arrayUserEntityFromData(user).get(0));
                 } catch (Exception e) {
                     emitter.onError(e);
@@ -69,8 +69,8 @@ public class LoginPresenter extends BasePresenter<LoginView> {
                 map.put("uPersonalID", Uid);
                 map.put("sState", "在职");
                 try {
-                    String user = WebServiceUtil.getWebServiceMsg1(map, "getMoreComs",
-                            WebServiceUtil.HUIWEI_URL, WebServiceUtil.HUIWEI_NAMESPACE);
+                    String user = WebServiceUtil.getWebServiceMsgList(map, "getMoreComs",
+                            WebServiceUtil.HUI_WEI_5VC, WebServiceUtil.HUI_WEI_NAMESPACE);
                     emitter.onNext(CompanyEntity.arrayCompanyEntityFromData(user));
                 } catch (Exception e) {
                     emitter.onError(e);

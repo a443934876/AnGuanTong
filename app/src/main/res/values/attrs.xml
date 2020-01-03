@@ -108,4 +108,26 @@
         <attr name="max_value" format="float"/>
 
     </declare-styleable>
+    <declare-styleable name="MyTabItem">
+        <attr name="title_oa" format="string" />
+        <attr name="right_title" format="string" />
+        <attr name="title_color" format="reference" />
+        <attr name="left_enable" format="boolean" />
+        <attr name="right_enable" format="boolean" />
+        <attr name="right_icon" format="reference" />
+        <attr name="left_icon" format="reference" />
+        <attr name="right_onclick" format="string" />
+        <attr name="item_type">
+            <enum name="alone" value="0" />
+            <enum name="above" value="1" />
+            <enum name="mid" value="2" />
+            <enum name="below" value="3" />
+        </attr>
+        <attr name="text" format="string" />
+        <attr name="icon_oa" format="reference" />
+        <attr name="num" format="integer" />
+        <attr name="background_oa" format="reference" />
+        <attr name="value" format="string" />
+        <attr name="unit" format="string" />
+    </declare-styleable>
 </resources>

@@ -17,7 +17,7 @@ public class CsInfoDao extends AbstractDao<CsInfo, Long> {
     public static final String TABLENAME = "CS_INFO";
 
     /**
-     * Properties of entity CsInfo.<br/>
+     * Properties of companyEntity CsInfo.<br/>
      * Can be used for QueryBuilder and for referencing column names.
     */
     public static class Properties {

@@ -17,7 +17,7 @@ public class RwInfoDao extends AbstractDao<RwInfo, Long> {
     public static final String TABLENAME = "RW_INFO";
 
     /**
-     * Properties of entity RwInfo.<br/>
+     * Properties of companyEntity RwInfo.<br/>
      * Can be used for QueryBuilder and for referencing column names.
     */
     public static class Properties {

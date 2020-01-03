@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.net.Uri;
 import android.os.Handler;
 import android.os.Message;
+import android.support.annotation.NonNull;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -19,7 +20,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import cn.fjmz.agt.App;
+
+import cn.fjmz.agt.MyApplication;
 import cn.fjmz.agt.R;
 import cn.fjmz.agt.base.BaseActivity;
 import cn.fjmz.agt.base.BaseModel;
@@ -76,7 +78,7 @@ public class DocumentReviewActivity extends BaseActivity<DocumentReviewPresenter
     private String gwcyid;
     private String orgidStr;
     private String DocId;
-    private App myApp;
+    private MyApplication myMyApplication;
     private Thread myGetDataThread;
     private ArrayList<HashMap<String, Object>> gwData;
     private HashMap<String, String> tableOrImageData;
@@ -98,7 +100,6 @@ public class DocumentReviewActivity extends BaseActivity<DocumentReviewPresenter
 
         @Override
         public boolean handleMessage(Message msg) {
-            // TODO Auto-generated method stub
             switch (msg.what) {
                 case 1:
                     new SweetAlertDialog(DocumentReviewActivity.this,
@@ -110,7 +111,7 @@ public class DocumentReviewActivity extends BaseActivity<DocumentReviewPresenter
                                 public void onClick(
                                         SweetAlertDialog sweetAlertDialog) {
                                     sweetAlertDialog.cancel();
-                                    myApp.isRefresh = true;
+                                    myMyApplication.isRefresh = true;
                                     finish();
                                 }
                             }).show();
@@ -182,7 +183,7 @@ public class DocumentReviewActivity extends BaseActivity<DocumentReviewPresenter
                             ImageView iv = new ImageView(DocumentReviewActivity.this);
                             iv.setClickable(true);
                             gwpy_fjwd.addView(iv);
-                            String realUrl = WebServiceUtil.IMAGE_URLPATH + url;
+                            String realUrl = WebServiceUtil.IMAGE_URL_PATH + url;
                             Glide.with(DocumentReviewActivity.this)
                                     .load(realUrl)
                                     .placeholder(R.drawable.picture_load)
@@ -212,7 +213,7 @@ public class DocumentReviewActivity extends BaseActivity<DocumentReviewPresenter
                                     .getTableData(tableOrImageData.get("table"));
                             TableLayout t = new TableLayout(DocumentReviewActivity.this);
                             t.setBackgroundColor(getResources().getColor(
-                                    R.color.balck));
+                                    R.color.black));
                             for (int x = 0; x < tableData.size(); x++) {
                                 TableRow row = new TableRow(DocumentReviewActivity.this);
                                 for (int i = 0; i < tableData.get(i).size(); i++) {
@@ -267,17 +268,17 @@ public class DocumentReviewActivity extends BaseActivity<DocumentReviewPresenter
             public void run() {
                 // TODO Auto-generated method stub
                 try {
-                    String keys[] = {"orgIDstr", "cDocID", "keyWord",
+                    String[] keys = {"orgIDstr", "cDocID", "keyWord",
                             "cStart", "cEnd", "onlyInTitle", "cState",
                             "userId", "cType", "docTempId", "retstr"};
                     // System.out.println("orgidstr" +
                     // orgItem.get("Emid").toString());
-                    Object values[] = {"", DocId, "",
+                    Object[] values = {"", DocId, "",
                             "1900-01-01T00:00:00.850",
                             "2049-12-31T00:00:00.850", false, true, 0, "", 0, ""};
                     ArrayList<HashMap<String, Object>> data = WebServiceUtil
                             .getWebServiceMsg(keys, values,
-                                    "getCapacityDocument", WebServiceUtil.HUIWEI_URL, WebServiceUtil.HUIWEI_NAMESPACE);
+                                    "getCapacityDocument", WebServiceUtil.HUI_WEI_5VC, WebServiceUtil.HUI_WEI_NAMESPACE);
                     gwData.addAll(data);
                     mHandler.sendEmptyMessage(3);
                 } catch (InterruptedException ignored) {
@@ -291,10 +292,10 @@ public class DocumentReviewActivity extends BaseActivity<DocumentReviewPresenter
     }
 
     private void initComplement() {
-        myApp = (App) getApplication();
+        myMyApplication = (MyApplication) getApplication();
         gwData = new ArrayList<>();
         String gwidStr = getIntent().getStringExtra(mDocumentListEntity.getCDocID());// 公文ID
-        String emidStr = Constants.entity.getEmId();
+        String emidStr = Constants.companyEntity.getEmId();
         String gwcyidStr = gwidStr + emidStr;
         try {
             DocId = getIntent().getStringExtra(mDocumentListEntity.getCDocID());
@@ -303,7 +304,7 @@ public class DocumentReviewActivity extends BaseActivity<DocumentReviewPresenter
                     Toast.LENGTH_LONG).show();
             return;
         }
-        orgidStr = Constants.entity.getOrgIdStr();
+        orgidStr = Constants.companyEntity.getOrgIdStr();
         if (StringUtil.isNotEmpty(emidStr)) {
             emid = emidStr;
             gwcyid = gwcyidStr;
@@ -353,7 +354,7 @@ public class DocumentReviewActivity extends BaseActivity<DocumentReviewPresenter
                     Object values[] = {gwid, emid, mEtReview.getText().toString(),
                             ""};
                     WebServiceUtil.putWebServiceMsg(keys, values,
-                            "setInfoTurning", WebServiceUtil.HUIWEI_URL, WebServiceUtil.HUIWEI_NAMESPACE);
+                            "setInfoTurning", WebServiceUtil.HUI_WEI_5VC, WebServiceUtil.HUI_WEI_NAMESPACE);
                     mHandler.sendEmptyMessage(1);
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -415,52 +416,46 @@ public class DocumentReviewActivity extends BaseActivity<DocumentReviewPresenter
 
 
     private String setDetail(final String cDocDetailID) {
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         if (StringUtil.isEmpty(cDocDetailID)) {
             return sb.toString();
         }
-        String keys2[] = {"orgIDstr", "cDocID", "titleKeyWord",
+        String[] keys2 = {"orgIDstr", "cDocID", "titleKeyWord",
                 "detailKeyWord", "carryPartID", "carryDutyID", "docType",
                 "parentCDocID", "cDocDetailID", "retstr"};
-        Object values2[] = {orgidStr, DocId, "", "", 0, 0, "",
-                Integer.parseInt(cDocDetailID), 0, ""};
-        ArrayList<HashMap<String, Object>> data2 = new ArrayList<HashMap<String, Object>>();
+        Object[] values2 = {orgidStr, DocId, "", "", 0, 0, "", Integer.parseInt(cDocDetailID), 0, ""};
+        ArrayList<HashMap<String, Object>> data2 = new ArrayList<>();
         try {
             data2 = WebServiceUtil.getWebServiceMsg(keys2, values2,
                     "getCapacityDocumentDetail", new String[]{
                             "carryPartName", "dLevel", "cDocDetailID",
                             "dSequence", "cDocDetail", "inTable", "inImage",
                             "createcom", "cDocDetail", "info_additional",
-                            "info_additiondoc"}, WebServiceUtil.HUIWEI_URL, WebServiceUtil.HUIWEI_NAMESPACE);
+                            "info_additiondoc"}, WebServiceUtil.HUI_WEI_5VC, WebServiceUtil.HUI_WEI_NAMESPACE);
         } catch (Exception e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
         if (data2.size() > 0) {
             // 表格和图片数据
-            String inImage = StringUtil.noNull(data2.get(0).get("inImage"))
-                    .trim();
+            String inImage = StringUtil.noNull(data2.get(0).get("inImage")).trim();
             inImage = inImage.replace("anyType{}", "");
             if (StringUtil.isNotEmpty(inImage)) {
                 tableOrImageData.put("image", inImage);
             }
-            String inTable = StringUtil.noNull(data2.get(0).get("inTable"))
-                    .trim();
+            String inTable = StringUtil.noNull(data2.get(0).get("inTable")).trim();
             inTable = inTable.replace("anyType{}", "");
             if (StringUtil.isNotEmpty(inTable)) {
                 tableOrImageData.put("table", inTable);
             }
             for (int i = 0; i < data2.size(); i++) {
-                String detail = StringUtil.noNull(
-                        data2.get(i).get("cDocDetail")).trim();
+                String detail = StringUtil.noNull(data2.get(i).get("cDocDetail")).trim();
                 String sQe = StringUtil.noNull(data2.get(i).get("dSequence"));
                 comnameStr = StringUtil.noNull(data2.get(i).get("createcom"));
                 int code = Integer.parseInt(sQe);
                 detail = detail.replace("anyType{}", "");
                 if (StringUtil.isNotEmpty(detail)) {
                     sb.append(StringUtil.ENTER);
-                    String dLevel = StringUtil.noNull(data2.get(i)
-                            .get("dLevel"));
+                    String dLevel = StringUtil.noNull(data2.get(i).get("dLevel"));
                     int level = 2;
                     if (StringUtil.isNotEmpty(dLevel)) {
                         level = Integer.parseInt(dLevel) + 1;
@@ -469,11 +464,10 @@ public class DocumentReviewActivity extends BaseActivity<DocumentReviewPresenter
                     for (int j = 0; j < level; j++) {
                         sb.append(StringUtil.SPACE);
                     }
-                    sb.append(sQe + ".");
+                    sb.append(sQe).append(".");
                     sb.append(detail);
                 }
-                sb.append(setDetail(StringUtil.noNull(data2.get(i).get(
-                        "cDocDetailID"))));
+                sb.append(setDetail(StringUtil.noNull(data2.get(i).get("cDocDetailID"))));
             }
         }
         return sb.toString();
@@ -485,9 +479,9 @@ public class DocumentReviewActivity extends BaseActivity<DocumentReviewPresenter
     }
 
     @Override
-    public void getCapacityDocument(DocumentEntity entity) {
+    public void getCapacityDocument(@NonNull DocumentEntity entity) {
         mTvReviewContent.setText(String.format("%s%s%s", StringUtil.SPACE, StringUtil.SPACE, entity.getOverview()));
-        mPresenter.getCapacityDocumentDetail(Constants.entity.getOrgIdStr(), entity.getCDocid(), "-1");
+        mPresenter.getCapacityDocumentDetail(Constants.companyEntity.getOrgIdStr(), entity.getCDocid(), "-1");
     }
 
     @Override
@@ -497,7 +491,7 @@ public class DocumentReviewActivity extends BaseActivity<DocumentReviewPresenter
 
     @Override
 
-    public void getCapacityDocumentDetail(List<DocumentDetailEntity> entityList) {
+    public void getCapacityDocumentDetail(@NonNull List<DocumentDetailEntity> entityList) {
         if (entityList.size() > 0) {
             mEntityList.add(entityList);
         }
@@ -519,11 +513,7 @@ public class DocumentReviewActivity extends BaseActivity<DocumentReviewPresenter
                 }
                 mBuilder.append(sQe).append(".");
                 mBuilder.append(detail);
-                DocumentReviewPresenter presenter = new DocumentReviewPresenter(this);
-                presenter.getCapacityDocumentDetail(Constants.entity.getOrgIdStr(), entity.getCDocID(), entity.getCDocDetailID());
-                //TODO  MainPresenter1 presenter1 = new MainPresenter1(this);
-                //        presenter.getTextApi();
-//                mPresenter.getCapacityDocumentDetail(Constants.entity.getOrgIdStr(), entity.getCDocID(), entity.getCDocDetailID());
+                mPresenter.getCapacityDocumentDetail(Constants.companyEntity.getOrgIdStr(), entity.getCDocID(), entity.getCDocDetailID());
             }
         }
         mTvReviewContent.setText(mBuilder);

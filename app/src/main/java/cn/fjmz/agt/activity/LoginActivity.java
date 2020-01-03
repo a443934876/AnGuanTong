@@ -1,26 +1,26 @@
 package cn.fjmz.agt.activity;
 
+import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.ImageView;
 
+import java.util.List;
+
+import butterknife.BindView;
 import cn.fjmz.agt.R;
 import cn.fjmz.agt.base.BaseActivity;
 import cn.fjmz.agt.base.BaseModel;
+import cn.fjmz.agt.base.Constants;
 import cn.fjmz.agt.bean.CompanyEntity;
 import cn.fjmz.agt.bean.RememberPasswordEntity;
 import cn.fjmz.agt.bean.UserEntity;
 import cn.fjmz.agt.presenter.LoginPresenter;
 import cn.fjmz.agt.presenter.interfaces.LoginView;
-import cn.fjmz.agt.util.Code;
 import cn.fjmz.agt.util.StringUtil;
-
-import java.util.List;
-
-import butterknife.BindView;
 import io.realm.Realm;
 
 public class LoginActivity extends BaseActivity<LoginPresenter> implements LoginView, View.OnClickListener {
@@ -29,18 +29,23 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
     EditText mEtAccount;
     @BindView(R.id.et_login_password)
     EditText mEtPassword;
-    @BindView(R.id.et_verification_code)
-    EditText mEtVerificationCode;
-    @BindView(R.id.iv_verification_code)
-    ImageView mIvVerificationCode;
+    //    @BindView(R.id.et_verification_code)
+//    EditText mEtVerificationCode;
+//    @BindView(R.id.iv_verification_code)
+//    ImageView mIvVerificationCode;
     @BindView(R.id.btn_login)
     Button mBtnLogin;
     @BindView(R.id.cb_save_account)
     CheckBox mCbSaveAccount;
     @BindView(R.id.cb_automatic_login)
     CheckBox mCbAutomaticLogin;
-    private String mVerificationCode = "";
+//    private String mVerificationCode = "";
 
+    public static void launch(Context context) {
+        Intent intent = new Intent(context, LoginActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+        context.startActivity(intent);
+    }
 
     @Override
     protected LoginPresenter createPresenter() {
@@ -62,19 +67,19 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
                 mCbSaveAccount.setChecked(true);
             }
         }
-        initComplement();
+//        initComplement();
     }
 
     @Override
     protected void intiListener() {
         mBtnLogin.setOnClickListener(this);
-        mIvVerificationCode.setOnClickListener(this);
+//        mIvVerificationCode.setOnClickListener(this);
     }
 
-    private void initComplement() {
-        mIvVerificationCode.setImageBitmap(Code.getInstance().createBitmap());
-        mVerificationCode = Code.getInstance().getCode();
-    }
+//    private void initComplement() {
+////        mIvVerificationCode.setImageBitmap(Code.getInstance().createBitmap());
+//        mVerificationCode = Code.getInstance().getCode();
+//    }
 
 
     @Override
@@ -83,10 +88,11 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
     }
 
     @Override
-    public void onGetSinglePersonalUserFromLoginSuccess(UserEntity userEntityList) {
-        switch (userEntityList.getRet()) {
+    public void onGetSinglePersonalUserFromLoginSuccess(UserEntity entity) {
+        switch (entity.getRet()) {
             case "0":
-                mPresenter.getMoreComs(userEntityList.getUid());
+                Constants.userEntity = entity;
+                mPresenter.getMoreComs(entity.getUid());
                 break;
             case "1":
                 showToast("用户名不存在");
@@ -167,25 +173,23 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.btn_login:
-                login();
-                break;
-            case R.id.iv_verification_code:
-                changeCode();
-                break;
+        if (view.getId() == R.id.btn_login) {
+            login();
+            //            case R.id.iv_verification_code:
+//                changeCode();
+//                break;
         }
     }
 
-    private void changeCode() {
-        mIvVerificationCode.setImageBitmap(Code.getInstance().createBitmap());
-        mVerificationCode = Code.getInstance().getCode();
-    }
+//    private void changeCode() {
+//        mIvVerificationCode.setImageBitmap(Code.getInstance().createBitmap());
+//        mVerificationCode = Code.getInstance().getCode();
+//    }
 
     private void login() {
         final String account = mEtAccount.getText().toString();
         final String password = mEtPassword.getText().toString();
-        String verificationCode = mEtVerificationCode.getText().toString();
+//        String verificationCode = mEtVerificationCode.getText().toString();
         if (StringUtil.isEmpty(account)) {
             showToast("帐号不能为空！");
             return;
@@ -194,14 +198,14 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
             showToast("密码不能为空！");
             return;
         }
-        if (StringUtil.isEmpty(verificationCode)) {
-            showToast("验证码不能为空！");
-            return;
-        }
-        if (!mVerificationCode.equalsIgnoreCase(verificationCode)) {
-            showToast("验证码不正确！");
-            return;
-        }
+//        if (StringUtil.isEmpty(verificationCode)) {
+//            showToast("验证码不能为空！");
+//            return;
+//        }
+//        if (!mVerificationCode.equalsIgnoreCase(verificationCode)) {
+//            showToast("验证码不正确！");
+//            return;
+//        }
         mPresenter.getSinglePersonalUserFromLogin(account, password);
     }
 }

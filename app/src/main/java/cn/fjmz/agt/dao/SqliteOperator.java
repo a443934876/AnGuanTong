@@ -3,7 +3,7 @@ package cn.fjmz.agt.dao;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 
-import cn.fjmz.agt.App;
+import cn.fjmz.agt.MyApplication;
 import cn.fjmz.agt.AqjcCommitInfoDao;
 import cn.fjmz.agt.CompanyInfoDao;
 import cn.fjmz.agt.CsInfoDao;
@@ -43,7 +43,7 @@ public enum  SqliteOperator {
 
     public SbjcListInfoDao getSbjcListInfoDao(Context context){
         if(mSbjcListInfoDao ==null){
-            DaoMaster.DevOpenHelper helper =new DaoMaster.DevOpenHelper(context.getApplicationContext(), App.OFFLINE_DB,null);
+            DaoMaster.DevOpenHelper helper =new DaoMaster.DevOpenHelper(context.getApplicationContext(), MyApplication.OFFLINE_DB,null);
             SQLiteDatabase sqLiteDatabase =helper.getWritableDatabase();
             DaoMaster daoMaster =new DaoMaster(sqLiteDatabase);
             DaoSession sDaoSession = daoMaster.newSession();
@@ -54,7 +54,7 @@ public enum  SqliteOperator {
 
     public SbjcCommitInfoDao getSbCommitDao(Context context){
         if(mSbCommitDao ==null){
-            DaoMaster.DevOpenHelper helper =new DaoMaster.DevOpenHelper(context.getApplicationContext(),App.OFFLINE_DB,null);
+            DaoMaster.DevOpenHelper helper =new DaoMaster.DevOpenHelper(context.getApplicationContext(), MyApplication.OFFLINE_DB,null);
             SQLiteDatabase sqLiteDatabase =helper.getWritableDatabase();
             DaoMaster daoMaster =new DaoMaster(sqLiteDatabase);
             DaoSession sDaoSession = daoMaster.newSession();
@@ -65,7 +65,7 @@ public enum  SqliteOperator {
 
     public UserInfoDao getUserInfoDao(Context context){
         if(mUserInfoDao ==null){
-            DaoMaster.DevOpenHelper helper =new DaoMaster.DevOpenHelper(context.getApplicationContext(),App.OFFLINE_DB,null);
+            DaoMaster.DevOpenHelper helper =new DaoMaster.DevOpenHelper(context.getApplicationContext(), MyApplication.OFFLINE_DB,null);
             SQLiteDatabase sqLiteDatabase =helper.getWritableDatabase();
             DaoMaster daoMaster =new DaoMaster(sqLiteDatabase);
             DaoSession sDaoSession = daoMaster.newSession();
@@ -76,7 +76,7 @@ public enum  SqliteOperator {
 
     public CompanyInfoDao getCompanyInfoDao(Context context){
         if(mCompanyInfoDao ==null){
-            DaoMaster.DevOpenHelper helper =new DaoMaster.DevOpenHelper(context.getApplicationContext(),App.OFFLINE_DB,null);
+            DaoMaster.DevOpenHelper helper =new DaoMaster.DevOpenHelper(context.getApplicationContext(), MyApplication.OFFLINE_DB,null);
             SQLiteDatabase sqLiteDatabase =helper.getWritableDatabase();
             DaoMaster daoMaster =new DaoMaster(sqLiteDatabase);
             DaoSession sDaoSession = daoMaster.newSession();
@@ -87,7 +87,7 @@ public enum  SqliteOperator {
 
     public RwInfoDao getRwInfoDao(Context context){
         if(mRwInfoDao ==null){
-            DaoMaster.DevOpenHelper helper =new DaoMaster.DevOpenHelper(context.getApplicationContext(),App.OFFLINE_DB,null);
+            DaoMaster.DevOpenHelper helper =new DaoMaster.DevOpenHelper(context.getApplicationContext(), MyApplication.OFFLINE_DB,null);
             SQLiteDatabase sqLiteDatabase =helper.getWritableDatabase();
             DaoMaster daoMaster =new DaoMaster(sqLiteDatabase);
             DaoSession sDaoSession = daoMaster.newSession();
@@ -98,7 +98,7 @@ public enum  SqliteOperator {
 
     public CsInfoDao getCsInfoDao(Context context){
         if(mCsInfoDao ==null){
-            DaoMaster.DevOpenHelper helper =new DaoMaster.DevOpenHelper(context.getApplicationContext(),App.OFFLINE_DB,null);
+            DaoMaster.DevOpenHelper helper =new DaoMaster.DevOpenHelper(context.getApplicationContext(), MyApplication.OFFLINE_DB,null);
             SQLiteDatabase sqLiteDatabase =helper.getWritableDatabase();
             DaoMaster daoMaster =new DaoMaster(sqLiteDatabase);
             DaoSession sDaoSession = daoMaster.newSession();
@@ -109,7 +109,7 @@ public enum  SqliteOperator {
 
     public SbInfoDao getSbInfoDao(Context context){
         if(mSbInfoDao ==null){
-            DaoMaster.DevOpenHelper helper =new DaoMaster.DevOpenHelper(context.getApplicationContext(),App.OFFLINE_DB,null);
+            DaoMaster.DevOpenHelper helper =new DaoMaster.DevOpenHelper(context.getApplicationContext(), MyApplication.OFFLINE_DB,null);
             SQLiteDatabase sqLiteDatabase =helper.getWritableDatabase();
             DaoMaster daoMaster =new DaoMaster(sqLiteDatabase);
             DaoSession sDaoSession = daoMaster.newSession();
@@ -120,7 +120,7 @@ public enum  SqliteOperator {
 
     public JcbInfoDao getJcbInfoDao(Context context){
         if(mJcbInfoDao ==null){
-            DaoMaster.DevOpenHelper helper =new DaoMaster.DevOpenHelper(context.getApplicationContext(),App.OFFLINE_DB,null);
+            DaoMaster.DevOpenHelper helper =new DaoMaster.DevOpenHelper(context.getApplicationContext(), MyApplication.OFFLINE_DB,null);
             SQLiteDatabase sqLiteDatabase =helper.getWritableDatabase();
             DaoMaster daoMaster =new DaoMaster(sqLiteDatabase);
             DaoSession sDaoSession = daoMaster.newSession();
@@ -131,7 +131,7 @@ public enum  SqliteOperator {
 
     public JcbDetailInfoDao getJcbDetailInfoDao(Context context){
         if(mJcbDetailInfoDao ==null){
-            DaoMaster.DevOpenHelper helper =new DaoMaster.DevOpenHelper(context.getApplicationContext(),App.OFFLINE_DB,null);
+            DaoMaster.DevOpenHelper helper =new DaoMaster.DevOpenHelper(context.getApplicationContext(), MyApplication.OFFLINE_DB,null);
             SQLiteDatabase sqLiteDatabase =helper.getWritableDatabase();
             DaoMaster daoMaster =new DaoMaster(sqLiteDatabase);
             DaoSession sDaoSession = daoMaster.newSession();
@@ -142,7 +142,7 @@ public enum  SqliteOperator {
 
     public YhfcInfoDao getYhfcInfoDao(Context context){
         if(mYhfcInfoDao ==null){
-            DaoMaster.DevOpenHelper helper =new DaoMaster.DevOpenHelper(context.getApplicationContext(),App.OFFLINE_DB,null);
+            DaoMaster.DevOpenHelper helper =new DaoMaster.DevOpenHelper(context.getApplicationContext(), MyApplication.OFFLINE_DB,null);
             SQLiteDatabase sqLiteDatabase =helper.getWritableDatabase();
             DaoMaster daoMaster =new DaoMaster(sqLiteDatabase);
             DaoSession sDaoSession = daoMaster.newSession();
@@ -153,7 +153,7 @@ public enum  SqliteOperator {
 
     public AqjcCommitInfoDao getCommitInfo(Context context){
         if(mCommitInfoDao ==null){
-            DaoMaster.DevOpenHelper helper =new DaoMaster.DevOpenHelper(context.getApplicationContext(),App.OFFLINE_DB,null);
+            DaoMaster.DevOpenHelper helper =new DaoMaster.DevOpenHelper(context.getApplicationContext(), MyApplication.OFFLINE_DB,null);
             SQLiteDatabase sqLiteDatabase =helper.getWritableDatabase();
             DaoMaster daoMaster =new DaoMaster(sqLiteDatabase);
             DaoSession sDaoSession = daoMaster.newSession();
@@ -164,7 +164,7 @@ public enum  SqliteOperator {
 
     public YhfcCommitInfoDao getYhfcCommitInfo(Context context){
         if(mYhfcCommitInfoDao ==null){
-            DaoMaster.DevOpenHelper helper =new DaoMaster.DevOpenHelper(context.getApplicationContext(),App.OFFLINE_DB,null);
+            DaoMaster.DevOpenHelper helper =new DaoMaster.DevOpenHelper(context.getApplicationContext(), MyApplication.OFFLINE_DB,null);
             SQLiteDatabase sqLiteDatabase =helper.getWritableDatabase();
             DaoMaster daoMaster =new DaoMaster(sqLiteDatabase);
             DaoSession sDaoSession = daoMaster.newSession();
@@ -175,7 +175,7 @@ public enum  SqliteOperator {
 
     public YhzgCommitInfoDao getYhzgCommitInfo(Context context){
         if(mYhzgCommitInfoDao ==null){
-            DaoMaster.DevOpenHelper helper =new DaoMaster.DevOpenHelper(context.getApplicationContext(),App.OFFLINE_DB,null);
+            DaoMaster.DevOpenHelper helper =new DaoMaster.DevOpenHelper(context.getApplicationContext(), MyApplication.OFFLINE_DB,null);
             SQLiteDatabase sqLiteDatabase =helper.getWritableDatabase();
             DaoMaster daoMaster =new DaoMaster(sqLiteDatabase);
             DaoSession sDaoSession = daoMaster.newSession();

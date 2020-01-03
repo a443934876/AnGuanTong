@@ -25,7 +25,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import cn.fjmz.agt.App;
+import cn.fjmz.agt.MyApplication;
 import cn.fjmz.agt.R;
 import cn.fjmz.agt.util.StringUtil;
 import cn.fjmz.agt.util.TableParse;
@@ -47,7 +47,7 @@ public class Gwsh_Activity extends Activity {
 	private int orgid;// 公司ID
 	private String orgidStr;
 	private int DocId;
-	private App myApp;
+	private MyApplication myMyApplication;
 	private CheckBox qxfbCb;
 	private ArrayList<HashMap<String, Object>> gwData;// 公文数据集
 	private Spinner xygsh;//
@@ -75,7 +75,7 @@ public class Gwsh_Activity extends Activity {
 									SweetAlertDialog sweetAlertDialog) {
 								// TODO Auto-generated method stub
 								sweetAlertDialog.cancel();
-								myApp.isRefresh = true;
+								myMyApplication.isRefresh = true;
 								finish();
 							}
 						}).show();
@@ -148,7 +148,7 @@ public class Gwsh_Activity extends Activity {
 						ImageView iv = new ImageView(Gwsh_Activity.this);
 						iv.setClickable(true);
 						gwpy_fjwd.addView(iv);
-						String realUrl = WebServiceUtil.IMAGE_URLPATH + url;
+						String realUrl = WebServiceUtil.IMAGE_URL_PATH + url;
 						iv.setTag(R.id.imageShow,realUrl);
 						Glide.with(Gwsh_Activity.this)
 								.load(realUrl)
@@ -182,7 +182,7 @@ public class Gwsh_Activity extends Activity {
 								.getTableData(tableOrImageData.get("table"));
 						TableLayout t = new TableLayout(Gwsh_Activity.this);
 						t.setBackgroundColor(getResources().getColor(
-								R.color.balck));
+								R.color.black));
 						for (int x = 0; x < tableData.size(); x++) {
 							TableRow row = new TableRow(Gwsh_Activity.this);
 							for (int i = 0; i < tableData.get(i).size(); i++) {
@@ -259,7 +259,7 @@ public class Gwsh_Activity extends Activity {
 							"2049-12-31T00:00:00.850", true, true, 0, "", 0, "" };
 					ArrayList<HashMap<String, Object>> data = WebServiceUtil
 							.getWebServiceMsg(keys, values,
-									"getCapacityDocument",WebServiceUtil.HUIWEI_URL,WebServiceUtil.HUIWEI_NAMESPACE);
+									"getCapacityDocument",WebServiceUtil.HUI_WEI_5VC,WebServiceUtil.HUI_WEI_NAMESPACE);
 					gwData.addAll(data);
 
 					// getAllEmployeeFromOrgID
@@ -268,7 +268,7 @@ public class Gwsh_Activity extends Activity {
 					ArrayList<HashMap<String, Object>> data3 = WebServiceUtil
 							.getWebServiceMsg(keys3, values3,
 									"getAllEmployeeFromOrgID", new String[] {
-											"emName", "Emid" },WebServiceUtil.HUIWEI_URL,WebServiceUtil.HUIWEI_NAMESPACE);
+											"emName", "Emid" },WebServiceUtil.HUI_WEI_5VC,WebServiceUtil.HUI_WEI_NAMESPACE);
 					gyData.addAll(data3);
 					mHandler.sendEmptyMessage(3);
 				} catch (InterruptedException ex) {
@@ -295,11 +295,11 @@ public class Gwsh_Activity extends Activity {
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		map.put("emName", "无");
 		map.put("Emid", "0");
-		myApp = (App) getApplication();
+		myMyApplication = (MyApplication) getApplication();
 		gyData.add(map);
 		String gwidStr = getIntent().getStringExtra("gwid");// 公文ID
-		String emidStr = myApp.getComInfo().getEmid();
-		String orgid_ = myApp.getComInfo().getOrg_id();
+		String emidStr = myMyApplication.getComInfo().getEmid();
+		String orgid_ = myMyApplication.getComInfo().getOrg_id();
 		try {
 			DocId = Integer.parseInt(getIntent().getStringExtra("DocId"));
 		} catch (Exception e) {
@@ -307,7 +307,7 @@ public class Gwsh_Activity extends Activity {
 					Toast.LENGTH_LONG).show();
 			return;
 		}
-		orgidStr = myApp.getComInfo().getOrg_idstr();
+		orgidStr = myMyApplication.getComInfo().getOrg_idstr();
 		orgid = Integer.parseInt(orgid_);
 		if (StringUtil.isNotEmpty(emidStr)) {
 			emid = Integer.parseInt(emidStr);
@@ -372,7 +372,7 @@ public class Gwsh_Activity extends Activity {
 							gyData.get(xygsh.getSelectedItemPosition()).get(
 									"Emid") };
 					WebServiceUtil.putWebServiceMsg(keys, values,
-							"SetInfoAudit",WebServiceUtil.HUIWEI_URL,WebServiceUtil.HUIWEI_NAMESPACE);
+							"SetInfoAudit",WebServiceUtil.HUI_WEI_5VC,WebServiceUtil.HUI_WEI_NAMESPACE);
 					mHandler.sendEmptyMessage(1);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -448,7 +448,7 @@ public class Gwsh_Activity extends Activity {
 							"carryPartName", "dLevel", "cDocDetailID",
 							"dSequence", "cDocDetail", "inTable", "inImage",
 							"createcom", "cDocDetail", "info_additional",
-							"info_additiondoc" },WebServiceUtil.HUIWEI_URL,WebServiceUtil.HUIWEI_NAMESPACE);
+							"info_additiondoc" },WebServiceUtil.HUI_WEI_5VC,WebServiceUtil.HUI_WEI_NAMESPACE);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

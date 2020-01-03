@@ -19,12 +19,17 @@ public class AppUtil {
         }
         return -1;
     }
+    public static String getVersionName(Context context) {
+        try {
+            return context.getPackageManager().getPackageInfo(context.getPackageName(), 0).versionName;
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
+        return "";
+    }
     /**
      * 获取包名
      *
-     * @作者 huangssh
-     * @创建时间 2015-12-2 下午4:08:16
-     * @版本
      * @param context
      * @return
      */

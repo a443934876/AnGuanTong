@@ -122,7 +122,7 @@ public class YhDetailInfo {
                     continue;
                 }
                 str =str.replace("../","");
-                imgList.add(String.format("%s%s", WebServiceUtil.IMAGE_URLPATH, str));
+                imgList.add(String.format("%s%s", WebServiceUtil.IMAGE_URL_PATH, str));
             }
         }
         return imgList;
@@ -208,7 +208,7 @@ public class YhDetailInfo {
                     continue;
                 }
                 str =str.replace("../","");
-                imgList.add(String.format("%s%s", WebServiceUtil.IMAGE_URLPATH,str));
+                imgList.add(String.format("%s%s", WebServiceUtil.IMAGE_URL_PATH,str));
             }
         }
         return imgList;

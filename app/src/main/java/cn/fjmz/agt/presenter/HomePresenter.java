@@ -40,8 +40,8 @@ public class HomePresenter extends BasePresenter<HomeView> {
                 map.put("nEnd", DateParseUtil.getEndData());
                 map.put("staIndexID", 7);
                 try {
-                    String safetyIndex = WebServiceUtil.getWebServiceMsg1(map, "getSafetyIndexFromCom",
-                            WebServiceUtil.HUIWEI_SAFE_URL, WebServiceUtil.HUIWEI_NAMESPACE);
+                    String safetyIndex = WebServiceUtil.getWebServiceMsgList(map, "getSafetyIndexFromCom",
+                            WebServiceUtil.HUI_WEI_5VS, WebServiceUtil.HUI_WEI_NAMESPACE);
                     emitter.onNext(ComIndexEntity.arrayComIndexEntityFromData(safetyIndex).get(0));
                 } catch (Exception e) {
                     emitter.onError(e);
@@ -74,8 +74,8 @@ public class HomePresenter extends BasePresenter<HomeView> {
                 map.put("actionStart", DateParseUtil.getMonth(60));
                 map.put("actionEnd", DateParseUtil.getEndData());
                 try {
-                    String mission = WebServiceUtil.getWebServiceMsg1(map, "getMissionFromEm",
-                            WebServiceUtil.HUIWEI_5VTF_URL, WebServiceUtil.HUIWEI_NAMESPACE);
+                    String mission = WebServiceUtil.getWebServiceMsgList(map, "getMissionFromEm",
+                            WebServiceUtil.HUI_WEI_5VT, WebServiceUtil.HUI_WEI_NAMESPACE);
                     emitter.onNext(MissionEntity.arrayMissionEntityFromData(mission));
                 } catch (Exception e) {
                     emitter.onError(e);
@@ -114,8 +114,8 @@ public class HomePresenter extends BasePresenter<HomeView> {
                 map.put("industryStr", "");
                 map.put("objOrgName", "");
                 try {
-                    String hiddenIllness = WebServiceUtil.getWebServiceMsg1(map, "getAllHiddenIllness",
-                            WebServiceUtil.HUIWEI_SAFE_URL, WebServiceUtil.HUIWEI_NAMESPACE);
+                    String hiddenIllness = WebServiceUtil.getWebServiceMsgList(map, "getAllHiddenIllness",
+                            WebServiceUtil.HUI_WEI_5VS, WebServiceUtil.HUI_WEI_NAMESPACE);
                     emitter.onNext(HiddenIllnessEntity.arrayHiddenIllnessEntityFromData(hiddenIllness));
                 } catch (Exception e) {
                     emitter.onError(e);
@@ -150,8 +150,8 @@ public class HomePresenter extends BasePresenter<HomeView> {
                 map.put("IsStudyed", 0);
                 map.put("IsExamed", -1);
                 try {
-                    String lesson = WebServiceUtil.getWebServiceMsg1(map, "getLessonFromEm",
-                            WebServiceUtil.HUIWEI_5HR, WebServiceUtil.HUIWEI_NAMESPACE);
+                    String lesson = WebServiceUtil.getWebServiceMsgList(map, "getLessonFromEm",
+                            WebServiceUtil.HUI_WEI_5VH, WebServiceUtil.HUI_WEI_NAMESPACE);
                     emitter.onNext(LessonEntity.arrayLessonEntityFromData(lesson));
                 } catch (Exception e) {
                     emitter.onError(e);
@@ -187,8 +187,8 @@ public class HomePresenter extends BasePresenter<HomeView> {
                 map.put("KEmid", emId);
                 map.put("Comid", comId);
                 try {
-                    String safety = WebServiceUtil.getWebServiceMsg1(map, "getSafetySetList",
-                            WebServiceUtil.HUIWEI_SAFE_URL, WebServiceUtil.HUIWEI_NAMESPACE);
+                    String safety = WebServiceUtil.getWebServiceMsgList(map, "getSafetySetList",
+                            WebServiceUtil.HUI_WEI_5VS, WebServiceUtil.HUI_WEI_NAMESPACE);
                     emitter.onNext(SafetyEntity.arraySafetyEntityFromData(safety));
                 } catch (Exception e) {
                     emitter.onError(e);

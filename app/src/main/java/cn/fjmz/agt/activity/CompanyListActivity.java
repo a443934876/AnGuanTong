@@ -57,12 +57,7 @@ public class CompanyListActivity extends BaseActivity {
     @Override
     protected void intiListener() {
         super.intiListener();
-        mIvTitleLeft.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
+        mIvTitleLeft.setOnClickListener(view -> finish());
     }
 
     @Override

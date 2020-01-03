@@ -16,7 +16,7 @@ import io.reactivex.plugins.RxJavaPlugins;
 import io.realm.Realm;
 import io.realm.RealmConfiguration;
 
-public class App extends MultiDexApplication {
+public class MyApplication extends MultiDexApplication {
     public static Context mContext;
     public static boolean isConnection = true;
     public static final String OFFLINE_DB = "offline_db";

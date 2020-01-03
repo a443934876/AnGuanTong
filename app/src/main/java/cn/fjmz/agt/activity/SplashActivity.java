@@ -18,6 +18,7 @@ import cn.fjmz.agt.presenter.SplashPresenter;
 import cn.fjmz.agt.presenter.interfaces.SplashView;
 import cn.fjmz.agt.util.AppUtil;
 import cn.fjmz.agt.util.NetWorkUtils;
+
 import com.king.app.dialog.AppDialog;
 import com.king.app.dialog.AppDialogConfig;
 import com.king.app.updater.AppUpdater;
@@ -150,9 +151,10 @@ public class SplashActivity extends BaseActivity<SplashPresenter> implements Spl
     }
 
     @Override
-    public void onGetSinglePersonalUserFromLoginSuccess(UserEntity userEntityList) {
-        if (userEntityList.getRet().equals("0")) {
-            mPresenter.getMoreComs(userEntityList.getUid());
+    public void onGetSinglePersonalUserFromLoginSuccess(UserEntity entity) {
+        if (entity.getRet().equals("0")) {
+            Constants.userEntity = entity;
+            mPresenter.getMoreComs(entity.getUid());
         } else {
             LoginActivity.launch(LoginActivity.class, this);
             finish();

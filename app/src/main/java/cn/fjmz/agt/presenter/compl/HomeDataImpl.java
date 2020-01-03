@@ -27,12 +27,12 @@ public class HomeDataImpl implements HomeData {
 
     }
 //    private CompositeSubscription mySubscription = new CompositeSubscription();
-//    private App myApp;
+//    private MyApplication myMyApplication;
 //    private HomeData.GetInfo mGetInfo;
 //
 //
 //    public HomeDataImpl(Activity activity, HomeData.GetInfo mGetInfo) {
-//        this.myApp = (App) activity.getApplication();
+//        this.myMyApplication = (MyApplication) activity.getApplication();
 //        this.mGetInfo = mGetInfo;
 //
 //    }
@@ -65,11 +65,11 @@ public class HomeDataImpl implements HomeData {
 //                Date lastYear = ca.getTime();
 //                String lastYearTime = formatter.format(lastYear);
 //                String keys[] = {"emid", "actionStart", "actionEnd"};
-//                Object values[] = {myApp.getComInfo().getEmid(), lastYearTime, nowTime};
+//                Object values[] = {myMyApplication.getComInfo().getEmid(), lastYearTime, nowTime};
 //                try {
 //                    ArrayList<HashMap<String, Object>> result = WebServiceUtil.getWebServiceMsg(keys, values,
 //                            "getMissionFromEm",
-//                            WebServiceUtil.HUIWEI_5VTF_URL, WebServiceUtil.HUIWEI_NAMESPACE);
+//                            WebServiceUtil.HUI_WEI_5VT, WebServiceUtil.HUI_WEI_NAMESPACE);
 //                    ArrayList<MissionInfo> info = MissionInfo.fromData(result);
 //                    subscriber.onNext(info);
 //                } catch (Exception e) {
@@ -114,11 +114,11 @@ public class HomeDataImpl implements HomeData {
 //                String lastYearTime = formatter.format(lastYear);
 //                String keys[] = {"uEmid", "isFinished", "isReviewed", "cStart", "cEnd",
 //                        "hgrade", "areaRangeID", "industryStr", "objOrgName"};
-//                Object values[] = {myApp.getComInfo().getEmid(), 2, 2, lastYearTime, nowTime, "", 0, "", ""};
+//                Object values[] = {myMyApplication.getComInfo().getEmid(), 2, 2, lastYearTime, nowTime, "", 0, "", ""};
 //                try {
 //                    ArrayList<HashMap<String, Object>> result = WebServiceUtil.getWebServiceMsg(keys, values,
 //                            "getAllHiddenIllness",
-//                            WebServiceUtil.HUIWEI_SAFE_URL, WebServiceUtil.HUIWEI_NAMESPACE);
+//                            WebServiceUtil.HUI_WEI_5VS, WebServiceUtil.HUI_WEI_NAMESPACE);
 //                    ArrayList<HiddenIllnessInfo> hiddenIllnessInfo = HiddenIllnessInfo.fromData(result);
 //                    subscriber.onNext(hiddenIllnessInfo);
 //                } catch (Exception e) {
@@ -163,11 +163,11 @@ public class HomeDataImpl implements HomeData {
 //                Date lastYear = ca.getTime();
 //                String lastYearTime = formatter.format(lastYear);
 //                String keys[] = {"Emid", "SStart", "SEnd", "IsStudyed", "IsExamed"};
-//                Object values[] = {myApp.getComInfo().getEmid(), lastYearTime, nowTime, 0, -1};
+//                Object values[] = {myMyApplication.getComInfo().getEmid(), lastYearTime, nowTime, 0, -1};
 //                try {
 //                    ArrayList<HashMap<String, Object>> result = WebServiceUtil.getWebServiceMsg(keys, values,
 //                            "getLessonFromEm",
-//                            WebServiceUtil.HUIWEI_5HR, WebServiceUtil.HUIWEI_NAMESPACE);
+//                            WebServiceUtil.HUI_WEI_5VH, WebServiceUtil.HUI_WEI_NAMESPACE);
 //                    ArrayList<LessonInfo> lessonInfo = LessonInfo.fromData(result);
 //                    subscriber.onNext(lessonInfo);
 //                } catch (Exception e) {
@@ -209,12 +209,12 @@ public class HomeDataImpl implements HomeData {
 //                Date now = ca.getTime();
 //                String[] keys = {"SCPID", "SCType", "FliedID", "isOver",
 //                        "KEmid", "Comid"};
-//                Object[] values = {0, "", 0, -1, Integer.parseInt(myApp.getComInfo().getEmid()),
-//                        Integer.parseInt(myApp.getComInfo().getCom_id())};
+//                Object[] values = {0, "", 0, -1, Integer.parseInt(myMyApplication.getComInfo().getEmid()),
+//                        Integer.parseInt(myMyApplication.getComInfo().getCom_id())};
 //                try {
 //                    ArrayList<HashMap<String, Object>> result = WebServiceUtil.getWebServiceMsg(keys, values,
 //                            "getSafetySetList",
-//                            WebServiceUtil.HUIWEI_SAFE_URL, WebServiceUtil.HUIWEI_NAMESPACE);
+//                            WebServiceUtil.HUI_WEI_5VS, WebServiceUtil.HUI_WEI_NAMESPACE);
 //                    for (int i = 0; i < result.size(); i++) {
 //                        if (result.get(i).get("lastcheck") != null) {
 //                            String time = result.get(i).get("lastcheck").toString().substring(0, result.get(i)

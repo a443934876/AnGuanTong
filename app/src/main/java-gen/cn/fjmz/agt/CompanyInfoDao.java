@@ -17,7 +17,7 @@ public class CompanyInfoDao extends AbstractDao<CompanyInfo, Long> {
     public static final String TABLENAME = "COMPANY_INFO";
 
     /**
-     * Properties of entity CompanyInfo.<br/>
+     * Properties of companyEntity CompanyInfo.<br/>
      * Can be used for QueryBuilder and for referencing column names.
     */
     public static class Properties {

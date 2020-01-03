@@ -17,7 +17,7 @@ public class UserInfoDao extends AbstractDao<UserInfo, Long> {
     public static final String TABLENAME = "USER_INFO";
 
     /**
-     * Properties of entity UserInfo.<br/>
+     * Properties of companyEntity UserInfo.<br/>
      * Can be used for QueryBuilder and for referencing column names.
     */
     public static class Properties {

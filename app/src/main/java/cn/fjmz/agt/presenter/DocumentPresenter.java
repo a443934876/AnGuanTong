@@ -36,8 +36,8 @@ public class DocumentPresenter extends BasePresenter<DocumentView> {
                 map.put("InfoID", 0);
                 map.put("viewed", false);
                 try {
-                    String msg = WebServiceUtil.getWebServiceMsg1(map, "getWebInformFroEmID",
-                            WebServiceUtil.HUIWEI_5VIN_URL, WebServiceUtil.HUIWEI_NAMESPACE);
+                    String msg = WebServiceUtil.getWebServiceMsgList(map, "getWebInformFroEmID",
+                            WebServiceUtil.HUI_WEI_5VI, WebServiceUtil.HUI_WEI_NAMESPACE);
                     emitter.onNext(DocumentListEntity.arrayDocumentListEntityFromData(msg));
                 } catch (Exception e) {
                     emitter.onError(e);

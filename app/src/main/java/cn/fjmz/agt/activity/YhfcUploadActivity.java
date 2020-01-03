@@ -17,7 +17,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import cn.fjmz.agt.App;
+import cn.fjmz.agt.MyApplication;
 import cn.fjmz.agt.R;
 import cn.fjmz.agt.YhfcCommitInfo;
 import cn.fjmz.agt.dao.SqliteOperator;
@@ -140,7 +140,7 @@ public class YhfcUploadActivity extends Activity implements View.OnClickListener
             String audioPath = mAudioBtn.getTag() == null ? "" : "," + StringUtil.noNull(mAudioBtn.getTag());
             yhfcInfo.setDightedImgPath(imagePath + audioPath);
             yhfcInfo.setReviewRemark(fcqkStr);
-            App mApplication = (App) getApplication();
+            MyApplication mApplication = (MyApplication) getApplication();
             yhfcInfo.setReviewEmids(mApplication.getComInfo().getEmid());
             yhfcInfo.setReviewDate(UploadDataHelper.getNowDate());
             commit(yhfcInfo);
@@ -164,7 +164,7 @@ public class YhfcUploadActivity extends Activity implements View.OnClickListener
     }
 
     private void commit(final YhfcCommitInfo info) {
-        if (!App.isConnection) {
+        if (!MyApplication.isConnection) {
             toast("未联网，已保存！等待下次联网后再提示");
             SqliteOperator.INSTANCE.getYhfcCommitInfo(YhfcUploadActivity.this).insertOrReplace(info);
             return;

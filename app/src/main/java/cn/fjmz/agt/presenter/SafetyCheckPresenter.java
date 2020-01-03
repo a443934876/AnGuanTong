@@ -39,15 +39,15 @@ public class SafetyCheckPresenter extends BasePresenter<SafetyCheckView> {
                 map.put("Proclid", 0);
                 map.put("Comid", comId);
                 try {
-                    String safetyCheckList = WebServiceUtil.getWebServiceMsg1(map, "getSafetyCheckList",
-                            WebServiceUtil.HUIWEI_SAFE_URL, WebServiceUtil.HUIWEI_NAMESPACE);
+                    String safetyCheckList = WebServiceUtil.getWebServiceMsgList(map, "getSafetyCheckList",
+                            WebServiceUtil.HUI_WEI_5VS, WebServiceUtil.HUI_WEI_NAMESPACE);
                     emitter.onNext(SafetyCheck.arraySafetyCheckFromData(safetyCheckList));
                 } catch (Exception e) {
                     emitter.onError(e);
                 }
 
             }
-        }), new BaseObserver<List<SafetyCheck>>(baseView,true) {
+        }), new BaseObserver<List<SafetyCheck>>(baseView, true) {
 
             @Override
             public void onSuccess(List<SafetyCheck> o) {
@@ -71,15 +71,15 @@ public class SafetyCheckPresenter extends BasePresenter<SafetyCheckView> {
                 map.put("comid", comId);
                 map.put("keepEmid", 0);
                 try {
-                    String place = WebServiceUtil.getWebServiceMsg1(map, "getAllPlace",
-                            WebServiceUtil.HUIWEI_URL, WebServiceUtil.HUIWEI_NAMESPACE);
+                    String place = WebServiceUtil.getWebServiceMsgList(map, "getAllPlace",
+                            WebServiceUtil.HUI_WEI_5VC, WebServiceUtil.HUI_WEI_NAMESPACE);
                     emitter.onNext(PlaceEntity.arrayPlaceEntityFromData(place));
                 } catch (Exception e) {
                     emitter.onError(e);
                 }
 
             }
-        }), new BaseObserver<List<PlaceEntity>>(baseView,true) {
+        }), new BaseObserver<List<PlaceEntity>>(baseView, true) {
 
             @Override
             public void onSuccess(List<PlaceEntity> o) {

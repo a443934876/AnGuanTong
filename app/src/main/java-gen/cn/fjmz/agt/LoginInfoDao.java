@@ -17,7 +17,7 @@ public class LoginInfoDao extends AbstractDao<LoginInfo, Long> {
     public static final String TABLENAME = "LOGIN_INFO";
 
     /**
-     * Properties of entity LoginInfo.<br/>
+     * Properties of companyEntity LoginInfo.<br/>
      * Can be used for QueryBuilder and for referencing column names.
     */
     public static class Properties {

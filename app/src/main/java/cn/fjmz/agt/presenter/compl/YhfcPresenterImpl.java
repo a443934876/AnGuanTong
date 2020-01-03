@@ -1,6 +1,6 @@
 package cn.fjmz.agt.presenter.compl;
 
-import cn.fjmz.agt.App;
+import cn.fjmz.agt.MyApplication;
 import cn.fjmz.agt.YhfcInfo;
 import cn.fjmz.agt.YhfcInfoDao;
 import cn.fjmz.agt.dao.SqliteOperator;
@@ -23,13 +23,13 @@ public class YhfcPresenterImpl implements IYhfcPresenter {
     }
 
     @Override
-    public void getYhfcList(final App pApp, final String startDate, final String endDate, final String name) {
+    public void getYhfcList(final MyApplication pMyApplication, final String startDate, final String endDate, final String name) {
         mView.pendingDialog();
 //        Observable.create(new Observable.OnSubscribe<List<YhfcInfo>>() {
 //            @Override
 //            public void call(Subscriber<? super List<YhfcInfo>> pSubscriber) {
 //                try {
-//                    if (!App.isConnection) {
+//                    if (!MyApplication.isConnection) {
 //                        try {
 //                            YhfcInfoDao yhfcInfoDao = SqliteOperator.INSTANCE.getYhfcInfoDao(mView.getContext());
 //                            List<YhfcInfo> result = yhfcInfoDao.queryBuilder().where(YhfcInfoDao.Properties.IsYhzg.eq(mView.isYhzg())).list();
@@ -46,7 +46,7 @@ public class YhfcPresenterImpl implements IYhfcPresenter {
 //                    }
 //                    String keys2[] = {"uComid","isFinished", "isReviewed",  "cStart",
 //                            "cEnd", "hgrade", "areaRangeID", "industryStr", "objOrgName"};
-//                    int comid = Integer.parseInt(pApp.getComInfo().getCom_id());
+//                    int comid = Integer.parseInt(pMyApplication.getComInfo().getCom_id());
 //                    String sDate = "2000-01-01T00:00:00.000";
 //                    if (!TextUtils.isEmpty(startDate)) {
 //                        sDate = String.format("%sT00:00:00.000", startDate);
@@ -58,7 +58,7 @@ public class YhfcPresenterImpl implements IYhfcPresenter {
 //                    Object values2[] = {comid, mView.getFinished(),mView.getReview(), sDate, eDate, "", 0, "", name};
 //                    ArrayList<HashMap<String, Object>> result = WebServiceUtil.getWebServiceMsg(keys2, values2,
 //                            "getRelHiddenIllness",
-//                            WebServiceUtil.HUIWEI_SAFE_URL,WebServiceUtil.HUIWEI_NAMESPACE);
+//                            WebServiceUtil.HUI_WEI_5VS,WebServiceUtil.HUI_WEI_NAMESPACE);
 //                    pSubscriber.onNext(parseYhfcInfo(result));
 //                } catch (Exception e) {
 //                    e.printStackTrace();

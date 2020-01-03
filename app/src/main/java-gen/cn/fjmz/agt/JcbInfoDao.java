@@ -17,7 +17,7 @@ public class JcbInfoDao extends AbstractDao<JcbInfo, Long> {
     public static final String TABLENAME = "JCB_INFO";
 
     /**
-     * Properties of entity JcbInfo.<br/>
+     * Properties of companyEntity JcbInfo.<br/>
      * Can be used for QueryBuilder and for referencing column names.
     */
     public static class Properties {

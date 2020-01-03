@@ -19,7 +19,7 @@ import android.widget.Toast;
 
 import cn.fjmz.agt.R;
 import cn.fjmz.agt.YhfcInfo;
-import cn.fjmz.agt.App;
+import cn.fjmz.agt.MyApplication;
 import cn.fjmz.agt.activity.YhfcUploadActivity;
 import cn.fjmz.agt.adapter.YhInfoListAdapter;
 import cn.fjmz.agt.myinterface.ITakePhotoListener;
@@ -94,7 +94,7 @@ public class RectificationFragment extends Fragment implements IYhfcPresenter.Vi
     @Override
     public void onResume() {
         super.onResume();
-        mPresenter.getYhfcList((App) getActivity().getApplication(), "", "", "");
+        mPresenter.getYhfcList((MyApplication) getActivity().getApplication(), "", "", "");
     }
 
 
@@ -191,7 +191,7 @@ public class RectificationFragment extends Fragment implements IYhfcPresenter.Vi
     @Override
     public void onClick(View pView) {
         if (pView.getId() == mSearchBtn.getId()) {
-            mPresenter.getYhfcList((App) getActivity().getApplication(), mStartEdt.getText().toString(), mEndEdt.getText().toString(), mQymcEdt.getText().toString());
+            mPresenter.getYhfcList((MyApplication) getActivity().getApplication(), mStartEdt.getText().toString(), mEndEdt.getText().toString(), mQymcEdt.getText().toString());
         }
     }
 

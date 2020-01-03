@@ -11,7 +11,7 @@ import android.os.IBinder;
 import android.util.Log;
 import android.widget.Toast;
 
-import cn.fjmz.agt.App;
+import cn.fjmz.agt.MyApplication;
 
 public class NetworkStateService extends Service{
 
@@ -30,10 +30,10 @@ public class NetworkStateService extends Service{
                 info = connectivityManager.getActiveNetworkInfo();
                 if(info != null && info.isAvailable()) {
                     Toast.makeText(context, info.getTypeName()+"网络连接", Toast.LENGTH_SHORT).show();
-                    App.isConnection =true;
+                    MyApplication.isConnection =true;
                 } else {
                     Toast.makeText(context, "网络未连接，使用离线模式", Toast.LENGTH_SHORT).show();
-                    App.isConnection =false;
+                    MyApplication.isConnection =false;
                 }
             }
         }

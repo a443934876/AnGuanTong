@@ -94,10 +94,10 @@ public class ActivityManageUtils {
     /**
      * 结束非MainActivity的Activity
      */
-    public void finishNHomeActivity() {
+    public void finishNHomeActivity(Class<?> cls) {
         for (int i = 0; i < activityStack.size(); i++) {
             if (null != activityStack.get(i)) {
-                if (!activityStack.get(i).getClass().equals(MainActivity.class)) {
+                if (!activityStack.get(i).getClass().equals(cls)) {
                     activityStack.get(i).finish();
                 }
             }

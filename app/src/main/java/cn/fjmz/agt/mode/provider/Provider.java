@@ -14,7 +14,7 @@ public class Provider {
 //                    Object values[] = {packageId, "", comId};
 //                    ArrayList<HashMap<String, Object>> result = WebServiceUtil.getWebServiceMsg(keys, values,
 //                            "getPackageVersion",
-//                            WebServiceUtil.HUIWEI_5VPM_URL, WebServiceUtil.HUIWEI_NAMESPACE);
+//                            WebServiceUtil.HUI_WEI_5VP, WebServiceUtil.HUI_WEI_NAMESPACE);
 //                    HashMap<String, Object> map = new HashMap<>();
 //                    if (result.size() > 0) {
 //                        if (StringUtil.isNotEmpty(StringUtil.noNull(result.get(0).get("ver")))) {

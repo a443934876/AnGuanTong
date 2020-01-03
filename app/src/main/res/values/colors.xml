@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <color name="balck">#000000</color>
+    <color name="black">#000000</color>
     <color name="login_bg">#CC3300</color>
     <color name="login_bg2">#9F9F5F</color>
     <color name="forestgreen">#238E23</color>
@@ -52,7 +52,7 @@
     <color name="colorAccent">#FF4081</color>
     <color name="colorSkyBlue">#00A1DD</color>
     <color name="backgroundColor">#EEEEEE</color>
-    <color name="color_line">#f6f6f6</color>
+    <color name="color_line">#F6F6F6</color>
     <color name="color_blue">#1c91f2</color>
     <color name="color_gray">#9a9a9a</color>
     <color name="color_tab">#FAFBFE</color>

@@ -17,7 +17,7 @@ public class AqjcCommitInfoDao extends AbstractDao<AqjcCommitInfo, Long> {
     public static final String TABLENAME = "AQJC_COMMIT_INFO";
 
     /**
-     * Properties of entity AqjcCommitInfo.<br/>
+     * Properties of companyEntity AqjcCommitInfo.<br/>
      * Can be used for QueryBuilder and for referencing column names.
     */
     public static class Properties {

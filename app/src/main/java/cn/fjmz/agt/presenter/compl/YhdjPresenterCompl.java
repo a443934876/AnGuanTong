@@ -63,7 +63,7 @@ public class YhdjPresenterCompl implements IYhdjPresenter {
     }
 
 //    private IYhdjPresenter.View mView;
-//    private App myApp;
+//    private MyApplication myMyApplication;
 //    private Context mContext;
 //    private CompositeSubscription mCompositeSubscription;
 //    private List<JcbDetailInfo> mJcbDetailList;
@@ -72,7 +72,7 @@ public class YhdjPresenterCompl implements IYhdjPresenter {
 //
 //    public YhdjPresenterCompl(IYhdjPresenter.View pView, Activity activity) {
 //        this.mView = pView;
-//        this.myApp = (App) activity.getApplication();
+//        this.myMyApplication = (MyApplication) activity.getApplication();
 //        this.mContext = activity;
 //        mCompositeSubscription = new CompositeSubscription();
 //    }
@@ -82,7 +82,7 @@ public class YhdjPresenterCompl implements IYhdjPresenter {
 //        Subscription subscription = Observable.create(new Observable.OnSubscribe<List<RwInfo>>() {
 //            @Override
 //            public void call(Subscriber<? super List<RwInfo>> subscriber) {
-//                if (!App.isConnection) {
+//                if (!MyApplication.isConnection) {
 //                    RwInfoDao rwInfoDao = SqliteOperator.INSTANCE.getRwInfoDao(mContext);
 //                    subscriber.onNext(rwInfoDao.loadAll());
 //                    subscriber.onCompleted();
@@ -95,14 +95,14 @@ public class YhdjPresenterCompl implements IYhdjPresenter {
 //                result.add(map);
 //                String keys2[] = {"ComID", "nStart", "nEnd"};
 //                Object values2[] = {
-//                        Integer.parseInt(myApp.getComInfo().getCom_id()),
+//                        Integer.parseInt(myMyApplication.getComInfo().getCom_id()),
 //                        "2010-01-01T01:00:00.000",
 //                        "2025-12-31T01:00:00.000"};
 //                try {
 //                    ArrayList<HashMap<String, Object>> data = WebServiceUtil.getWebServiceMsg(keys2, values2,
 //                            "getSafetyCheckTaskListFromCom", new String[]{
 //                                    "TaskTitle", "TaskID"},
-//                            WebServiceUtil.HUIWEI_SAFE_URL, WebServiceUtil.HUIWEI_NAMESPACE);
+//                            WebServiceUtil.HUI_WEI_5VS, WebServiceUtil.HUI_WEI_NAMESPACE);
 //                    result.addAll(data);
 //                    subscriber.onNext(parseRwInfo(result));
 //                } catch (Exception e) {
@@ -137,7 +137,7 @@ public class YhdjPresenterCompl implements IYhdjPresenter {
 //        Subscription subscription = Observable.create(new Observable.OnSubscribe<List<CsInfo>>() {
 //            @Override
 //            public void call(Subscriber<? super List<CsInfo>> pSubscriber) {
-//                if (!App.isConnection) {
+//                if (!MyApplication.isConnection) {
 //                    CsInfoDao rwInfoDao = SqliteOperator.INSTANCE.getCsInfoDao(mContext);
 //                    pSubscriber.onNext(rwInfoDao.loadAll());
 //                    pSubscriber.onCompleted();
@@ -145,12 +145,12 @@ public class YhdjPresenterCompl implements IYhdjPresenter {
 //                }
 //                ArrayList<HashMap<String, Object>> result;
 //                String keys2[] = {"comid", "keepEmid"};
-//                Object values2[] = {Integer.parseInt(myApp.getComInfo()
+//                Object values2[] = {Integer.parseInt(myMyApplication.getComInfo()
 //                        .getCom_id()), 0};
 //                try {
 //                    result = WebServiceUtil.getWebServiceMsg(keys2, values2,
 //                            "getAllPlace", new String[]{"mplid",
-//                                    "mplname"}, WebServiceUtil.HUIWEI_URL, WebServiceUtil.HUIWEI_NAMESPACE);
+//                                    "mplname"}, WebServiceUtil.HUI_WEI_5VC, WebServiceUtil.HUI_WEI_NAMESPACE);
 //                    if (result == null || result.isEmpty()) {
 //                        result = new ArrayList<HashMap<String, Object>>();
 //                        HashMap<String, Object> map = new HashMap<String, Object>();
@@ -191,7 +191,7 @@ public class YhdjPresenterCompl implements IYhdjPresenter {
 //        Subscription subscription = Observable.create(new Observable.OnSubscribe<List<JcbInfo>>() {
 //            @Override
 //            public void call(Subscriber<? super List<JcbInfo>> pSubscriber) {
-//                if (!App.isConnection) {
+//                if (!MyApplication.isConnection) {
 //                    JcbInfoDao rwInfoDao = SqliteOperator.INSTANCE.getJcbInfoDao(mContext);
 //                    pSubscriber.onNext(rwInfoDao.loadAll());
 //                    pSubscriber.onCompleted();
@@ -204,7 +204,7 @@ public class YhdjPresenterCompl implements IYhdjPresenter {
 //                            "userId", "cType", "docTempId", "retstr"};
 //                    // System.out.println("orgidstr" +
 //                    // orgItem.get("Emid").toString());
-//                    Object values[] = {myApp.getComInfo().getOrg_idstr(),
+//                    Object values[] = {myMyApplication.getComInfo().getOrg_idstr(),
 //                            0, "", "1900-01-01T00:00:00.850",
 //                            "2049-12-31T00:00:00.850", true, true, 0,
 //                            "安全检查表", 0, ""};
@@ -254,7 +254,7 @@ public class YhdjPresenterCompl implements IYhdjPresenter {
 //        Subscription subscription = Observable.create(new Observable.OnSubscribe<List<SbInfo>>() {
 //            @Override
 //            public void call(Subscriber<? super List<SbInfo>> pSubscriber) {
-//                if (!App.isConnection) {
+//                if (!MyApplication.isConnection) {
 //                    try {
 //                        ArrayList<SbInfo> result = new ArrayList<SbInfo>();
 //                        result.add(new SbInfo(null, "0", "无设备", "0", false));
@@ -273,7 +273,7 @@ public class YhdjPresenterCompl implements IYhdjPresenter {
 //                }
 //                ArrayList<HashMap<String, Object>> result;
 //                String keys2[] = {"cpid", "proclaid", "placeid", "kemid", "comid"};
-//                Object values2[] = {0, 0, Integer.parseInt(csId), 0, Integer.parseInt(myApp.getComInfo()
+//                Object values2[] = {0, 0, Integer.parseInt(csId), 0, Integer.parseInt(myMyApplication.getComInfo()
 //                        .getCom_id())};
 //                try {
 //                    result = new ArrayList<HashMap<String, Object>>();
@@ -283,7 +283,7 @@ public class YhdjPresenterCompl implements IYhdjPresenter {
 //                    result.add(map);
 //                    ArrayList<HashMap<String, Object>> data = WebServiceUtil.getWebServiceMsg(keys2, values2,
 //                            "getAllEquipment", new String[]{"cpid",
-//                                    "cproname", "num"}, WebServiceUtil.HUIWEI_URL, WebServiceUtil.HUIWEI_NAMESPACE);
+//                                    "cproname", "num"}, WebServiceUtil.HUI_WEI_5VC, WebServiceUtil.HUI_WEI_NAMESPACE);
 //                    result.addAll(data);
 //                    pSubscriber.onNext(parseSbInfo(result, csId));
 //                } catch (Exception e) {
@@ -319,7 +319,7 @@ public class YhdjPresenterCompl implements IYhdjPresenter {
 //        Subscription subscription = Observable.create(new Observable.OnSubscribe<List<JcbDetailInfo>>() {
 //            @Override
 //            public void call(Subscriber<? super List<JcbDetailInfo>> pSubscriber) {
-//                if (!App.isConnection) {
+//                if (!MyApplication.isConnection) {
 //                    try {
 //                        JcbDetailInfoDao rwInfoDao = SqliteOperator.INSTANCE.getJcbDetailInfoDao(mContext);
 //                        QueryBuilder<JcbDetailInfo> qb = rwInfoDao.queryBuilder();
@@ -453,7 +453,7 @@ public class YhdjPresenterCompl implements IYhdjPresenter {
 //
 //    @Override
 //    public void upload(final AqjcCommitInfo info) {
-//        if (!App.isConnection) {
+//        if (!MyApplication.isConnection) {
 //            mView.toast("未联网，已保存！等待下次联网后再提示");
 //            SqliteOperator.INSTANCE.getCommitInfo(mContext).insertOrReplace(info);
 //            return;
@@ -512,7 +512,7 @@ public class YhdjPresenterCompl implements IYhdjPresenter {
 //
 //    @Override
 //    public void getSssb(final int pSbid, final int comid) {
-//        if (!App.isConnection) {
+//        if (!MyApplication.isConnection) {
 //            mView.toast("此功能需联网！");
 //            return;
 //        }
@@ -525,7 +525,7 @@ public class YhdjPresenterCompl implements IYhdjPresenter {
 //                    Object values2[] = {pSbid, 0, 0, 0, comid};
 //                    ArrayList<HashMap<String, Object>> result = WebServiceUtil.getWebServiceMsg(keys2, values2,
 //                            "getAllEquipment", new String[]{"mroomid"},
-//                            WebServiceUtil.HUIWEI_URL, WebServiceUtil.HUIWEI_NAMESPACE);
+//                            WebServiceUtil.HUI_WEI_5VC, WebServiceUtil.HUI_WEI_NAMESPACE);
 //                    if (result.size() > 0) {
 //                        String placeId = String.valueOf(result.get(0).get("mroomid"));
 //                        pSubscriber.onNext(placeId);
